@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Sirv API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
@@ -45,8 +45,8 @@ api = kittn.authorize('meowmeowmeow')
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl "https://api.sirv.com/v2/"
+  -H "Authorization: Bearer:meowmeowmeow"
 ```
 
 ```javascript
