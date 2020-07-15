@@ -3,6 +3,7 @@
 @import 'variables';
 @import 'icon-font';
 // @import 'rtl'; // uncomment to switch to RTL format
+@import 'centerCodeFix';
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -630,14 +631,4 @@ html, body {
 
 .copy-clipboard:hover {
   opacity: 0.8;
-}
-
-.content {
-  .center-column + pre {
-    position: static;
-    float: none;
-    clear: none;
-    margin: 0 28px;
-    left: 0;
-  }
 }
