@@ -107,7 +107,7 @@ None
 
 Example JSON response:
 
-<div class="center-column"></div>
+<div class="center-column">
 ```json
 {
   "dateCreated": "2019-12-04T16:10:17.639Z",
@@ -123,6 +123,7 @@ Example JSON response:
   }
 }
 ```
+</div>
 
 ## Update account info
 
