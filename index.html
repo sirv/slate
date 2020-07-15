@@ -288,7 +288,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;,&quot;java&quot;,&quot;php&quot;,&quot;http&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;,&quot;java&quot;,&quot;php&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -298,12 +298,11 @@
     <div class="toc-wrapper">
       <img src="images/logo-1e815a84.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-              <a href="#" data-language-name="java">java</a>
-              <a href="#" data-language-name="php">php</a>
-              <a href="#" data-language-name="http">http</a>
+              <a href="#" data-language-name="shell">sheel (curl)</a>
+              <a href="#" data-language-name="python">Python (Requests)</a>
+              <a href="#" data-language-name="javascript">Node.js</a>
+              <a href="#" data-language-name="java">Java (Unirest)</a>
+              <a href="#" data-language-name="php">PHP (HTTP v2)</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -431,9 +430,6 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <span class="p">});</span>
 
 <span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/v2/account</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer BEARER_TOKEN</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">api.sirv.com</span>
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://api.sirv.com/v2/account"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"authorization"</span><span class="o">,</span> <span class="s">"Bearer BEARER_TOKEN"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
@@ -456,9 +452,10 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Use this API method to get information about the account, including its CDN URL; account name; additional domains; remote fetching status; date created and more.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.sirv.com/v2/account</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='http-request'>HTTP Request</h3><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/v2/account</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer BEARER_TOKEN</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.sirv.com</span>
+</code></pre></div><h3 id='query-parameters'>Query Parameters</h3>
 <p>None</p>
 <h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
@@ -604,12 +601,11 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-                <a href="#" data-language-name="java">java</a>
-                <a href="#" data-language-name="php">php</a>
-                <a href="#" data-language-name="http">http</a>
+                <a href="#" data-language-name="shell">sheel (curl)</a>
+                <a href="#" data-language-name="python">Python (Requests)</a>
+                <a href="#" data-language-name="javascript">Node.js</a>
+                <a href="#" data-language-name="java">Java (Unirest)</a>
+                <a href="#" data-language-name="php">PHP (HTTP v2)</a>
           </div>
       </div>
     </div>

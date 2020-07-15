@@ -51,9 +51,6 @@
 <span class="p">});</span>
 
 <span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/v2/account</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer BEARER_TOKEN</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">api.sirv.com</span>
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://api.sirv.com/v2/account"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"authorization"</span><span class="o">,</span> <span class="s">"Bearer BEARER_TOKEN"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
@@ -76,9 +73,10 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Use this API method to get information about the account, including its CDN URL; account name; additional domains; remote fetching status; date created and more.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.sirv.com/v2/account</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='http-request'>HTTP Request</h3><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/v2/account</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer BEARER_TOKEN</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.sirv.com</span>
+</code></pre></div><h3 id='query-parameters'>Query Parameters</h3>
 <p>None</p>
 <h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
