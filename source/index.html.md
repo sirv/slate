@@ -2,12 +2,11 @@
 title: Sirv API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - python
-  - javascript
-  - java
-  - php
-  - http
+  - shell: sheel (curl)
+  - python: Python (Requests)
+  - javascript: Node.js
+  - java: Java (Unirest)
+  - php: PHP (HTTP v2)
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>

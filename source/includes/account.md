@@ -67,12 +67,6 @@ var req = http.request(options, function (res) {
 req.end();
 ```
 
-```http
-GET /v2/account HTTP/1.1
-Authorization: Bearer BEARER_TOKEN
-Host: api.sirv.com
-```
-
 ```java
 HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/account")
   .header("authorization", "Bearer BEARER_TOKEN")
@@ -101,7 +95,11 @@ Use this API method to get information about the account, including its CDN URL;
 
 ### HTTP Request
 
-`GET https://api.sirv.com/v2/account`
+```http
+GET /v2/account HTTP/1.1
+Authorization: Bearer BEARER_TOKEN
+Host: api.sirv.com
+```
 
 ### Query Parameters
 
