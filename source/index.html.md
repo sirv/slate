@@ -2,7 +2,7 @@
 title: Sirv API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell: sheel (curl)
+  - shell: shell (cURL)
   - python: Python (Requests)
   - javascript: Node.js
   - java: Java (Unirest)
