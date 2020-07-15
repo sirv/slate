@@ -631,3 +631,13 @@ html, body {
 .copy-clipboard:hover {
   opacity: 0.8;
 }
+
+.content {
+  .center-column + pre {
+    position: static;
+    float: none;
+    clear: none;
+    margin: 0 28px;
+    left: 0;
+  }
+}
