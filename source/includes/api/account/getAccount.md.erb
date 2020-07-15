@@ -109,16 +109,38 @@ Example JSON response:
 
 ```json
 {
-  "dateCreated": "2019-12-04T16:10:17.639Z",
-  "alias": "test1",
-  "fileSizeLimit": 33554432,
-  "aliases": {
-    "test1": {
-      "prefix": "/"
-    }
-  },
+  "dateCreated": "2014-05-09T12:23:16.660Z",
+  "alias": "example",
   "fetching": {
-    "maxFilesize": 3145728
+    "enabled": false,
+    "type": "http",
+    "http": {
+      "auth": {
+        "enabled": false
+      },
+      "url": "https://domain.com"
+    },
+    "maxFilesize": 2097152
+  },
+  "cdnTempURL": "example.sirv.com",
+  "cdnURL": "example.magictoolbox.com",
+  "aliases": {
+    "example2-text": {
+      "prefix": "/example2",
+      "defaultProfile": "Example-Text"
+    },
+    "example2": {
+      "prefix": "/"
+    },
+    "example": {
+      "prefix": "/",
+      "cdn": true,
+      "customDomain": "example.magictoolbox.com"
+    },
+    "example2-jwt": {
+      "prefix": "/",
+      "cdn": true
+    }
   }
 }
 ```

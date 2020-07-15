@@ -191,6 +191,45 @@ Use this method to change the account options. You can enable or disable JS/CSS 
 
 None
 
+### JSON Body Example
+
+<div class="center-column"></div>
+
+```json
+{
+  "minify": {
+    "enabled": true
+  },
+  "fetching": {
+    "enabled": true,
+    "type": "http",
+    "http": {
+      "auth": {
+        "enabled": true,
+        "username": "string",
+        "password": "string"
+      },
+      "url": "string"
+    },
+    "s3": {
+      "endpoint": "string",
+      "accessKeyId": "string",
+      "secretAccessKey": "string",
+      "bucket": "string",
+      "prefix": "string",
+      "forcePathStyle": true
+    }
+  },
+  "aliases": {
+    "alias1": {
+      "cdn": true,
+      "prefix": "string",
+      "defaultProfile": "string"
+    }
+  }
+}
+```
+
 ### Response
 
 There is no response body. This method will return HTTP status code 200 on success.
