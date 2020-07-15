@@ -108,6 +108,7 @@ None
 Example JSON response:
 
 <div class="center-column"></div>
+
 ```json
 {
   "dateCreated": "2019-12-04T16:10:17.639Z",
