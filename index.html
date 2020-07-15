@@ -288,7 +288,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;,&quot;java&quot;,&quot;php&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript--node&quot;,&quot;javascript&quot;,&quot;java&quot;,&quot;php&quot;,&quot;http&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -300,9 +300,11 @@
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell (cURL)</a>
               <a href="#" data-language-name="python">Python (Requests)</a>
-              <a href="#" data-language-name="javascript">Node.js</a>
+              <a href="#" data-language-name="javascript--node">Node.js</a>
+              <a href="#" data-language-name="javascript">JavaScript</a>
               <a href="#" data-language-name="java">Java (Unirest)</a>
               <a href="#" data-language-name="php">PHP (HTTP v2)</a>
+              <a href="#" data-language-name="http">HTTP</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -402,7 +404,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
   <span class="nt">--url</span> https://api.sirv.com/v2/account <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'authorization: Bearer BEARER_TOKEN'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">https</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">https</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
@@ -427,13 +429,33 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <span class="p">});</span>
 
 <span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.sirv.com/v2/account</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">authorization</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Bearer BEARER_TOKEN</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://api.sirv.com/v2/account"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"authorization"</span><span class="o">,</span> <span class="s">"Bearer BEARER_TOKEN"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/v2/account</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer BEARER_TOKEN</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.sirv.com</span>
 </code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
+<p>Use this API method to get information about the account, including its CDN URL; account name; additional domains; remote fetching status; date created and more.</p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<p>None</p>
+<h3 id='response'>Response:</h3>
+<p>Example JSON response:</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-04T16:10:17.639Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1"</span><span class="p">,</span><span class="w">
@@ -447,17 +469,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
     </span><span class="nl">"maxFilesize"</span><span class="p">:</span><span class="w"> </span><span class="mi">3145728</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Use this API method to get information about the account, including its CDN URL; account name; additional domains; remote fetching status; date created and more.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>
-GET /v2/account HTTP/1.1
-Authorization: Bearer BEARER_TOKEN
-Host: api.sirv.com
-</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<p>None</p>
-<h2 id='update-account-info'>Update account info</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+</span></code></pre></div><h2 id='update-account-info'>Update account info</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.sirv.com/v2/account"</span>
 
@@ -491,7 +503,7 @@ Host: api.sirv.com
     }
   }
 }'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">https</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">https</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
@@ -523,6 +535,38 @@ Host: api.sirv.com
   <span class="na">aliases</span><span class="p">:</span> <span class="p">{</span><span class="na">test1</span><span class="p">:</span> <span class="p">{</span><span class="na">prefix</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">}}</span>
 <span class="p">}));</span>
 <span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">fetching</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">enabled</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://mysite.com</span><span class="dl">"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">minify</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">enabled</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">aliases</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">test1</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">prefix</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.sirv.com/v2/account</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">content-type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">authorization</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Bearer BEARER_TOKEN</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">"https://api.sirv.com/v2/account"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"content-type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"authorization"</span><span class="o">,</span> <span class="s">"Bearer BEARER_TOKEN"</span><span class="o">)</span>
@@ -565,41 +609,36 @@ Host: api.sirv.com
 <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
 
 <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
-</code></pre></div>
-<blockquote>
-<p>The above command will return HTTP status code 200 on success</p>
-</blockquote>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/v2/account</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer BEARER_TOKEN</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.sirv.com</span>
 
+<span class="p">{</span><span class="w">
+  </span><span class="nl">"fetching"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"http"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mysite.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"minify"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"aliases"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"test1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>Use this method to change the account options. You can enable or disable JS/CSS file minification. You can also enable/disable automatic fetching via HTTP or S3 from a remote location.</p>
 
 <aside class="warning">Be carefull when changing account options.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p>`
-POST /v2/account HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer BEARER_TOKEN
-Host: api.sirv.com</p>
-
-<p>{
-  &quot;fetching&quot;: {
-    &quot;enabled&quot;: false,
-    &quot;type&quot;: &quot;http&quot;,
-    &quot;http&quot;: {
-      &quot;url&quot;: &quot;https://mysite.com&quot;
-    }
-  },
-  &quot;minify&quot;: {
-    &quot;enabled&quot;: false
-  },
-  &quot;aliases&quot;: {
-    &quot;test1&quot;: {
-      &quot;prefix&quot;: &quot;/&quot;
-    }
-  }
-}
-`</p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <p>None</p>
+<h3 id='response-2'>Response</h3>
+<p>There is no response body. This method will return HTTP status code 200 on success.</p>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
@@ -664,9 +703,11 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell (cURL)</a>
                 <a href="#" data-language-name="python">Python (Requests)</a>
-                <a href="#" data-language-name="javascript">Node.js</a>
+                <a href="#" data-language-name="javascript--node">Node.js</a>
+                <a href="#" data-language-name="javascript">JavaScript</a>
                 <a href="#" data-language-name="java">Java (Unirest)</a>
                 <a href="#" data-language-name="php">PHP (HTTP v2)</a>
+                <a href="#" data-language-name="http">HTTP</a>
           </div>
       </div>
     </div>
