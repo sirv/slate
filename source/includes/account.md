@@ -39,7 +39,7 @@ curl --request GET \
   --header 'authorization: Bearer BEARER_TOKEN'
 ```
 
-```javascript
+```javascript--node
 var http = require("https");
 
 var options = {
@@ -67,13 +67,45 @@ var req = http.request(options, function (res) {
 req.end();
 ```
 
+```javascript
+var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "https://api.sirv.com/v2/account");
+xhr.setRequestHeader("authorization", "Bearer BEARER_TOKEN");
+
+xhr.send(data);
+```
+
 ```java
 HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/account")
   .header("authorization", "Bearer BEARER_TOKEN")
   .asString();
 ```
 
-> The above command returns JSON structured like this:
+```http
+GET /v2/account HTTP/1.1
+Authorization: Bearer BEARER_TOKEN
+Host: api.sirv.com
+```
+
+Use this API method to get information about the account, including its CDN URL; account name; additional domains; remote fetching status; date created and more.
+
+### Query Parameters
+
+None
+
+### Response:
+
+Example JSON response:
 
 ```json
 {
@@ -90,20 +122,6 @@ HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/account")
   }
 }
 ```
-
-Use this API method to get information about the account, including its CDN URL; account name; additional domains; remote fetching status; date created and more.
-
-### HTTP Request
-
-`
-GET /v2/account HTTP/1.1
-Authorization: Bearer BEARER_TOKEN
-Host: api.sirv.com
-`
-
-### Query Parameters
-
-None
 
 ## Update account info
 
@@ -147,7 +165,7 @@ curl --request POST \
 }'
 ```
 
-```javascript
+```javascript--node
 var http = require("https");
 
 var options = {
@@ -180,6 +198,41 @@ req.write(JSON.stringify({
   aliases: {test1: {prefix: '/'}}
 }));
 req.end();
+```
+
+```javascript
+var data = JSON.stringify({
+  "fetching": {
+    "enabled": false,
+    "type": "http",
+    "http": {
+      "url": "https://mysite.com"
+    }
+  },
+  "minify": {
+    "enabled": false
+  },
+  "aliases": {
+    "test1": {
+      "prefix": "/"
+    }
+  }
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://api.sirv.com/v2/account");
+xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader("authorization", "Bearer BEARER_TOKEN");
+
+xhr.send(data);
 ```
 
 ```java
@@ -230,15 +283,7 @@ $response = $client->getResponse();
 echo $response->getBody();
 ```
 
-> The above command will return HTTP status code 200 on success
-
-Use this method to change the account options. You can enable or disable JS/CSS file minification. You can also enable/disable automatic fetching via HTTP or S3 from a remote location.
-
-<aside class="warning">Be carefull when changing account options.</aside>
-
-### HTTP Request
-
-`
+```http
 POST /v2/account HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer BEARER_TOKEN
@@ -261,10 +306,18 @@ Host: api.sirv.com
     }
   }
 }
-`
+```
+
+Use this method to change the account options. You can enable or disable JS/CSS file minification. You can also enable/disable automatic fetching via HTTP or S3 from a remote location.
+
+<aside class="warning">Be carefull when changing account options.</aside>
 
 ### URL Parameters
 
 None
+
+### Response
+
+There is no response body. This method will return HTTP status code 200 on success.
 
 
