@@ -130,8 +130,8 @@ None
 
 
 JSON Schema:
-<div class="center-column"></div>
 
+<div class="center-column"></div>
 ```json
 {
   "type": "object",
