@@ -192,12 +192,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:28:21 GMT
+< date: Fri, 17 Jul 2020 16:37:01 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 5638
+< content-length: 5648
 < connection: close
 < x-ratelimit-limit: 1000
-< x-ratelimit-remaining: 999
+< x-ratelimit-remaining: 998
 < x-ratelimit-reset: 1595006900
 < x-ratelimit-type: rest:post:files:search
 < access-control-allow-origin: *
@@ -213,7 +213,7 @@ Example response:
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "4b57cdf35a3568220bb9ad7a6f62f0048c8b4ae1",
-      "_score": 1.185298,
+      "_score": 1.1852932,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -237,7 +237,7 @@ Example response:
         }
       },
       "sort": [
-        1.185298,
+        1.1852932,
         "/REST API Examples/aurora.jpg",
         ".jpg"
       ]
@@ -246,7 +246,7 @@ Example response:
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "ac9224d68ecaa7e6b2b2ddbd840190c190391db2",
-      "_score": 1.185298,
+      "_score": 1.1852932,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -267,7 +267,7 @@ Example response:
         }
       },
       "sort": [
-        1.185298,
+        1.1852932,
         "/REST API Examples/birdbath.jpg",
         ".jpg"
       ]
@@ -276,7 +276,7 @@ Example response:
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "1b86315bcaadbc77626f40f0bf9e2ed63c370194",
-      "_score": 1.185298,
+      "_score": 1.1852932,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -301,7 +301,7 @@ Example response:
           ],
           "approval": {
             "approved": false,
-            "datetime": "2020-07-17T16:23:55.888Z"
+            "datetime": "2020-07-17T16:28:31.292Z"
           },
           "product": {
             "id": "LLBB77",
@@ -325,7 +325,7 @@ Example response:
         }
       },
       "sort": [
-        1.185298,
+        1.1852932,
         "/REST API Examples/blue-lake.jpg",
         ".jpg"
       ]
@@ -334,7 +334,7 @@ Example response:
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "57c6df356e0db18178a2b188ff0c2f8c352d7efe",
-      "_score": 1.185298,
+      "_score": 1.1852932,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -359,7 +359,7 @@ Example response:
         }
       },
       "sort": [
-        1.185298,
+        1.1852932,
         "/REST API Examples/coin/coin_01.jpg",
         ".jpg"
       ]
@@ -368,7 +368,7 @@ Example response:
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "d4cadbf0969a407d918852f43800168d6199a98c",
-      "_score": 1.185298,
+      "_score": 1.1852932,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -393,7 +393,7 @@ Example response:
         }
       },
       "sort": [
-        1.185298,
+        1.1852932,
         "/REST API Examples/coin/coin_02.jpg",
         ".jpg"
       ]

@@ -136,12 +136,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:28:29 GMT
+< date: Fri, 17 Jul 2020 16:37:09 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 48
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6984
+< x-ratelimit-remaining: 6954
 < x-ratelimit-reset: 1595006894
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *

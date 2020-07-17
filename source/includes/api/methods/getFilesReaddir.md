@@ -136,12 +136,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:28:31 GMT
+< date: Fri, 17 Jul 2020 16:37:11 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 1380
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6973
+< x-ratelimit-remaining: 6943
 < x-ratelimit-reset: 1595006894
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
@@ -155,18 +155,6 @@ Example response:
 {
   "contents": [
     {
-      "filename": "blue-lake.jpg",
-      "mtime": "2020-07-17T13:31:39.450Z",
-      "contentType": "image/jpeg",
-      "size": 587065,
-      "isDirectory": false,
-      "meta": {
-        "width": 1578,
-        "height": 1002,
-        "duration": 0
-      }
-    },
-    {
       "filename": "aurora.jpg",
       "mtime": "2020-07-17T15:47:36.701Z",
       "contentType": "image/webp",
@@ -177,13 +165,6 @@ Example response:
         "height": 1667,
         "duration": 0
       }
-    },
-    {
-      "filename": "coin",
-      "mtime": "2020-07-17T13:31:08.833Z",
-      "size": 0,
-      "isDirectory": true,
-      "meta": {}
     },
     {
       "filename": "birdbath.jpg",
@@ -198,6 +179,32 @@ Example response:
       }
     },
     {
+      "filename": "coin",
+      "mtime": "2020-07-17T13:31:08.833Z",
+      "size": 0,
+      "isDirectory": true,
+      "meta": {}
+    },
+    {
+      "filename": "blue-lake.jpg",
+      "mtime": "2020-07-17T13:31:39.450Z",
+      "contentType": "image/jpeg",
+      "size": 587065,
+      "isDirectory": false,
+      "meta": {
+        "width": 1578,
+        "height": 1002,
+        "duration": 0
+      }
+    },
+    {
+      "filename": "video",
+      "mtime": "2020-07-17T15:36:52.477Z",
+      "size": 0,
+      "isDirectory": true,
+      "meta": {}
+    },
+    {
       "filename": "video.mp4",
       "mtime": "2020-07-17T15:35:20.375Z",
       "contentType": "video/mp4",
@@ -208,13 +215,6 @@ Example response:
         "height": 1080,
         "duration": 33.434
       }
-    },
-    {
-      "filename": "video",
-      "mtime": "2020-07-17T15:36:52.477Z",
-      "size": 0,
-      "isDirectory": true,
-      "meta": {}
     }
   ]
 }

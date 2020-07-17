@@ -130,6 +130,7 @@ None
 
 
 JSON Schema:
+
 <div class="center-column"></div>
 ```json
 {
@@ -295,11 +296,11 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:28:14 GMT
+< date: Fri, 17 Jul 2020 16:36:54 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 50
-< x-ratelimit-remaining: 49
+< x-ratelimit-remaining: 48
 < x-ratelimit-reset: 1595006894
 < x-ratelimit-type: rest:post:account
 < access-control-allow-origin: *

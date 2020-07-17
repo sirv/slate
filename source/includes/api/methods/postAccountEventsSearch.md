@@ -130,6 +130,7 @@ None
 
 
 JSON Schema:
+
 <div class="center-column"></div>
 ```json
 {
