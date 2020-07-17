@@ -118,7 +118,7 @@ Use this API method to upload a single file to an account. It is an alternative 
 
 
 Parameter | Type | Description | Example
---------- | ------- | ----------- 
+--------- | ---- | ----------- | ------- 
 filename | string |  | 
 
 
@@ -131,6 +131,8 @@ None
 ### Response
 
 Example response:
+
+<div class="center-column"></div>
 
 ```
 

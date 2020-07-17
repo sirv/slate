@@ -10,7 +10,7 @@ headers = {
     'authorization': "Bearer BEARER_TOKEN_HERE"
     }
 
-conn.request("GET", "/v2/files/meta/product", headers=headers)
+conn.request("GET", "/v2/files/meta/product?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg", headers=headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -20,7 +20,7 @@ print(data.decode("utf-8"))
 
 ```shell
 curl --request GET \
-  --url https://api.sirv.com/v2/files/meta/product \
+  --url 'https://api.sirv.com/v2/files/meta/product?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg' \
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \
   --header 'content-type: application/json'
 ```
@@ -32,7 +32,7 @@ var options = {
   "method": "GET",
   "hostname": "api.sirv.com",
   "port": null,
-  "path": "/v2/files/meta/product",
+  "path": "/v2/files/meta/product?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg",
   "headers": {
     "content-type": "application/json",
     "authorization": "Bearer BEARER_TOKEN_HERE"
@@ -67,7 +67,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("GET", "https://api.sirv.com/v2/files/meta/product");
+xhr.open("GET", "https://api.sirv.com/v2/files/meta/product?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg");
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("authorization", "Bearer BEARER_TOKEN_HERE");
 
@@ -75,7 +75,7 @@ xhr.send(data);
 ```
 
 ```java
-HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/meta/product")
+HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/meta/product?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
   .asString();
@@ -87,7 +87,7 @@ HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/meta/
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.sirv.com/v2/files/meta/product",
+  CURLOPT_URL => "https://api.sirv.com/v2/files/meta/product?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -118,8 +118,8 @@ Use this API method to get the product meta fields for an image. This can be use
 
 
 Parameter | Type | Description | Example
---------- | ------- | ----------- 
-filename | string |  | 
+--------- | ---- | ----------- | ------- 
+filename | string |  | /REST API Examples/blue-lake.jpg
 
 
 ### Body payload
@@ -132,6 +132,30 @@ None
 
 Example response:
 
-```
+<div class="center-column"></div>
 
+```
+< HTTP/1.1 200
+< date: Fri, 17 Jul 2020 16:23:57 GMT
+< content-type: application/json; charset=utf-8
+< content-length: 124
+< connection: close
+< x-ratelimit-limit: 7000
+< x-ratelimit-remaining: 6799
+< x-ratelimit-reset: 1595003234
+< x-ratelimit-type: rest:global
+< access-control-allow-origin: *
+< access-control-expose-headers: *
+< cache-control: no-cache
+< accept-ranges: bytes
+< server: Sirv.API
+< strict-transport-security: max-age=31536000
+
+{
+  "id": "LLBB77",
+  "name": "Blue Lake Card",
+  "brand": "BLUE LAKE LLC",
+  "category1": "Cards",
+  "category2": "Lakes"
+}
 ```

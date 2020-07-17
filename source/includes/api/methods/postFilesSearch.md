@@ -129,6 +129,7 @@ None
 ### Body payload
 
 
+JSON Schema:
 <div class="center-column"></div>
 
 ```json
@@ -188,14 +189,16 @@ None
 
 Example response:
 
+<div class="center-column"></div>
+
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 15:39:25 GMT
+< date: Fri, 17 Jul 2020 16:23:42 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 5322
+< content-length: 5648
 < connection: close
 < x-ratelimit-limit: 1000
-< x-ratelimit-remaining: 994
+< x-ratelimit-remaining: 992
 < x-ratelimit-reset: 1595003237
 < x-ratelimit-type: rest:post:files:search
 < access-control-allow-origin: *
@@ -211,7 +214,7 @@ Example response:
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "4b57cdf35a3568220bb9ad7a6f62f0048c8b4ae1",
-      "_score": 1.1882421,
+      "_score": 1.1853018,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -221,13 +224,13 @@ Example response:
         "extension": ".jpg",
         "id": "tkLbo0YuHJuBIEYj40lEUYRZZ8cLBGnF",
         "ctime": "2020-07-17T13:31:39.348Z",
-        "mtime": "2020-07-17T13:31:39.464Z",
-        "size": 788807,
-        "contentType": "image/jpeg",
+        "mtime": "2020-07-17T15:47:36.701Z",
+        "size": 201846,
+        "contentType": "image/webp",
         "meta": {
           "width": 2500,
           "height": 1667,
-          "format": "JPEG",
+          "format": "WEBP",
           "duration": 0,
           "EXIF": {
             "ModifyDate": "2020-01-29T17:12:45Z"
@@ -235,7 +238,7 @@ Example response:
         }
       },
       "sort": [
-        1.1882421,
+        1.1853018,
         "/REST API Examples/aurora.jpg",
         ".jpg"
       ]
@@ -244,7 +247,7 @@ Example response:
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "ac9224d68ecaa7e6b2b2ddbd840190c190391db2",
-      "_score": 1.1882421,
+      "_score": 1.1853018,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -265,7 +268,7 @@ Example response:
         }
       },
       "sort": [
-        1.1882421,
+        1.1853018,
         "/REST API Examples/birdbath.jpg",
         ".jpg"
       ]
@@ -274,7 +277,7 @@ Example response:
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "1b86315bcaadbc77626f40f0bf9e2ed63c370194",
-      "_score": 1.1882421,
+      "_score": 1.1853018,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -297,6 +300,17 @@ Example response:
             "cold",
             "water"
           ],
+          "approval": {
+            "approved": false,
+            "datetime": "2020-07-17T16:23:16.979Z"
+          },
+          "product": {
+            "id": "LLBB77",
+            "name": "Blue Lake Card",
+            "brand": "BLUE LAKE LLC",
+            "category1": "Cards",
+            "category2": "Lakes"
+          },
           "width": 1578,
           "height": 1002,
           "format": "JPEG",
@@ -312,7 +326,7 @@ Example response:
         }
       },
       "sort": [
-        1.1882421,
+        1.1853018,
         "/REST API Examples/blue-lake.jpg",
         ".jpg"
       ]
@@ -321,7 +335,7 @@ Example response:
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "57c6df356e0db18178a2b188ff0c2f8c352d7efe",
-      "_score": 1.1882421,
+      "_score": 1.1853018,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -346,7 +360,7 @@ Example response:
         }
       },
       "sort": [
-        1.1882421,
+        1.1853018,
         "/REST API Examples/coin/coin_01.jpg",
         ".jpg"
       ]
@@ -355,7 +369,7 @@ Example response:
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "d4cadbf0969a407d918852f43800168d6199a98c",
-      "_score": 1.1882421,
+      "_score": 1.1853018,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -380,7 +394,7 @@ Example response:
         }
       },
       "sort": [
-        1.1882421,
+        1.1853018,
         "/REST API Examples/coin/coin_02.jpg",
         ".jpg"
       ]

@@ -118,7 +118,7 @@ Use this API method to check all the files within a folder. It will return the f
 
 
 Parameter | Type | Description | Example
---------- | ------- | ----------- 
+--------- | ---- | ----------- | ------- 
 dirname | string |  | /REST API Examples
 continuation | string | Send it to get next page of results | 
 
@@ -133,14 +133,16 @@ None
 
 Example response:
 
+<div class="center-column"></div>
+
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 15:39:38 GMT
+< date: Fri, 17 Jul 2020 16:23:56 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 1380
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6860
+< x-ratelimit-remaining: 6800
 < x-ratelimit-reset: 1595003234
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
@@ -154,14 +156,14 @@ Example response:
 {
   "contents": [
     {
-      "filename": "blue-lake.jpg",
-      "mtime": "2020-07-17T13:31:39.450Z",
+      "filename": "birdbath.jpg",
+      "mtime": "2020-07-17T13:31:39.385Z",
       "contentType": "image/jpeg",
-      "size": 587065,
+      "size": 73151,
       "isDirectory": false,
       "meta": {
-        "width": 1578,
-        "height": 1002,
+        "width": 620,
+        "height": 372,
         "duration": 0
       }
     },
@@ -173,26 +175,14 @@ Example response:
       "meta": {}
     },
     {
-      "filename": "aurora.jpg",
-      "mtime": "2020-07-17T13:31:39.464Z",
+      "filename": "blue-lake.jpg",
+      "mtime": "2020-07-17T13:31:39.450Z",
       "contentType": "image/jpeg",
-      "size": 788807,
+      "size": 587065,
       "isDirectory": false,
       "meta": {
-        "width": 2500,
-        "height": 1667,
-        "duration": 0
-      }
-    },
-    {
-      "filename": "birdbath.jpg",
-      "mtime": "2020-07-17T13:31:39.385Z",
-      "contentType": "image/jpeg",
-      "size": 73151,
-      "isDirectory": false,
-      "meta": {
-        "width": 620,
-        "height": 372,
+        "width": 1578,
+        "height": 1002,
         "duration": 0
       }
     },
@@ -206,6 +196,18 @@ Example response:
         "width": 1372,
         "height": 1080,
         "duration": 33.434
+      }
+    },
+    {
+      "filename": "aurora.jpg",
+      "mtime": "2020-07-17T15:47:36.701Z",
+      "contentType": "image/webp",
+      "size": 201846,
+      "isDirectory": false,
+      "meta": {
+        "width": 2500,
+        "height": 1667,
+        "duration": 0
       }
     },
     {

@@ -118,7 +118,7 @@ Use this API method to copy a single file.
 
 
 Parameter | Type | Description | Example
---------- | ------- | ----------- 
+--------- | ---- | ----------- | ------- 
 from | string |  | 
 to | string |  | 
 
@@ -132,6 +132,8 @@ None
 ### Response
 
 Example response:
+
+<div class="center-column"></div>
 
 ```
 

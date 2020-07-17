@@ -190,14 +190,16 @@ JSON Schema:
 
 Example response:
 
+<div class="center-column"></div>
+
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 15:49:57 GMT
+< date: Fri, 17 Jul 2020 16:23:52 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 1681
 < connection: close
 < x-ratelimit-limit: 2000
-< x-ratelimit-remaining: 1997
+< x-ratelimit-remaining: 1995
 < x-ratelimit-reset: 1595004455
 < x-ratelimit-type: rest:post:files:fetch
 < access-control-allow-origin: *

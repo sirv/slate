@@ -129,6 +129,7 @@ None
 ### Body payload
 
 
+JSON Schema:
 <div class="center-column"></div>
 
 ```json
@@ -292,13 +293,15 @@ None
 
 Example response:
 
+<div class="center-column"></div>
+
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 15:39:20 GMT
+< date: Fri, 17 Jul 2020 16:23:37 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 50
-< x-ratelimit-remaining: 44
+< x-ratelimit-remaining: 42
 < x-ratelimit-reset: 1595003234
 < x-ratelimit-type: rest:post:account
 < access-control-allow-origin: *

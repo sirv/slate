@@ -124,13 +124,14 @@ Use this API method to change the folder options. You can enable/disable spin sc
 
 
 Parameter | Type | Description | Example
---------- | ------- | ----------- 
+--------- | ---- | ----------- | ------- 
 filename | string |  | /REST API Examples
 
 
 ### Body payload
 
 
+JSON Schema:
 <div class="center-column"></div>
 
 ```json
@@ -165,13 +166,15 @@ filename | string |  | /REST API Examples
 
 Example response:
 
+<div class="center-column"></div>
+
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 15:39:34 GMT
+< date: Fri, 17 Jul 2020 16:23:53 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6868
+< x-ratelimit-remaining: 6810
 < x-ratelimit-reset: 1595003234
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *

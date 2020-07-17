@@ -118,7 +118,7 @@ Use this API method to check the total amount of data stored on a given day or e
 
 
 Parameter | Type | Description | Example
---------- | ------- | ----------- 
+--------- | ---- | ----------- | ------- 
 from | date | Default: 1 month ago, rounded to start of day | 2020-07-01T00:00:00.000
 to | date | Default: now, rounded to end of day | 2020-07-05T00:00:00.000
 
@@ -133,14 +133,16 @@ None
 
 Example response:
 
+<div class="center-column"></div>
+
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 15:39:22 GMT
+< date: Fri, 17 Jul 2020 16:23:40 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 872
 < connection: close
 < x-ratelimit-limit: 100
-< x-ratelimit-remaining: 94
+< x-ratelimit-remaining: 92
 < x-ratelimit-reset: 1595003236
 < x-ratelimit-type: rest:get:stats:storage
 < access-control-allow-origin: *
@@ -159,14 +161,6 @@ Example response:
     "files": 65400,
     "quotaExceededDate": null
   },
-  "1593561600000": {
-    "plan": 100000000000,
-    "burstable": 500000000000,
-    "extra": 0,
-    "used": 49238608587,
-    "files": 65413,
-    "quotaExceededDate": null
-  },
   "1593907200000": {
     "plan": 100000000000,
     "burstable": 500000000000,
@@ -181,6 +175,14 @@ Example response:
     "extra": 0,
     "used": 49360152901,
     "files": 65357,
+    "quotaExceededDate": null
+  },
+  "1593561600000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 49238608587,
+    "files": 65413,
     "quotaExceededDate": null
   },
   "1593648000000": {

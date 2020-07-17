@@ -118,7 +118,7 @@ Use this API method to check the options of a folder. It will tell you the setti
 
 
 Parameter | Type | Description | Example
---------- | ------- | ----------- 
+--------- | ---- | ----------- | ------- 
 filename | string |  | /REST API Examples
 withInherited | boolean | Include options inherited from parent folders | 
 
@@ -133,14 +133,16 @@ None
 
 Example response:
 
+<div class="center-column"></div>
+
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 15:39:34 GMT
+< date: Fri, 17 Jul 2020 16:23:52 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 48
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6869
+< x-ratelimit-remaining: 6811
 < x-ratelimit-reset: 1595003234
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *

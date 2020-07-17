@@ -124,13 +124,14 @@ Use this API method to delete a meta tag from a file or folder.
 
 
 Parameter | Type | Description | Example
---------- | ------- | ----------- 
+--------- | ---- | ----------- | ------- 
 filename | string |  | /REST API Examples/blue-lake.jpg
 
 
 ### Body payload
 
 
+JSON Schema:
 <div class="center-column"></div>
 
 ```json
@@ -166,13 +167,15 @@ filename | string |  | /REST API Examples/blue-lake.jpg
 
 Example response:
 
+<div class="center-column"></div>
+
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 15:39:36 GMT
+< date: Fri, 17 Jul 2020 16:23:55 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6861
+< x-ratelimit-remaining: 6803
 < x-ratelimit-reset: 1595003234
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *

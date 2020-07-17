@@ -129,6 +129,7 @@ None
 ### Body payload
 
 
+JSON Schema:
 <div class="center-column"></div>
 
 ```json
@@ -159,6 +160,8 @@ None
 ### Response
 
 Example response:
+
+<div class="center-column"></div>
 
 ```
 

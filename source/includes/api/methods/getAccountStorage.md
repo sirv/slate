@@ -130,14 +130,16 @@ None
 
 Example response:
 
+<div class="center-column"></div>
+
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 15:39:20 GMT
+< date: Fri, 17 Jul 2020 16:23:37 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 139
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6881
+< x-ratelimit-remaining: 6824
 < x-ratelimit-reset: 1595003234
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
@@ -151,7 +153,7 @@ Example response:
   "plan": 100000000000,
   "burstable": 500000000000,
   "extra": 0,
-  "used": 51895010194,
+  "used": 51894423233,
   "files": 73905,
   "quotaExceededDate": null
 }

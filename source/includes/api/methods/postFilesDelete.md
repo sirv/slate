@@ -118,7 +118,7 @@ Use this API method to delete a single file or an empty directory.
 
 
 Parameter | Type | Description | Example
---------- | ------- | ----------- 
+--------- | ---- | ----------- | ------- 
 filename | string |  | 
 
 
@@ -131,6 +131,8 @@ None
 ### Response
 
 Example response:
+
+<div class="center-column"></div>
 
 ```
 
