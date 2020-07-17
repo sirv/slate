@@ -133,16 +133,15 @@ None
 Example response:
 
 <div class="center-column"></div>
-
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:23:55 GMT
+< date: Fri, 17 Jul 2020 16:28:31 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 100
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6802
-< x-ratelimit-reset: 1595003234
+< x-ratelimit-remaining: 6975
+< x-ratelimit-reset: 1595006894
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -152,7 +151,7 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "datetime": "2020-07-17T16:23:16.979Z",
+  "datetime": "2020-07-17T16:23:55.888Z",
   "approved": false,
   "comment": "It looks too cold!"
 }

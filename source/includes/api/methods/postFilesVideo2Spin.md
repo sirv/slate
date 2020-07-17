@@ -131,7 +131,6 @@ None
 
 JSON Schema:
 <div class="center-column"></div>
-
 ```json
 {
   "type": "object",
@@ -182,15 +181,14 @@ JSON Schema:
 Example response:
 
 <div class="center-column"></div>
-
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:23:46 GMT
+< date: Fri, 17 Jul 2020 16:28:24 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 22
 < connection: close
 < x-ratelimit-limit: 200
-< x-ratelimit-remaining: 195
+< x-ratelimit-remaining: 194
 < x-ratelimit-reset: 1595003668
 < x-ratelimit-type: rest:post:files:video2spin
 < access-control-allow-origin: *

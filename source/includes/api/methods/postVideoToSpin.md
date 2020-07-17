@@ -131,7 +131,6 @@ None
 
 JSON Schema:
 <div class="center-column"></div>
-
 ```json
 {
   "type": "object",
@@ -218,7 +217,6 @@ JSON Schema:
 Example response:
 
 <div class="center-column"></div>
-
 ```
 
 ```

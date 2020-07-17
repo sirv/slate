@@ -134,16 +134,15 @@ None
 Example response:
 
 <div class="center-column"></div>
-
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:23:56 GMT
+< date: Fri, 17 Jul 2020 16:28:31 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 1380
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6800
-< x-ratelimit-reset: 1595003234
+< x-ratelimit-remaining: 6973
+< x-ratelimit-reset: 1595006894
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -155,25 +154,6 @@ Example response:
 
 {
   "contents": [
-    {
-      "filename": "birdbath.jpg",
-      "mtime": "2020-07-17T13:31:39.385Z",
-      "contentType": "image/jpeg",
-      "size": 73151,
-      "isDirectory": false,
-      "meta": {
-        "width": 620,
-        "height": 372,
-        "duration": 0
-      }
-    },
-    {
-      "filename": "coin",
-      "mtime": "2020-07-17T13:31:08.833Z",
-      "size": 0,
-      "isDirectory": true,
-      "meta": {}
-    },
     {
       "filename": "blue-lake.jpg",
       "mtime": "2020-07-17T13:31:39.450Z",
@@ -187,18 +167,6 @@ Example response:
       }
     },
     {
-      "filename": "video.mp4",
-      "mtime": "2020-07-17T15:35:20.375Z",
-      "contentType": "video/mp4",
-      "size": 12860989,
-      "isDirectory": false,
-      "meta": {
-        "width": 1372,
-        "height": 1080,
-        "duration": 33.434
-      }
-    },
-    {
       "filename": "aurora.jpg",
       "mtime": "2020-07-17T15:47:36.701Z",
       "contentType": "image/webp",
@@ -208,6 +176,37 @@ Example response:
         "width": 2500,
         "height": 1667,
         "duration": 0
+      }
+    },
+    {
+      "filename": "coin",
+      "mtime": "2020-07-17T13:31:08.833Z",
+      "size": 0,
+      "isDirectory": true,
+      "meta": {}
+    },
+    {
+      "filename": "birdbath.jpg",
+      "mtime": "2020-07-17T13:31:39.385Z",
+      "contentType": "image/jpeg",
+      "size": 73151,
+      "isDirectory": false,
+      "meta": {
+        "width": 620,
+        "height": 372,
+        "duration": 0
+      }
+    },
+    {
+      "filename": "video.mp4",
+      "mtime": "2020-07-17T15:35:20.375Z",
+      "contentType": "video/mp4",
+      "size": 12860989,
+      "isDirectory": false,
+      "meta": {
+        "width": 1372,
+        "height": 1080,
+        "duration": 33.434
       }
     },
     {

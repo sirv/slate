@@ -133,7 +133,6 @@ filename | string |  | /REST API Examples
 
 JSON Schema:
 <div class="center-column"></div>
-
 ```json
 {
   "type": "object",
@@ -167,15 +166,14 @@ JSON Schema:
 Example response:
 
 <div class="center-column"></div>
-
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:23:53 GMT
+< date: Fri, 17 Jul 2020 16:28:29 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6810
-< x-ratelimit-reset: 1595003234
+< x-ratelimit-remaining: 6983
+< x-ratelimit-reset: 1595006894
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *

@@ -133,7 +133,6 @@ filename | string |  | /REST API Examples/blue-lake.jpg
 
 JSON Schema:
 <div class="center-column"></div>
-
 ```json
 {
   "type": "object",
@@ -160,15 +159,14 @@ JSON Schema:
 Example response:
 
 <div class="center-column"></div>
-
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:23:54 GMT
+< date: Fri, 17 Jul 2020 16:28:30 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6806
-< x-ratelimit-reset: 1595003234
+< x-ratelimit-remaining: 6979
+< x-ratelimit-reset: 1595006894
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *

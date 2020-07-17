@@ -134,16 +134,15 @@ None
 Example response:
 
 <div class="center-column"></div>
-
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:23:52 GMT
+< date: Fri, 17 Jul 2020 16:28:29 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 48
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6811
-< x-ratelimit-reset: 1595003234
+< x-ratelimit-remaining: 6984
+< x-ratelimit-reset: 1595006894
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *

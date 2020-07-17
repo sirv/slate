@@ -131,7 +131,6 @@ None
 Example response:
 
 <div class="center-column"></div>
-
 ```
 
 ```

@@ -118,7 +118,7 @@ Use this API method to get information about a user, including their name, email
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | -------
+--------- | ---- | ----------- | ------- 
 userId | string |  | Gt6ljl1AxwmtGBIHX0WBo3qKdtK
 
 
@@ -133,16 +133,15 @@ None
 Example response:
 
 <div class="center-column"></div>
-
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:23:39 GMT
+< date: Fri, 17 Jul 2020 16:28:16 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 188
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6819
-< x-ratelimit-reset: 1595003234
+< x-ratelimit-remaining: 6992
+< x-ratelimit-reset: 1595006894
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -156,6 +155,6 @@ Example response:
   "firstName": "Rest",
   "lastName": "Api",
   "dateCreated": "2020-07-17T13:55:10.462Z",
-  "s3Secret": "**********************************"
+  "s3Secret": "vS0SppdLQDHsqrAtgLhhco4XBgyMlHEDRDNEULLeKb4BvGcm"
 }
 ```
