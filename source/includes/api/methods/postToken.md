@@ -5,11 +5,10 @@ import http.client
 
 conn = http.client.HTTPSConnection("api.sirv.com")
 
-payload = "{}"
+payload = "{\"clientId\":\"ZcnZNfzwRhQExoHFoGpxWJ4p2R\",\"clientSecret\":\"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==\"}"
 
 headers = {
-    'content-type': "application/json",
-    'authorization': "Bearer BEARER_TOKEN_HERE"
+    'content-type': "application/json"
     }
 
 conn.request("POST", "/v2/token", payload, headers)
@@ -23,9 +22,8 @@ print(data.decode("utf-8"))
 ```shell
 curl --request POST \\
   --url https://api.sirv.com/v2/token \\
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json' \\
-  --data '{}'
+  --data '{"clientId":"ZcnZNfzwRhQExoHFoGpxWJ4p2R","clientSecret":"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q=="}'
 ```
 
 ```javascript--node
@@ -37,8 +35,7 @@ var options = {
   "port": null,
   "path": "/v2/token",
   "headers": {
-    "content-type": "application/json",
-    "authorization": "Bearer BEARER_TOKEN_HERE"
+    "content-type": "application/json"
   }
 };
 
@@ -55,12 +52,12 @@ var req = http.request(options, function (res) {
   });
 });
 
-req.write("{}");
+req.write("{\"clientId\":\"ZcnZNfzwRhQExoHFoGpxWJ4p2R\",\"clientSecret\":\"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==\"}");
 req.end();
 ```
 
 ```javascript
-var data = "{}";
+var data = "{\"clientId\":\"ZcnZNfzwRhQExoHFoGpxWJ4p2R\",\"clientSecret\":\"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==\"}";
 
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
@@ -73,7 +70,6 @@ xhr.addEventListener("readystatechange", function () {
 
 xhr.open("POST", "https://api.sirv.com/v2/token");
 xhr.setRequestHeader("content-type", "application/json");
-xhr.setRequestHeader("authorization", "Bearer BEARER_TOKEN_HERE");
 
 xhr.send(data);
 ```
@@ -81,8 +77,7 @@ xhr.send(data);
 ```java
 HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/token")
   .header("content-type", "application/json")
-  .header("authorization", "Bearer BEARER_TOKEN_HERE")
-  .body("{}")
+  .body("{\"clientId\":\"ZcnZNfzwRhQExoHFoGpxWJ4p2R\",\"clientSecret\":\"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==\"}")
   .asString();
 ```
 
@@ -99,9 +94,8 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{}",
+  CURLOPT_POSTFIELDS => "{\"clientId\":\"ZcnZNfzwRhQExoHFoGpxWJ4p2R\",\"clientSecret\":\"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==\"}",
   CURLOPT_HTTPHEADER => array(
-    "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
   ),
 ));
@@ -131,8 +125,7 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
 request["content-type"] = 'application/json'
-request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
-request.body = "{}"
+request.body = "{\"clientId\":\"ZcnZNfzwRhQExoHFoGpxWJ4p2R\",\"clientSecret\":\"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==\"}"
 
 response = http.request(request)
 puts response.read_body
@@ -142,11 +135,10 @@ puts response.read_body
 import Foundation
 
 let headers = [
-  "content-type": "application/json",
-  "authorization": "Bearer BEARER_TOKEN_HERE"
+  "content-type": "application/json"
 ]
 
-let postData = NSData(data: "{}".data(using: String.Encoding.utf8)!)
+let postData = NSData(data: "{"clientId":"ZcnZNfzwRhQExoHFoGpxWJ4p2R","clientSecret":"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q=="}".data(using: String.Encoding.utf8)!)
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/token")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
@@ -172,8 +164,7 @@ dataTask.resume()
 var client = new RestClient("https://api.sirv.com/v2/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
-request.AddParameter("application/json", "{}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\"clientId\":\"ZcnZNfzwRhQExoHFoGpxWJ4p2R\",\"clientSecret\":\"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -191,12 +182,11 @@ func main() {
 
 	url := "https://api.sirv.com/v2/token"
 
-	payload := strings.NewReader("{}")
+	payload := strings.NewReader("{\"clientId\":\"ZcnZNfzwRhQExoHFoGpxWJ4p2R\",\"clientSecret\":\"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
 	req.Header.Add("content-type", "application/json")
-	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -224,7 +214,10 @@ Example:
 
 <div class="center-column"></div>
 ```json
-{}
+{
+  "clientId": "ZcnZNfzwRhQExoHFoGpxWJ4p2R",
+  "clientSecret": "TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q=="
+}
 ```
 
 
@@ -238,10 +231,18 @@ JSON Schema:
   "properties": {
     "clientId": {
       "description": "API client ID",
+      "examples": [
+        "ZcnZNfzwRhQExoHFoGpxWJ4p2R"
+      ],
+      "example": "ZcnZNfzwRhQExoHFoGpxWJ4p2R",
       "type": "string"
     },
     "clientSecret": {
       "description": "API client secret",
+      "examples": [
+        "TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q=="
+      ],
+      "example": "TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==",
       "type": "string"
     }
   },
@@ -261,5 +262,31 @@ Example response:
 
 <div class="center-column"></div>
 ```
+< HTTP/1.1 200
+< date: Sat, 18 Jul 2020 12:18:15 GMT
+< content-type: application/json; charset=utf-8
+< content-length: 697
+< connection: close
+< access-control-allow-origin: *
+< access-control-expose-headers: *
+< cache-control: no-cache
+< server: Sirv.API
+< strict-transport-security: max-age=31536000
 
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IlpjblpOZnp3UmhRRXhvSEZvR3B4V0o0cDJSIiwiY2xpZW50TmFtZSI6Ik15IHdlYnNpdGUiLCJzY29wZSI6WyJhY2NvdW50OnJlYWQiLCJhY2NvdW50OndyaXRlIiwidXNlcjpyZWFkIiwidXNlcjp3cml0ZSIsImJpbGxpbmc6cmVhZCIsImJpbGxpbmc6d3JpdGUiLCJmaWxlczpyZWFkIiwiZmlsZXM6d3JpdGUiLCJ2aWRlb3MiLCJpbWFnZXMiXSwiaWF0IjoxNTk1MDc0Njk1LCJleHAiOjE1OTUwNzU4OTUsImF1ZCI6Ijk1cnR2cGxuY3p1Y25sZ2llNm1qdXUyaWI3Z29ncXoyIn0.tphWXF2mXQq3uGspkavcbjs_FLyA3UXptjp-e9ZgF50",
+  "expiresIn": 1200,
+  "scope": [
+    "account:read",
+    "account:write",
+    "user:read",
+    "user:write",
+    "billing:read",
+    "billing:write",
+    "files:read",
+    "files:write",
+    "videos",
+    "images"
+  ]
+}
 ```
