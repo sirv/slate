@@ -21,10 +21,10 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url https://api.sirv.com/v2/files/spin2video \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
-  --header 'content-type: application/json' \
+curl --request POST \\
+  --url https://api.sirv.com/v2/files/spin2video \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
+  --header 'content-type: application/json' \\
   --data '{"filename":"/REST API Examples/coin/coin.spin","options":{"width":1920,"height":1080,"loops":3}}'
 ```
 
@@ -291,13 +291,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:46 GMT
+< date: Sat, 18 Jul 2020 09:52:04 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 69
 < connection: close
 < x-ratelimit-limit: 200
-< x-ratelimit-remaining: 191
-< x-ratelimit-reset: 1595065059
+< x-ratelimit-remaining: 196
+< x-ratelimit-reset: 1595068858
 < x-ratelimit-type: rest:post:files:spin2video
 < access-control-allow-origin: *
 < access-control-expose-headers: *

@@ -21,11 +21,11 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url https://api.sirv.com/v2/files/search \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
-  --header 'content-type: application/json' \
-  --data '{"query":"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\/.Trash","sort":{"filename.raw":"asc"},"from":0,"size":5}'
+curl --request POST \\
+  --url https://api.sirv.com/v2/files/search \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
+  --header 'content-type: application/json' \\
+  --data '{"query":"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash","sort":{"filename.raw":"asc"},"from":0,"size":5}'
 ```
 
 ```javascript--node
@@ -283,13 +283,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:38 GMT
+< date: Sat, 18 Jul 2020 09:51:55 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 5403
 < connection: close
 < x-ratelimit-limit: 1000
-< x-ratelimit-remaining: 991
-< x-ratelimit-reset: 1595065055
+< x-ratelimit-remaining: 996
+< x-ratelimit-reset: 1595068855
 < x-ratelimit-type: rest:post:files:search
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -312,9 +312,9 @@ Example response:
         "dirname": "/REST API Examples",
         "basename": "aurora-copy.jpg",
         "extension": ".jpg",
-        "id": "JLKTmqq4CGBy2fbeU4h6TTVQrWpfwj0x",
-        "ctime": "2020-07-18T09:00:55.328Z",
-        "mtime": "2020-07-18T09:00:55.352Z",
+        "id": "gwM5GqqTwan7d67kz8XzhzjZrMU7WzBp",
+        "ctime": "2020-07-18T09:51:26.970Z",
+        "mtime": "2020-07-18T09:51:27.006Z",
         "size": 201846,
         "contentType": "image/webp",
         "meta": {
@@ -419,7 +419,7 @@ Example response:
           ],
           "approval": {
             "approved": false,
-            "datetime": "2020-07-18T09:00:54.539Z"
+            "datetime": "2020-07-18T09:51:26.176Z"
           },
           "product": {
             "id": "LLBB77",

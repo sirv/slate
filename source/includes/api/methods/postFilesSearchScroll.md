@@ -21,10 +21,10 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url https://api.sirv.com/v2/files/search/scroll \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
-  --header 'content-type: application/json' \
+curl --request POST \\
+  --url https://api.sirv.com/v2/files/search/scroll \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
+  --header 'content-type: application/json' \\
   --data '{}'
 ```
 

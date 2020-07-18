@@ -21,10 +21,10 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url 'https://api.sirv.com/v2/files/options?filename=%2FREST%20API%20Examples' \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
-  --header 'content-type: application/json' \
+curl --request POST \\
+  --url 'https://api.sirv.com/v2/files/options?filename=%2FREST%20API%20Examples' \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
+  --header 'content-type: application/json' \\
   --data '{"scanSpins":true,"allowListing":false}'
 ```
 
@@ -260,12 +260,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:48 GMT
+< date: Sat, 18 Jul 2020 09:52:05 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6707
-< x-ratelimit-reset: 1595064951
+< x-ratelimit-remaining: 6881
+< x-ratelimit-reset: 1595068849
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *

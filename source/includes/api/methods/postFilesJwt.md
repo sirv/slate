@@ -21,10 +21,10 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url https://api.sirv.com/v2/files/jwt \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
-  --header 'content-type: application/json' \
+curl --request POST \\
+  --url https://api.sirv.com/v2/files/jwt \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
+  --header 'content-type: application/json' \\
   --data '{"filename":"/REST API Examples/aurora.jpg","alias":"demo-jwt","secureParams":{"w":300,"h":300},"expiresIn":300}'
 ```
 
@@ -292,13 +292,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:54 GMT
+< date: Sat, 18 Jul 2020 09:52:09 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 286
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6690
-< x-ratelimit-reset: 1595064951
+< x-ratelimit-remaining: 6864
+< x-ratelimit-reset: 1595068849
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -307,6 +307,6 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "url": "https://demo-jwt.sirv.com/REST API Examples/aurora.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcmdzIjp7InciOjMwMCwiaCI6MzAwfSwiaWF0IjoxNTk1MDYzMDM0LCJleHAiOjE1OTUwNjMzMzQsImF1ZCI6Ii9SRVNUIEFQSSBFeGFtcGxlcy9hdXJvcmEuanBnIn0.Lo-js8ZBaAcPBjNLad2PZlMeZUkWS0UK4pFG2Mlcf3g"
+  "url": "https://demo-jwt.sirv.com/REST API Examples/aurora.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcmdzIjp7InciOjMwMCwiaCI6MzAwfSwiaWF0IjoxNTk1MDY1OTI5LCJleHAiOjE1OTUwNjYyMjksImF1ZCI6Ii9SRVNUIEFQSSBFeGFtcGxlcy9hdXJvcmEuanBnIn0.-Dv1GGRWbgbPej4uYCdkfdVBv16TXmoPaSq25zYudMU"
 }
 ```

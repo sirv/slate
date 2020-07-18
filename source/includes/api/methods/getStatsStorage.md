@@ -19,9 +19,9 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request GET \
-  --url 'https://api.sirv.com/v2/stats/storage?from=2020-07-01T00%3A00%3A00.000&to=2020-07-05T00%3A00%3A00.000' \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
+curl --request GET \\
+  --url 'https://api.sirv.com/v2/stats/storage?from=2020-07-01T00%3A00%3A00.000&to=2020-07-05T00%3A00%3A00.000' \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json'
 ```
 
@@ -219,17 +219,18 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:37 GMT
+< date: Sat, 18 Jul 2020 09:51:51 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 872
+< content-length: 2786
 < connection: close
 < x-ratelimit-limit: 100
-< x-ratelimit-remaining: 91
-< x-ratelimit-reset: 1595065053
+< x-ratelimit-remaining: 96
+< x-ratelimit-reset: 1595068852
 < x-ratelimit-type: rest:get:stats:storage
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache
+< vary: accept-encoding
 < accept-ranges: bytes
 < server: Sirv.API
 < strict-transport-security: max-age=31536000
@@ -241,14 +242,6 @@ Example response:
     "extra": 0,
     "used": 49238608587,
     "files": 65400,
-    "quotaExceededDate": null
-  },
-  "1593561600000": {
-    "plan": 100000000000,
-    "burstable": 500000000000,
-    "extra": 0,
-    "used": 49238608587,
-    "files": 65413,
     "quotaExceededDate": null
   },
   "1593907200000": {
@@ -267,12 +260,108 @@ Example response:
     "files": 65357,
     "quotaExceededDate": null
   },
+  "1593561600000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 49238608587,
+    "files": 65413,
+    "quotaExceededDate": null
+  },
   "1593648000000": {
     "plan": 100000000000,
     "burstable": 500000000000,
     "extra": 0,
     "used": 49238608587,
     "files": 65405,
+    "quotaExceededDate": null
+  },
+  "1594339200000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 49404768387,
+    "files": 64836,
+    "quotaExceededDate": null
+  },
+  "1594166400000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 49404768387,
+    "files": 64932,
+    "quotaExceededDate": null
+  },
+  "1593993600000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 49404765599,
+    "files": 64931,
+    "quotaExceededDate": null
+  },
+  "1594252800000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 49404768387,
+    "files": 64929,
+    "quotaExceededDate": null
+  },
+  "1594080000000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 49404765599,
+    "files": 64931,
+    "quotaExceededDate": null
+  },
+  "1594425600000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 49404768387,
+    "files": 64836,
+    "quotaExceededDate": null
+  },
+  "1594684800000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 51853129932,
+    "files": 73732,
+    "quotaExceededDate": null
+  },
+  "1594598400000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 49921058176,
+    "files": 64536,
+    "quotaExceededDate": null
+  },
+  "1594512000000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 49428159099,
+    "files": 63605,
+    "quotaExceededDate": null
+  },
+  "1594771200000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 51841192248,
+    "files": 73785,
+    "quotaExceededDate": null
+  },
+  "1594857600000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 51850463184,
+    "files": 73786,
     "quotaExceededDate": null
   }
 }

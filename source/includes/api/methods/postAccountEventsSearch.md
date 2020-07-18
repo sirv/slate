@@ -21,10 +21,10 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url https://api.sirv.com/v2/account/events/search \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
-  --header 'content-type: application/json' \
+curl --request POST \\
+  --url https://api.sirv.com/v2/account/events/search \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
+  --header 'content-type: application/json' \\
   --data '{"module":"fetching"}'
 ```
 
@@ -265,13 +265,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:35 GMT
+< date: Sat, 18 Jul 2020 09:51:49 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 2742
+< content-length: 3427
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6718
-< x-ratelimit-reset: 1595064951
+< x-ratelimit-remaining: 6892
+< x-ratelimit-reset: 1595068849
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -296,13 +296,13 @@ Example response:
     "initiator": {
       "type": "api",
       "remoteAddr": "176.105.166.4",
-      "date": "2020-07-18T08:55:32.120Z"
+      "date": "2020-07-18T09:41:03.669Z"
     },
     "notify": true,
     "_seen": false,
-    "_submitted": "2020-07-18T08:55:32.882Z",
+    "_submitted": "2020-07-18T09:41:04.158Z",
     "_accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
-    "_id": "f17b058ec4bffa22a164a31cf87b252ca4329754"
+    "_id": "26d5628b335285c3c96b8495df8243d81ebb550f"
   }
 ]
 ```

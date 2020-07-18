@@ -21,10 +21,10 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url https://api.sirv.com/v2/files/video2spin \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
-  --header 'content-type: application/json' \
+curl --request POST \\
+  --url https://api.sirv.com/v2/files/video2spin \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
+  --header 'content-type: application/json' \\
   --data '{"filename":"/REST API Examples/video.mp4","options":{"frames":32}}'
 ```
 
@@ -275,13 +275,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:41 GMT
+< date: Sat, 18 Jul 2020 09:51:57 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 22
+< content-length: 55
 < connection: close
 < x-ratelimit-limit: 200
-< x-ratelimit-remaining: 191
-< x-ratelimit-reset: 1595065057
+< x-ratelimit-remaining: 196
+< x-ratelimit-reset: 1595068855
 < x-ratelimit-type: rest:post:files:video2spin
 < access-control-allow-origin: *
 < access-control-expose-headers: *

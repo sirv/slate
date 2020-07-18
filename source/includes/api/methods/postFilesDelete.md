@@ -19,9 +19,9 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url 'https://api.sirv.com/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg' \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
+curl --request POST \\
+  --url 'https://api.sirv.com/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg' \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json'
 ```
 
@@ -218,12 +218,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:52 GMT
+< date: Sat, 18 Jul 2020 09:52:08 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 3000
-< x-ratelimit-remaining: 2992
-< x-ratelimit-reset: 1595065215
+< x-ratelimit-remaining: 2996
+< x-ratelimit-reset: 1595068867
 < x-ratelimit-type: rest:post:files:delete
 < access-control-allow-origin: *
 < access-control-expose-headers: *

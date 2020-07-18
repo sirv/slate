@@ -21,10 +21,10 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url 'https://api.sirv.com/v2/files/meta/description?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg' \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
-  --header 'content-type: application/json' \
+curl --request POST \\
+  --url 'https://api.sirv.com/v2/files/meta/description?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg' \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
+  --header 'content-type: application/json' \\
   --data '{"description":"Blue Lake in the Winter"}'
 ```
 
@@ -253,12 +253,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:49 GMT
+< date: Sat, 18 Jul 2020 09:52:05 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6705
-< x-ratelimit-reset: 1595064951
+< x-ratelimit-remaining: 6879
+< x-ratelimit-reset: 1595068849
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *

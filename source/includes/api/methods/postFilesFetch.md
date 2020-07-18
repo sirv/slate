@@ -21,10 +21,10 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url https://api.sirv.com/v2/files/fetch \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
-  --header 'content-type: application/json' \
+curl --request POST \\
+  --url https://api.sirv.com/v2/files/fetch \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
+  --header 'content-type: application/json' \\
   --data '[{"url":"https://demo.sirv.com/aurora.jpg","filename":"/REST API Examples/aurora.jpg"},{"url":"https://demo.sirv.com/missing.jpg","filename":"/REST API Examples/missing.jpg"}]'
 ```
 
@@ -298,13 +298,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:47 GMT
+< date: Sat, 18 Jul 2020 09:52:04 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 7207
+< content-length: 8542
 < connection: close
 < x-ratelimit-limit: 2000
-< x-ratelimit-remaining: 1989
-< x-ratelimit-reset: 1595064951
+< x-ratelimit-remaining: 1996
+< x-ratelimit-reset: 1595068863
 < x-ratelimit-type: rest:post:files:fetch
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -529,9 +529,49 @@ Example response:
           "message": "Request not successful: expected status code 200 but got 404"
         },
         "date": "2020-07-18T08:55:32.895Z"
+      },
+      {
+        "url": "https://demo.sirv.com/missing.jpg",
+        "initiator": {
+          "type": "api",
+          "remoteAddr": "176.105.166.4",
+          "date": "2020-07-18T09:41:03.669Z"
+        },
+        "statusCode": 404,
+        "headers": {
+          "result": {
+            "version": "HTTP/1.1",
+            "code": 404,
+            "reason": "Not Found"
+          },
+          "Date": "Sat, 18 Jul 2020 09:41:04 GMT",
+          "Content-Type": "text/html; charset=utf-8",
+          "Content-Length": "4140",
+          "Connection": "keep-alive",
+          "Vary": "Accept-Encoding",
+          "X-Account-Id": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+          "X-Account-Serial": "2020-06-15T19:18:53.901Z",
+          "ETag": "W/\"102c-wKpRt+Cg9Cnw/NpTSkF5+w\"",
+          "X-Sirv-Cache": "MISS",
+          "Server": "Sirv.Imagination",
+          "X-Sirv-Server": "c1-failover-fi-9",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*"
+        },
+        "timing": {
+          "ns": 0.007417,
+          "connect": 0.032634,
+          "start": 0.338332,
+          "total": 0.338395
+        },
+        "error": {
+          "name": "Error",
+          "message": "Request not successful: expected status code 200 but got 404"
+        },
+        "date": "2020-07-18T09:41:04.160Z"
       }
     ],
-    "retryAfter": "2020-07-18T09:11:32.895Z"
+    "retryAfter": "2020-07-18T10:06:04.160Z"
   }
 ]
 ```

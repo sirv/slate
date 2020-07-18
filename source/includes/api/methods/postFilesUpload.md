@@ -19,9 +19,9 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url 'https://api.sirv.com/v2/files/upload?filename=%2FREST%20API%20Examples%2Fuploaded.txt' \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
+curl --request POST \\
+  --url 'https://api.sirv.com/v2/files/upload?filename=%2FREST%20API%20Examples%2Fuploaded.txt' \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json'
 ```
 
@@ -218,11 +218,11 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:52 GMT
+< date: Sat, 18 Jul 2020 09:52:07 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 2000
-< x-ratelimit-remaining: 1994
+< x-ratelimit-remaining: 1990
 < x-ratelimit-reset: 1595066135
 < x-ratelimit-type: rest:post:files:upload
 < access-control-allow-origin: *

@@ -19,9 +19,9 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request GET \
-  --url https://api.sirv.com/v2/account/limits \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
+curl --request GET \\
+  --url https://api.sirv.com/v2/account/limits \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json'
 ```
 
@@ -216,13 +216,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:35 GMT
+< date: Sat, 18 Jul 2020 09:51:48 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 2894
+< content-length: 2892
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6719
-< x-ratelimit-reset: 1595064951
+< x-ratelimit-remaining: 6893
+< x-ratelimit-reset: 1595068849
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -237,157 +237,157 @@ Example response:
     "count": 0,
     "limit": 7000,
     "remaining": 7000,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "s3:PUT": {
     "count": 0,
     "limit": 2000,
     "remaining": 2000,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "s3:GET": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "s3:DELETE": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "rest:global": {
-    "count": 281,
+    "count": 107,
     "limit": 7000,
-    "remaining": 6719,
-    "reset": 1595064951
+    "remaining": 6893,
+    "reset": 1595068849
   },
   "rest:post:files:search": {
-    "count": 8,
+    "count": 3,
     "limit": 1000,
-    "remaining": 992,
-    "reset": 1595065055
+    "remaining": 997,
+    "reset": 1595068855
   },
   "rest:post:files:search:scroll": {
     "count": 0,
     "limit": 2000,
     "remaining": 2000,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "rest:post:files:video2spin": {
-    "count": 8,
+    "count": 3,
     "limit": 200,
-    "remaining": 192,
-    "reset": 1595065057
+    "remaining": 197,
+    "reset": 1595068855
   },
   "rest:post:files:spin2video": {
-    "count": 8,
+    "count": 3,
     "limit": 200,
-    "remaining": 192,
-    "reset": 1595065059
+    "remaining": 197,
+    "reset": 1595068858
   },
   "rest:post:files:fetch": {
-    "count": 10,
+    "count": 3,
     "limit": 2000,
-    "remaining": 1990,
-    "reset": 1595064951
+    "remaining": 1997,
+    "reset": 1595068863
   },
   "rest:post:files:upload": {
-    "count": 5,
+    "count": 9,
     "limit": 2000,
-    "remaining": 1995,
+    "remaining": 1991,
     "reset": 1595066135
   },
   "rest:post:files:delete": {
-    "count": 7,
+    "count": 3,
     "limit": 3000,
-    "remaining": 2993,
-    "reset": 1595065215
+    "remaining": 2997,
+    "reset": 1595068867
   },
   "rest:post:account": {
-    "count": 10,
+    "count": 4,
     "limit": 50,
-    "remaining": 40,
-    "reset": 1595065050
+    "remaining": 46,
+    "reset": 1595068850
   },
   "rest:post:account:fetching": {
     "count": 0,
     "limit": 50,
     "remaining": 50,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "rest:get:stats:http": {
-    "count": 8,
+    "count": 3,
     "limit": 100,
-    "remaining": 92,
-    "reset": 1595065052
+    "remaining": 97,
+    "reset": 1595068851
   },
   "rest:get:stats:storage": {
-    "count": 8,
+    "count": 3,
     "limit": 100,
-    "remaining": 92,
-    "reset": 1595065053
+    "remaining": 97,
+    "reset": 1595068852
   },
   "rest:post:account:new": {
     "count": 0,
     "limit": 5,
     "remaining": 5,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "rest:post:user:accounts": {
     "count": 0,
     "limit": 20,
     "remaining": 20,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "rest:get:rest:credentials": {
     "count": 0,
     "limit": 50,
     "remaining": 50,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "rest:post:video:toSpin": {
     "count": 0,
     "limit": 400,
     "remaining": 400,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "rest:post:upload:toSirv": {
     "count": 0,
     "limit": 2000,
     "remaining": 2000,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "ftp:global": {
     "count": 0,
     "limit": 10000,
     "remaining": 10000,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "ftp:STOR": {
     "count": 0,
     "limit": 2000,
     "remaining": 2000,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "ftp:RETR": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "ftp:DELE": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595066615
+    "reset": 1595069508
   },
   "fetch:file": {
-    "count": 4,
+    "count": 1,
     "limit": 2000,
-    "remaining": 1996,
-    "reset": 1595064951
+    "remaining": 1999,
+    "reset": 1595068863
   }
 }
 ```

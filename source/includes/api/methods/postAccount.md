@@ -21,10 +21,10 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url https://api.sirv.com/v2/account \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
-  --header 'content-type: application/json' \
+curl --request POST \\
+  --url https://api.sirv.com/v2/account \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
+  --header 'content-type: application/json' \\
   --data '{"fetching":{"enabled":false}}'
 ```
 
@@ -387,12 +387,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:03:34 GMT
+< date: Sat, 18 Jul 2020 09:51:48 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 50
-< x-ratelimit-remaining: 40
-< x-ratelimit-reset: 1595065050
+< x-ratelimit-remaining: 46
+< x-ratelimit-reset: 1595068850
 < x-ratelimit-type: rest:post:account
 < access-control-allow-origin: *
 < access-control-expose-headers: *

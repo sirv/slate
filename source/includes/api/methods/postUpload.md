@@ -19,9 +19,9 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \
-  --url https://api.sirv.com/v2/upload \
-  --header 'authorization: Bearer BEARER_TOKEN_HERE' \
+curl --request POST \\
+  --url https://api.sirv.com/v2/upload \\
+  --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json'
 ```
 
