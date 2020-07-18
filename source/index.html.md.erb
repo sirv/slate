@@ -37,7 +37,9 @@ Once created, you'll see your Client ID and Client Secret:
 
 # Connect to Sirv API
 
-Each API call must be authenticated with a bearer token (JSON Web Token). You can get a token with a POST request. Use the token with the Sirv REST API methods listed below. When the token expires (see the expiresIn field, in seconds), you should request a new token.
+Each API call must be authenticated with a bearer token (JSON Web Token).
+You can get a token with a POST request. Use the token with the Sirv REST API methods listed below.
+When the token expires (see the expiresIn field, in seconds), you should request a new token.
 
 <%= partial "includes/api/methods/postToken.md" %>
 
