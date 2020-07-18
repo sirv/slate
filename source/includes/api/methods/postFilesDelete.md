@@ -208,6 +208,8 @@ filename | string |  | /REST API Examples/aurora-copy.jpg
 ### Body payload
 
 
+
+
 None
 
 
@@ -218,11 +220,11 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:27 GMT
+< date: Sat, 18 Jul 2020 11:46:07 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 3000
-< x-ratelimit-remaining: 2998
+< x-ratelimit-remaining: 2996
 < x-ratelimit-reset: 1595075495
 < x-ratelimit-type: rest:post:files:delete
 < access-control-allow-origin: *

@@ -220,6 +220,22 @@ None
 ### Body payload
 
 
+Example:
+
+<div class="center-column"></div>
+```json
+{
+  "query": "extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\/.Trash",
+  "sort": {
+    "filename.raw": "asc"
+  },
+  "from": 0,
+  "size": 5
+}
+```
+
+
+
 JSON Schema:
 
 <div class="center-column"></div>
@@ -283,12 +299,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:17 GMT
+< date: Sat, 18 Jul 2020 11:45:56 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 5403
 < connection: close
 < x-ratelimit-limit: 1000
-< x-ratelimit-remaining: 998
+< x-ratelimit-remaining: 996
 < x-ratelimit-reset: 1595075483
 < x-ratelimit-type: rest:post:files:search
 < access-control-allow-origin: *
@@ -312,9 +328,9 @@ Example response:
         "dirname": "/REST API Examples",
         "basename": "aurora-copy.jpg",
         "extension": ".jpg",
-        "id": "eVkQEHwURN7aSJPim2HLl4eOQ9imjUDJ",
-        "ctime": "2020-07-18T11:31:35.452Z",
-        "mtime": "2020-07-18T11:31:35.556Z",
+        "id": "A337z9ylnhT9tyCnmzy8CGDmylK6DhOz",
+        "ctime": "2020-07-18T11:45:11.231Z",
+        "mtime": "2020-07-18T11:45:11.282Z",
         "size": 201846,
         "contentType": "image/webp",
         "meta": {
@@ -419,7 +435,7 @@ Example response:
           ],
           "approval": {
             "approved": false,
-            "datetime": "2020-07-18T11:31:34.843Z"
+            "datetime": "2020-07-18T11:45:10.567Z"
           },
           "product": {
             "id": "LLBB77",

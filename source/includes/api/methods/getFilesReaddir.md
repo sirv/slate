@@ -209,6 +209,8 @@ continuation | string | Send it to get next page of results |
 ### Body payload
 
 
+
+
 None
 
 
@@ -219,12 +221,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:28 GMT
+< date: Sat, 18 Jul 2020 11:46:07 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 1847
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6936
+< x-ratelimit-remaining: 6868
 < x-ratelimit-reset: 1595075478
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
@@ -238,18 +240,6 @@ Example response:
 {
   "contents": [
     {
-      "filename": "aurora-copy.jpg",
-      "mtime": "2020-07-18T11:32:28.258Z",
-      "contentType": "image/webp",
-      "size": 201846,
-      "isDirectory": false,
-      "meta": {
-        "width": 2500,
-        "height": 1667,
-        "duration": 0
-      }
-    },
-    {
       "filename": "aurora.jpg",
       "mtime": "2020-07-17T15:47:36.701Z",
       "contentType": "image/webp",
@@ -262,14 +252,14 @@ Example response:
       }
     },
     {
-      "filename": "blue-lake.jpg",
-      "mtime": "2020-07-17T13:31:39.450Z",
-      "contentType": "image/jpeg",
-      "size": 587065,
+      "filename": "aurora-copy.jpg",
+      "mtime": "2020-07-18T11:46:07.194Z",
+      "contentType": "image/webp",
+      "size": 201846,
       "isDirectory": false,
       "meta": {
-        "width": 1578,
-        "height": 1002,
+        "width": 2500,
+        "height": 1667,
         "duration": 0
       }
     },
@@ -286,6 +276,18 @@ Example response:
       }
     },
     {
+      "filename": "blue-lake.jpg",
+      "mtime": "2020-07-17T13:31:39.450Z",
+      "contentType": "image/jpeg",
+      "size": 587065,
+      "isDirectory": false,
+      "meta": {
+        "width": 1578,
+        "height": 1002,
+        "duration": 0
+      }
+    },
+    {
       "filename": "video.mp4",
       "mtime": "2020-07-17T15:35:20.375Z",
       "contentType": "video/mp4",
@@ -298,18 +300,18 @@ Example response:
       }
     },
     {
-      "filename": "video",
-      "mtime": "2020-07-17T15:36:52.477Z",
-      "size": 0,
-      "isDirectory": true,
-      "meta": {}
-    },
-    {
       "filename": "uploaded.txt",
       "mtime": "2020-07-18T08:55:35.325Z",
       "contentType": "binary/octet-stream",
       "size": 0,
       "isDirectory": false,
+      "meta": {}
+    },
+    {
+      "filename": "video",
+      "mtime": "2020-07-17T15:36:52.477Z",
+      "size": 0,
+      "isDirectory": true,
       "meta": {}
     },
     {

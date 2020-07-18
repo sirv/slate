@@ -220,6 +220,15 @@ None
 ### Body payload
 
 
+Example:
+
+<div class="center-column"></div>
+```json
+{}
+```
+
+
+
 JSON Schema:
 
 <div class="center-column"></div>

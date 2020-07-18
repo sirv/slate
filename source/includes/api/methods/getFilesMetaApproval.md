@@ -208,6 +208,8 @@ filename | string |  | /REST API Examples/blue-lake.jpg
 ### Body payload
 
 
+
+
 None
 
 
@@ -218,12 +220,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:27 GMT
+< date: Sat, 18 Jul 2020 11:46:06 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 100
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6941
+< x-ratelimit-remaining: 6873
 < x-ratelimit-reset: 1595075478
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
@@ -234,7 +236,7 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "datetime": "2020-07-18T11:31:34.843Z",
+  "datetime": "2020-07-18T11:45:10.567Z",
   "approved": false,
   "comment": "It looks too cold!"
 }

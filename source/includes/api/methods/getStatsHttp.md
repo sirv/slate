@@ -209,6 +209,8 @@ to | date | Default: now, rounded to end of day | 2020-07-05T00:00:00.000
 ### Body payload
 
 
+
+
 None
 
 
@@ -219,12 +221,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:14 GMT
+< date: Sat, 18 Jul 2020 11:45:52 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 470
 < connection: close
 < x-ratelimit-limit: 100
-< x-ratelimit-remaining: 98
+< x-ratelimit-remaining: 96
 < x-ratelimit-reset: 1595075480
 < x-ratelimit-type: rest:get:stats:http
 < access-control-allow-origin: *

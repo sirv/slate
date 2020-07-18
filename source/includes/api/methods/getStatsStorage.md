@@ -209,6 +209,8 @@ to | date | Default: now, rounded to end of day | 2020-07-05T00:00:00.000
 ### Body payload
 
 
+
+
 None
 
 
@@ -219,12 +221,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:14 GMT
+< date: Sat, 18 Jul 2020 11:45:53 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 2786
 < connection: close
 < x-ratelimit-limit: 100
-< x-ratelimit-remaining: 98
+< x-ratelimit-remaining: 96
 < x-ratelimit-reset: 1595075481
 < x-ratelimit-type: rest:get:stats:storage
 < access-control-allow-origin: *
@@ -244,6 +246,14 @@ Example response:
     "files": 65400,
     "quotaExceededDate": null
   },
+  "1593561600000": {
+    "plan": 100000000000,
+    "burstable": 500000000000,
+    "extra": 0,
+    "used": 49238608587,
+    "files": 65413,
+    "quotaExceededDate": null
+  },
   "1593907200000": {
     "plan": 100000000000,
     "burstable": 500000000000,
@@ -260,12 +270,12 @@ Example response:
     "files": 65357,
     "quotaExceededDate": null
   },
-  "1593561600000": {
+  "1593993600000": {
     "plan": 100000000000,
     "burstable": 500000000000,
     "extra": 0,
-    "used": 49238608587,
-    "files": 65413,
+    "used": 49404765599,
+    "files": 64931,
     "quotaExceededDate": null
   },
   "1593648000000": {
@@ -290,14 +300,6 @@ Example response:
     "extra": 0,
     "used": 49404768387,
     "files": 64932,
-    "quotaExceededDate": null
-  },
-  "1593993600000": {
-    "plan": 100000000000,
-    "burstable": 500000000000,
-    "extra": 0,
-    "used": 49404765599,
-    "files": 64931,
     "quotaExceededDate": null
   },
   "1594252800000": {

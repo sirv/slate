@@ -220,6 +220,22 @@ None
 ### Body payload
 
 
+Example:
+
+<div class="center-column"></div>
+```json
+{
+  "filename": "/REST API Examples/coin/coin.spin",
+  "options": {
+    "width": 1920,
+    "height": 1080,
+    "loops": 3
+  }
+}
+```
+
+
+
 JSON Schema:
 
 <div class="center-column"></div>
@@ -291,12 +307,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:25 GMT
+< date: Sat, 18 Jul 2020 11:46:04 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 69
 < connection: close
 < x-ratelimit-limit: 200
-< x-ratelimit-remaining: 198
+< x-ratelimit-remaining: 196
 < x-ratelimit-reset: 1595075486
 < x-ratelimit-type: rest:post:files:spin2video
 < access-control-allow-origin: *

@@ -209,6 +209,8 @@ to | string |  | /REST API Examples/aurora-copy.jpg
 ### Body payload
 
 
+
+
 None
 
 
@@ -219,11 +221,11 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:28 GMT
+< date: Sat, 18 Jul 2020 11:46:07 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6937
+< x-ratelimit-remaining: 6869
 < x-ratelimit-reset: 1595075478
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *

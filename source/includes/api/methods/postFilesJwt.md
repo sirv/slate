@@ -220,6 +220,23 @@ None
 ### Body payload
 
 
+Example:
+
+<div class="center-column"></div>
+```json
+{
+  "filename": "/REST API Examples/aurora.jpg",
+  "alias": "demo-jwt",
+  "secureParams": {
+    "w": 300,
+    "h": 300
+  },
+  "expiresIn": 300
+}
+```
+
+
+
 JSON Schema:
 
 <div class="center-column"></div>
@@ -292,12 +309,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:30 GMT
+< date: Sat, 18 Jul 2020 11:46:08 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 286
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6932
+< x-ratelimit-remaining: 6864
 < x-ratelimit-reset: 1595075478
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
@@ -307,6 +324,6 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "url": "https://demo-jwt.sirv.com/REST API Examples/aurora.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcmdzIjp7InciOjMwMCwiaCI6MzAwfSwiaWF0IjoxNTk1MDcxOTUwLCJleHAiOjE1OTUwNzIyNTAsImF1ZCI6Ii9SRVNUIEFQSSBFeGFtcGxlcy9hdXJvcmEuanBnIn0.J2dkzdOphIz1qsax1eFW2ZvGuSo_Jg6AUZpFYtMq7lg"
+  "url": "https://demo-jwt.sirv.com/REST API Examples/aurora.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcmdzIjp7InciOjMwMCwiaCI6MzAwfSwiaWF0IjoxNTk1MDcyNzY4LCJleHAiOjE1OTUwNzMwNjgsImF1ZCI6Ii9SRVNUIEFQSSBFeGFtcGxlcy9hdXJvcmEuanBnIn0.5RsnGBA6UySj7v7zd9R8hMKk0POKNJEi436u8yLqtqA"
 }
 ```

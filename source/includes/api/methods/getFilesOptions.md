@@ -209,6 +209,8 @@ withInherited | boolean | Include options inherited from parent folders |
 ### Body payload
 
 
+
+
 None
 
 
@@ -219,12 +221,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:25 GMT
+< date: Sat, 18 Jul 2020 11:46:04 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 48
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6950
+< x-ratelimit-remaining: 6882
 < x-ratelimit-reset: 1595075478
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *

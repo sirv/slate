@@ -220,6 +220,24 @@ None
 ### Body payload
 
 
+Example:
+
+<div class="center-column"></div>
+```json
+[
+  {
+    "url": "https://demo.sirv.com/aurora.jpg",
+    "filename": "/REST API Examples/aurora.jpg"
+  },
+  {
+    "url": "https://demo.sirv.com/missing.jpg",
+    "filename": "/REST API Examples/missing.jpg"
+  }
+]
+```
+
+
+
 JSON Schema:
 
 <div class="center-column"></div>
@@ -298,12 +316,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:25 GMT
+< date: Sat, 18 Jul 2020 11:46:04 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 9882
 < connection: close
 < x-ratelimit-limit: 2000
-< x-ratelimit-remaining: 1998
+< x-ratelimit-remaining: 1996
 < x-ratelimit-reset: 1595075492
 < x-ratelimit-type: rest:post:files:fetch
 < access-control-allow-origin: *

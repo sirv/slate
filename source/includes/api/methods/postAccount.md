@@ -220,6 +220,19 @@ None
 ### Body payload
 
 
+Example:
+
+<div class="center-column"></div>
+```json
+{
+  "fetching": {
+    "enabled": false
+  }
+}
+```
+
+
+
 JSON Schema:
 
 <div class="center-column"></div>
@@ -387,11 +400,11 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:11 GMT
+< date: Sat, 18 Jul 2020 11:45:50 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 50
-< x-ratelimit-remaining: 48
+< x-ratelimit-remaining: 46
 < x-ratelimit-reset: 1595075478
 < x-ratelimit-type: rest:post:account
 < access-control-allow-origin: *

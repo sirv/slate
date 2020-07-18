@@ -210,6 +210,8 @@ alias | string | Filter by account name (alias) |
 ### Body payload
 
 
+
+
 None
 
 
@@ -220,12 +222,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:15 GMT
+< date: Sat, 18 Jul 2020 11:45:53 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 4286915
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6955
+< x-ratelimit-remaining: 6887
 < x-ratelimit-reset: 1595075478
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
@@ -238,41 +240,42 @@ Example response:
 
 [
   {
-    "@timestamp": "2020-07-04T03:51:03.792Z",
-    "referer": "https://demo.sirv.com/cap.spin",
-    "user_agent": "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.118 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "@timestamp": "2020-07-04T04:54:53.632Z",
+    "referer": "https://sirv.com/help/articles/360-photography-photoshop/",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36",
     "user_agent_parsed": {
-      "name": "Googlebot",
-      "os": "Android 6.0.1",
-      "os_name": "Android",
-      "os_major": "6",
-      "os_minor": "0",
-      "device": "Spider",
-      "major": "2",
-      "minor": "1"
+      "name": "Chrome",
+      "os": "Windows 10",
+      "os_name": "Windows",
+      "os_major": "10",
+      "device": "Other",
+      "major": "83",
+      "minor": "0",
+      "patch": "4103",
+      "build": "116"
     },
     "referer_proto": "https",
-    "referer_host": "demo.sirv.com",
-    "referer_uripath": "/cap.spin",
+    "referer_host": "sirv.com",
+    "referer_uripath": "/help/articles/360-photography-photoshop/",
     "event": {
-      "origin": "/cap.spin",
+      "origin": "/bag/bag.spin?autospin=infinite",
       "type": "spin",
       "name": "viewerReady",
       "data": {
         "rows": 1,
-        "columns": 24,
+        "columns": 16,
         "viewerSize": {
-          "width": 412,
-          "height": 732
+          "width": 354,
+          "height": 354
         }
       }
     },
     "geoip": {
-      "country_code2": "US",
-      "country_name": "United States",
-      "region_name": "CA",
-      "timezone": "America/Los_Angeles",
-      "real_region_name": "California"
+      "country_code2": "IN",
+      "country_name": "India",
+      "region_name": "10",
+      "timezone": "Asia/Calcutta",
+      "real_region_name": "Haryana"
     }
   }
 ]

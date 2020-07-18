@@ -220,6 +220,20 @@ None
 ### Body payload
 
 
+Example:
+
+<div class="center-column"></div>
+```json
+{
+  "filename": "/REST API Examples/video.mp4",
+  "options": {
+    "frames": 32
+  }
+}
+```
+
+
+
 JSON Schema:
 
 <div class="center-column"></div>
@@ -275,12 +289,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:20 GMT
+< date: Sat, 18 Jul 2020 11:45:58 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 55
 < connection: close
 < x-ratelimit-limit: 200
-< x-ratelimit-remaining: 198
+< x-ratelimit-remaining: 196
 < x-ratelimit-reset: 1595075483
 < x-ratelimit-type: rest:post:files:video2spin
 < access-control-allow-origin: *

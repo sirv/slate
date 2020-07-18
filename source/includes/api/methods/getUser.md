@@ -208,6 +208,8 @@ userId | string |  | Gt6ljl1AxwmtGBIHX0WBo3qKdtK
 ### Body payload
 
 
+
+
 None
 
 
@@ -218,12 +220,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:13 GMT
+< date: Sat, 18 Jul 2020 11:45:52 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 188
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6958
+< x-ratelimit-remaining: 6890
 < x-ratelimit-reset: 1595075478
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
@@ -238,6 +240,6 @@ Example response:
   "firstName": "Rest",
   "lastName": "Api",
   "dateCreated": "2020-07-17T13:55:10.462Z",
-  "s3Secret": "*************************************"
+  "s3Secret": "****************************"
 }
 ```

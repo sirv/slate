@@ -206,6 +206,8 @@ None
 ### Body payload
 
 
+
+
 None
 
 
@@ -216,12 +218,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:32:12 GMT
+< date: Sat, 18 Jul 2020 11:45:50 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 833
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6962
+< x-ratelimit-remaining: 6894
 < x-ratelimit-reset: 1595075478
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
@@ -234,47 +236,47 @@ Example response:
 [
   {
     "role": "primaryOwner",
-    "userId": "***********************"
+    "userId": "************************"
   },
   {
     "role": "owner",
-    "userId": "***********************"
+    "userId": "************************"
   },
   {
     "role": "owner",
-    "userId": "***********************"
+    "userId": "************************"
   },
   {
     "role": "contributor",
-    "userId": "***********************"
+    "userId": "************************"
   },
   {
     "role": "admin",
-    "userId": "***********************"
+    "userId": "************************"
   },
   {
     "role": "owner",
-    "userId": "***********************"
+    "userId": "************************"
   },
   {
     "role": "user",
-    "userId": "***********************"
+    "userId": "************************"
   },
   {
     "role": "user",
-    "userId": "***********************"
+    "userId": "************************"
   },
   {
     "role": "user",
-    "userId": "***********************"
+    "userId": "************************"
   },
   {
     "role": "contributor",
-    "userId": "***********************"
+    "userId": "************************"
   },
   {
     "role": "viewer",
-    "userId": "***********************"
+    "userId": "************************"
   }
 ]
 ```
