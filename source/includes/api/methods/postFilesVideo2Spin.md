@@ -290,6 +290,6 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "filename": null
+  "filename": "/REST API Examples/video/video.spin"
 }
 ```
