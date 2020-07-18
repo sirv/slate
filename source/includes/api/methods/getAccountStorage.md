@@ -112,6 +112,89 @@ if ($err) {
 }
 ```
 
+```ruby
+require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sirv.com/v2/account/storage")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```swift
+import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer BEARER_TOKEN_HERE"
+]
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/account/storage")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "GET"
+request.allHTTPHeaderFields = headers
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```
+
+```csharp
+var client = new RestClient("https://api.sirv.com/v2/account/storage");
+var request = new RestRequest(Method.GET);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://api.sirv.com/v2/account/storage"
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
 Use this to check the current storage usage of an account. It will also return the total allowed storage; any extra storage provided; the temporary 30-day burstable storage allowance; the total files stored. If the account has exceeded its storage allowance, it will state the when that happened. If the account is one of a <a href="https://sirv.com/help/resources/multiple-sirv-accounts/">multi-account group</a>, it will show the total storage used by all accounts.
 
 ### Query string
@@ -133,13 +216,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:36:55 GMT
+< date: Sat, 18 Jul 2020 09:03:35 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 139
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6967
-< x-ratelimit-reset: 1595006894
+< x-ratelimit-remaining: 6721
+< x-ratelimit-reset: 1595064951
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -152,8 +235,8 @@ Example response:
   "plan": 100000000000,
   "burstable": 500000000000,
   "extra": 0,
-  "used": 51894423233,
-  "files": 73905,
+  "used": 51916252571,
+  "files": 73139,
   "quotaExceededDate": null
 }
 ```

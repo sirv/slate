@@ -10,7 +10,7 @@ headers = {
     'authorization': "Bearer BEARER_TOKEN_HERE"
     }
 
-conn.request("POST", "/v2/files/delete", headers=headers)
+conn.request("POST", "/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg", headers=headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -20,7 +20,7 @@ print(data.decode("utf-8"))
 
 ```shell
 curl --request POST \
-  --url https://api.sirv.com/v2/files/delete \
+  --url 'https://api.sirv.com/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg' \
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \
   --header 'content-type: application/json'
 ```
@@ -32,7 +32,7 @@ var options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
-  "path": "/v2/files/delete",
+  "path": "/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg",
   "headers": {
     "content-type": "application/json",
     "authorization": "Bearer BEARER_TOKEN_HERE"
@@ -67,7 +67,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.sirv.com/v2/files/delete");
+xhr.open("POST", "https://api.sirv.com/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg");
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("authorization", "Bearer BEARER_TOKEN_HERE");
 
@@ -75,7 +75,7 @@ xhr.send(data);
 ```
 
 ```java
-HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/delete")
+HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
   .asString();
@@ -87,7 +87,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/dele
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.sirv.com/v2/files/delete",
+  CURLOPT_URL => "https://api.sirv.com/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -112,6 +112,89 @@ if ($err) {
 }
 ```
 
+```ruby
+require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sirv.com/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```swift
+import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer BEARER_TOKEN_HERE"
+]
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```
+
+```csharp
+var client = new RestClient("https://api.sirv.com/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://api.sirv.com/v2/files/delete?filename=%2FREST%20API%20Examples%2Faurora-copy.jpg"
+
+	req, _ := http.NewRequest("POST", url, nil)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
 Use this API method to delete a single file or an empty directory.
 
 ### Query string
@@ -119,7 +202,7 @@ Use this API method to delete a single file or an empty directory.
 
 Parameter | Type | Description | Example
 --------- | ---- | ----------- | ------- 
-filename | string |  | 
+filename | string |  | /REST API Examples/aurora-copy.jpg
 
 
 ### Body payload
@@ -134,5 +217,19 @@ Example response:
 
 <div class="center-column"></div>
 ```
+< HTTP/1.1 200
+< date: Sat, 18 Jul 2020 09:03:52 GMT
+< content-length: 0
+< connection: close
+< x-ratelimit-limit: 3000
+< x-ratelimit-remaining: 2992
+< x-ratelimit-reset: 1595065215
+< x-ratelimit-type: rest:post:files:delete
+< access-control-allow-origin: *
+< access-control-expose-headers: *
+< cache-control: no-cache
+< server: Sirv.API
+< strict-transport-security: max-age=31536000
+
 
 ```

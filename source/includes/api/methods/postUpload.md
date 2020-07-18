@@ -112,6 +112,89 @@ if ($err) {
 }
 ```
 
+```ruby
+require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sirv.com/v2/upload")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```swift
+import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer BEARER_TOKEN_HERE"
+]
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/upload")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```
+
+```csharp
+var client = new RestClient("https://api.sirv.com/v2/upload");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://api.sirv.com/v2/upload"
+
+	req, _ := http.NewRequest("POST", url, nil)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
 See https://tus.io. Maximum chunk size is 1M
 
 ### Query string

@@ -5,7 +5,7 @@ import http.client
 
 conn = http.client.HTTPSConnection("api.sirv.com")
 
-payload = "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}"
+payload = "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}"
 
 headers = {
     'content-type': "application/json",
@@ -25,7 +25,7 @@ curl --request POST \
   --url https://api.sirv.com/v2/files/search \
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \
   --header 'content-type: application/json' \
-  --data '{"query":"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\/.Trash","from":0,"size":5}'
+  --data '{"query":"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\/.Trash","sort":{"filename.raw":"asc"},"from":0,"size":5}'
 ```
 
 ```javascript--node
@@ -55,12 +55,12 @@ var req = http.request(options, function (res) {
   });
 });
 
-req.write("{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}");
+req.write("{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}");
 req.end();
 ```
 
 ```javascript
-var data = "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}";
+var data = "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}";
 
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
@@ -82,7 +82,7 @@ xhr.send(data);
 HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/search")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
-  .body("{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}")
+  .body("{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}")
   .asString();
 ```
 
@@ -99,7 +99,7 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}",
+  CURLOPT_POSTFIELDS => "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}",
   CURLOPT_HTTPHEADER => array(
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
@@ -115,6 +115,97 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
+}
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sirv.com/v2/files/search")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
+request.body = "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}"
+
+response = http.request(request)
+puts response.read_body
+```
+
+```swift
+import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer BEARER_TOKEN_HERE"
+]
+
+let postData = NSData(data: "{"query":"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\/.Trash","sort":{"filename.raw":"asc"},"from":0,"size":5}".data(using: String.Encoding.utf8)!)
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/search")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```
+
+```csharp
+var client = new RestClient("https://api.sirv.com/v2/files/search");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
+request.AddParameter("application/json", "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://api.sirv.com/v2/files/search"
+
+	payload := strings.NewReader("{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
 }
 ```
 
@@ -192,13 +283,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:37:01 GMT
+< date: Sat, 18 Jul 2020 09:03:38 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 5648
+< content-length: 5403
 < connection: close
 < x-ratelimit-limit: 1000
-< x-ratelimit-remaining: 998
-< x-ratelimit-reset: 1595006900
+< x-ratelimit-remaining: 991
+< x-ratelimit-reset: 1595065055
 < x-ratelimit-type: rest:post:files:search
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -212,8 +303,39 @@ Example response:
     {
       "_index": "sirvfs-v3",
       "_type": "_doc",
+      "_id": "248e197b4546afd4da9ccdb2ee0d30cf844ecf44",
+      "_score": null,
+      "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+      "_source": {
+        "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+        "filename": "/REST API Examples/aurora-copy.jpg",
+        "dirname": "/REST API Examples",
+        "basename": "aurora-copy.jpg",
+        "extension": ".jpg",
+        "id": "JLKTmqq4CGBy2fbeU4h6TTVQrWpfwj0x",
+        "ctime": "2020-07-18T09:00:55.328Z",
+        "mtime": "2020-07-18T09:00:55.352Z",
+        "size": 201846,
+        "contentType": "image/webp",
+        "meta": {
+          "width": 2500,
+          "height": 1667,
+          "format": "WEBP",
+          "duration": 0,
+          "EXIF": {
+            "ModifyDate": "2020-01-29T17:12:45Z"
+          }
+        }
+      },
+      "sort": [
+        "/REST API Examples/aurora-copy.jpg"
+      ]
+    },
+    {
+      "_index": "sirvfs-v3",
+      "_type": "_doc",
       "_id": "4b57cdf35a3568220bb9ad7a6f62f0048c8b4ae1",
-      "_score": 1.1852932,
+      "_score": null,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -237,16 +359,14 @@ Example response:
         }
       },
       "sort": [
-        1.1852932,
-        "/REST API Examples/aurora.jpg",
-        ".jpg"
+        "/REST API Examples/aurora.jpg"
       ]
     },
     {
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "ac9224d68ecaa7e6b2b2ddbd840190c190391db2",
-      "_score": 1.1852932,
+      "_score": null,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -267,16 +387,14 @@ Example response:
         }
       },
       "sort": [
-        1.1852932,
-        "/REST API Examples/birdbath.jpg",
-        ".jpg"
+        "/REST API Examples/birdbath.jpg"
       ]
     },
     {
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "1b86315bcaadbc77626f40f0bf9e2ed63c370194",
-      "_score": 1.1852932,
+      "_score": null,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -301,7 +419,7 @@ Example response:
           ],
           "approval": {
             "approved": false,
-            "datetime": "2020-07-17T16:28:31.292Z"
+            "datetime": "2020-07-18T09:00:54.539Z"
           },
           "product": {
             "id": "LLBB77",
@@ -325,16 +443,14 @@ Example response:
         }
       },
       "sort": [
-        1.1852932,
-        "/REST API Examples/blue-lake.jpg",
-        ".jpg"
+        "/REST API Examples/blue-lake.jpg"
       ]
     },
     {
       "_index": "sirvfs-v3",
       "_type": "_doc",
       "_id": "57c6df356e0db18178a2b188ff0c2f8c352d7efe",
-      "_score": 1.1852932,
+      "_score": null,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -359,47 +475,11 @@ Example response:
         }
       },
       "sort": [
-        1.1852932,
-        "/REST API Examples/coin/coin_01.jpg",
-        ".jpg"
-      ]
-    },
-    {
-      "_index": "sirvfs-v3",
-      "_type": "_doc",
-      "_id": "d4cadbf0969a407d918852f43800168d6199a98c",
-      "_score": 1.1852932,
-      "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
-      "_source": {
-        "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
-        "filename": "/REST API Examples/coin/coin_02.jpg",
-        "dirname": "/REST API Examples/coin",
-        "basename": "coin_02.jpg",
-        "extension": ".jpg",
-        "id": "BL67essSx34CvO3XM7GddBvqphbHAvti",
-        "ctime": "2020-07-17T13:31:08.874Z",
-        "mtime": "2020-07-17T13:31:08.994Z",
-        "size": 141482,
-        "contentType": "image/jpeg",
-        "meta": {
-          "width": 1056,
-          "height": 1056,
-          "format": "JPEG",
-          "duration": 0,
-          "EXIF": {
-            "ModifyDate": "2018-02-03T17:12:45Z",
-            "ColorSpace": "Uncalibrated"
-          }
-        }
-      },
-      "sort": [
-        1.1852932,
-        "/REST API Examples/coin/coin_02.jpg",
-        ".jpg"
+        "/REST API Examples/coin/coin_01.jpg"
       ]
     }
   ],
-  "total": 9918,
+  "total": 9970,
   "_relation": "eq"
 }
 ```

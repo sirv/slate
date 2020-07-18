@@ -5,7 +5,7 @@ import http.client
 
 conn = http.client.HTTPSConnection("api.sirv.com")
 
-payload = "[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"}]"
+payload = "[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"},{\"url\":\"https://demo.sirv.com/missing.jpg\",\"filename\":\"/REST API Examples/missing.jpg\"}]"
 
 headers = {
     'content-type': "application/json",
@@ -25,7 +25,7 @@ curl --request POST \
   --url https://api.sirv.com/v2/files/fetch \
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \
   --header 'content-type: application/json' \
-  --data '[{"url":"https://demo.sirv.com/aurora.jpg","filename":"/REST API Examples/aurora.jpg"}]'
+  --data '[{"url":"https://demo.sirv.com/aurora.jpg","filename":"/REST API Examples/aurora.jpg"},{"url":"https://demo.sirv.com/missing.jpg","filename":"/REST API Examples/missing.jpg"}]'
 ```
 
 ```javascript--node
@@ -55,12 +55,12 @@ var req = http.request(options, function (res) {
   });
 });
 
-req.write("[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"}]");
+req.write("[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"},{\"url\":\"https://demo.sirv.com/missing.jpg\",\"filename\":\"/REST API Examples/missing.jpg\"}]");
 req.end();
 ```
 
 ```javascript
-var data = "[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"}]";
+var data = "[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"},{\"url\":\"https://demo.sirv.com/missing.jpg\",\"filename\":\"/REST API Examples/missing.jpg\"}]";
 
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
@@ -82,7 +82,7 @@ xhr.send(data);
 HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/fetch")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
-  .body("[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"}]")
+  .body("[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"},{\"url\":\"https://demo.sirv.com/missing.jpg\",\"filename\":\"/REST API Examples/missing.jpg\"}]")
   .asString();
 ```
 
@@ -99,7 +99,7 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"}]",
+  CURLOPT_POSTFIELDS => "[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"},{\"url\":\"https://demo.sirv.com/missing.jpg\",\"filename\":\"/REST API Examples/missing.jpg\"}]",
   CURLOPT_HTTPHEADER => array(
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
@@ -118,7 +118,98 @@ if ($err) {
 }
 ```
 
-Use this API method to fetch a file from a URL via HTTP and save it to your Sirv account. This can be any URL, either public or private (via HTTP authentication). In the url parameter, enter the full URL of the remote file. In the filename parameter, enter the folder path and filename where it should be saved e.g. /path/to/folder/new-filename.jpg.
+```ruby
+require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sirv.com/v2/files/fetch")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
+request.body = "[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"},{\"url\":\"https://demo.sirv.com/missing.jpg\",\"filename\":\"/REST API Examples/missing.jpg\"}]"
+
+response = http.request(request)
+puts response.read_body
+```
+
+```swift
+import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer BEARER_TOKEN_HERE"
+]
+
+let postData = NSData(data: "[{"url":"https://demo.sirv.com/aurora.jpg","filename":"/REST API Examples/aurora.jpg"},{"url":"https://demo.sirv.com/missing.jpg","filename":"/REST API Examples/missing.jpg"}]".data(using: String.Encoding.utf8)!)
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/fetch")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```
+
+```csharp
+var client = new RestClient("https://api.sirv.com/v2/files/fetch");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
+request.AddParameter("application/json", "[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"},{\"url\":\"https://demo.sirv.com/missing.jpg\",\"filename\":\"/REST API Examples/missing.jpg\"}]", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://api.sirv.com/v2/files/fetch"
+
+	payload := strings.NewReader("[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"},{\"url\":\"https://demo.sirv.com/missing.jpg\",\"filename\":\"/REST API Examples/missing.jpg\"}]")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+Use this API method to fetch a file(s) from a URL via HTTP and save it to your Sirv account. This can be any URL, either public or private (via HTTP authentication). In the url parameter, enter the full URL of the remote file. In the filename parameter, enter the folder path and filename where it should be saved e.g. /path/to/folder/new-filename.jpg.
 
 ### Query string
 
@@ -134,24 +225,38 @@ JSON Schema:
 <div class="center-column"></div>
 ```json
 {
+  "examples": [
+    [
+      {
+        "url": "https://demo.sirv.com/aurora.jpg",
+        "filename": "/REST API Examples/aurora.jpg"
+      },
+      {
+        "url": "https://demo.sirv.com/missing.jpg",
+        "filename": "/REST API Examples/missing.jpg"
+      }
+    ]
+  ],
+  "example": [
+    {
+      "url": "https://demo.sirv.com/aurora.jpg",
+      "filename": "/REST API Examples/aurora.jpg"
+    },
+    {
+      "url": "https://demo.sirv.com/missing.jpg",
+      "filename": "/REST API Examples/missing.jpg"
+    }
+  ],
   "type": "array",
   "maxItems": 20,
   "items": {
     "type": "object",
     "properties": {
       "url": {
-        "examples": [
-          "https://demo.sirv.com/aurora.jpg"
-        ],
-        "example": "https://demo.sirv.com/aurora.jpg",
         "type": "string",
         "maxLength": 1024
       },
       "filename": {
-        "examples": [
-          "/REST API Examples/aurora.jpg"
-        ],
-        "example": "/REST API Examples/aurora.jpg",
         "type": "string",
         "pattern": "^\\/",
         "maxLength": 1024
@@ -193,13 +298,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:37:09 GMT
+< date: Sat, 18 Jul 2020 09:03:47 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 1681
+< content-length: 7207
 < connection: close
 < x-ratelimit-limit: 2000
-< x-ratelimit-remaining: 1993
-< x-ratelimit-reset: 1595004455
+< x-ratelimit-remaining: 1989
+< x-ratelimit-reset: 1595064951
 < x-ratelimit-type: rest:post:files:fetch
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -259,6 +364,174 @@ Example response:
       }
     ],
     "retryAfter": "2020-07-18T15:47:36.712Z"
+  },
+  {
+    "filename": "/REST API Examples/missing.jpg",
+    "success": false,
+    "attempted": false,
+    "attempts": [
+      {
+        "url": "https://demo.sirv.com/missing.jpg",
+        "initiator": {
+          "type": "api",
+          "remoteAddr": "176.105.166.4",
+          "date": "2020-07-18T08:35:51.026Z"
+        },
+        "statusCode": 404,
+        "headers": {
+          "result": {
+            "version": "HTTP/1.1",
+            "code": 404,
+            "reason": "Not Found"
+          },
+          "Date": "Sat, 18 Jul 2020 08:35:52 GMT",
+          "Content-Type": "text/html; charset=utf-8",
+          "Content-Length": "4140",
+          "Connection": "keep-alive",
+          "Vary": "Accept-Encoding",
+          "X-Account-Id": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+          "X-Account-Serial": "2020-06-15T19:18:53.901Z",
+          "ETag": "W/\"102c-wKpRt+Cg9Cnw/NpTSkF5+w\"",
+          "X-Sirv-Cache": "MISS",
+          "Server": "Sirv.Imagination",
+          "X-Sirv-Server": "c1-extra1-fireball-15",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*"
+        },
+        "timing": {
+          "ns": 0.018986,
+          "connect": 0.019303,
+          "start": 0.103774,
+          "total": 0.103829
+        },
+        "error": {
+          "name": "Error",
+          "message": "Request not successful: expected status code 200 but got 404"
+        },
+        "date": "2020-07-18T08:35:52.089Z"
+      },
+      {
+        "url": "https://demo.sirv.com/missing.jpg",
+        "initiator": {
+          "type": "api",
+          "remoteAddr": "176.105.166.4",
+          "date": "2020-07-18T08:37:46.058Z"
+        },
+        "statusCode": 404,
+        "headers": {
+          "result": {
+            "version": "HTTP/1.1",
+            "code": 404,
+            "reason": "Not Found"
+          },
+          "Date": "Sat, 18 Jul 2020 08:37:47 GMT",
+          "Content-Type": "text/html; charset=utf-8",
+          "Content-Length": "4140",
+          "Connection": "keep-alive",
+          "Vary": "Accept-Encoding",
+          "X-Account-Id": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+          "X-Account-Serial": "2020-06-15T19:18:53.901Z",
+          "ETag": "W/\"102c-wKpRt+Cg9Cnw/NpTSkF5+w\"",
+          "X-Sirv-Cache": "HIT",
+          "Server": "Sirv.Imagination",
+          "X-Sirv-Server": "c1-extra1-fireball-15",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*"
+        },
+        "timing": {
+          "ns": 0.00734,
+          "connect": 0.007759,
+          "start": 0.083796,
+          "total": 0.083869
+        },
+        "error": {
+          "name": "Error",
+          "message": "Request not successful: expected status code 200 but got 404"
+        },
+        "date": "2020-07-18T08:37:47.100Z"
+      },
+      {
+        "url": "https://demo.sirv.com/missing.jpg",
+        "initiator": {
+          "type": "api",
+          "remoteAddr": "176.105.166.4",
+          "date": "2020-07-18T08:42:09.392Z"
+        },
+        "statusCode": 404,
+        "headers": {
+          "result": {
+            "version": "HTTP/1.1",
+            "code": 404,
+            "reason": "Not Found"
+          },
+          "Date": "Sat, 18 Jul 2020 08:42:10 GMT",
+          "Content-Type": "text/html; charset=utf-8",
+          "Content-Length": "4140",
+          "Connection": "keep-alive",
+          "Vary": "Accept-Encoding",
+          "X-Account-Id": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+          "X-Account-Serial": "2020-06-15T19:18:53.901Z",
+          "ETag": "W/\"102c-wKpRt+Cg9Cnw/NpTSkF5+w\"",
+          "X-Sirv-Cache": "MISS",
+          "Server": "Sirv.Imagination",
+          "X-Sirv-Server": "c1-failover-fi-9",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*"
+        },
+        "timing": {
+          "ns": 0.007545,
+          "connect": 0.033452,
+          "start": 0.34565,
+          "total": 0.345711
+        },
+        "error": {
+          "name": "Error",
+          "message": "Request not successful: expected status code 200 but got 404"
+        },
+        "date": "2020-07-18T08:42:10.715Z"
+      },
+      {
+        "url": "https://demo.sirv.com/missing.jpg",
+        "initiator": {
+          "type": "api",
+          "remoteAddr": "176.105.166.4",
+          "date": "2020-07-18T08:55:32.120Z"
+        },
+        "statusCode": 404,
+        "headers": {
+          "result": {
+            "version": "HTTP/1.1",
+            "code": 404,
+            "reason": "Not Found"
+          },
+          "Date": "Sat, 18 Jul 2020 08:55:32 GMT",
+          "Content-Type": "text/html; charset=utf-8",
+          "Content-Length": "4140",
+          "Connection": "keep-alive",
+          "Vary": "Accept-Encoding",
+          "X-Account-Id": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+          "X-Account-Serial": "2020-06-15T19:18:53.901Z",
+          "ETag": "W/\"102c-wKpRt+Cg9Cnw/NpTSkF5+w\"",
+          "X-Sirv-Cache": "MISS",
+          "Server": "Sirv.Imagination",
+          "X-Sirv-Server": "c1-extra1-fireball-15",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*"
+        },
+        "timing": {
+          "ns": 0.013639,
+          "connect": 0.014232,
+          "start": 0.242975,
+          "total": 0.243043
+        },
+        "error": {
+          "name": "Error",
+          "message": "Request not successful: expected status code 200 but got 404"
+        },
+        "date": "2020-07-18T08:55:32.895Z"
+      }
+    ],
+    "retryAfter": "2020-07-18T09:11:32.895Z"
   }
 ]
 ```

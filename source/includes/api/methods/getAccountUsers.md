@@ -112,6 +112,89 @@ if ($err) {
 }
 ```
 
+```ruby
+require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sirv.com/v2/account/users")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```swift
+import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer BEARER_TOKEN_HERE"
+]
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/account/users")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "GET"
+request.allHTTPHeaderFields = headers
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```
+
+```csharp
+var client = new RestClient("https://api.sirv.com/v2/account/users");
+var request = new RestRequest(Method.GET);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://api.sirv.com/v2/account/users"
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
 Use this API method to get a list of all users of an account. It will return a list of user IDs and their roles. If you need a users email address, the user ID can be used to obtain it.
 
 ### Query string
@@ -133,13 +216,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:36:55 GMT
+< date: Sat, 18 Jul 2020 09:03:35 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 833
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6966
-< x-ratelimit-reset: 1595006894
+< x-ratelimit-remaining: 6720
+< x-ratelimit-reset: 1595064951
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -151,43 +234,43 @@ Example response:
 [
   {
     "role": "primaryOwner",
-    "userId": "VrY0MFX1Bc3hxEG5tjPQSx6H5z3"
+    "userId": "***************************"
   },
   {
     "role": "owner",
-    "userId": "aHhi4gGjBvJJtCTdwa4q9CxD7lD"
+    "userId": "***************************"
   },
   {
     "role": "owner",
-    "userId": "9fyQAGrdSN5GH7Wr8fZ9LOB6EXY"
+    "userId": "***************************"
   },
   {
     "role": "contributor",
-    "userId": "Sy4A2dlgTG0h1ONsbw2HWTsxaXa"
+    "userId": "***************************"
   },
   {
     "role": "admin",
-    "userId": "L5UwRaLpSScHgnuhaocj0QpyYQG"
+    "userId": "***************************"
   },
   {
     "role": "owner",
-    "userId": "Ph8DDPLv4HnoLSf1qz60melOryN"
+    "userId": "***************************"
   },
   {
     "role": "user",
-    "userId": "UH9C80LsMj59doRAMIEsLHptOMe"
+    "userId": "***************************"
   },
   {
     "role": "user",
-    "userId": "3nFhREbVRu3iqq5uVaIx1dXEoMj"
+    "userId": "***************************"
   },
   {
     "role": "user",
-    "userId": "XhkYgmOGHgSdk07dLy4a4hztbVW"
+    "userId": "***************************"
   },
   {
     "role": "contributor",
-    "userId": "VERvVsOKXc8kSMWq3Cq3gCaWapN"
+    "userId": "***************************"
   },
   {
     "role": "viewer",

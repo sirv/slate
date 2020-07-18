@@ -112,6 +112,89 @@ if ($err) {
 }
 ```
 
+```ruby
+require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sirv.com/v2/files/readdir?dirname=%2FREST%20API%20Examples")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```swift
+import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer BEARER_TOKEN_HERE"
+]
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/readdir?dirname=%2FREST%20API%20Examples")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "GET"
+request.allHTTPHeaderFields = headers
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```
+
+```csharp
+var client = new RestClient("https://api.sirv.com/v2/files/readdir?dirname=%2FREST%20API%20Examples");
+var request = new RestRequest(Method.GET);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://api.sirv.com/v2/files/readdir?dirname=%2FREST%20API%20Examples"
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
 Use this API method to check all the files within a folder. It will return the filename, mimetype, content type and file size. It will also return any folders that exist.
 
 ### Query string
@@ -136,13 +219,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 17 Jul 2020 16:37:11 GMT
+< date: Sat, 18 Jul 2020 09:03:53 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 1380
+< content-length: 1847
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6943
-< x-ratelimit-reset: 1595006894
+< x-ratelimit-remaining: 6694
+< x-ratelimit-reset: 1595064951
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -167,6 +250,18 @@ Example response:
       }
     },
     {
+      "filename": "aurora-copy.jpg",
+      "mtime": "2020-07-18T09:03:53.191Z",
+      "contentType": "image/webp",
+      "size": 201846,
+      "isDirectory": false,
+      "meta": {
+        "width": 2500,
+        "height": 1667,
+        "duration": 0
+      }
+    },
+    {
       "filename": "birdbath.jpg",
       "mtime": "2020-07-17T13:31:39.385Z",
       "contentType": "image/jpeg",
@@ -177,13 +272,6 @@ Example response:
         "height": 372,
         "duration": 0
       }
-    },
-    {
-      "filename": "coin",
-      "mtime": "2020-07-17T13:31:08.833Z",
-      "size": 0,
-      "isDirectory": true,
-      "meta": {}
     },
     {
       "filename": "blue-lake.jpg",
@@ -198,13 +286,6 @@ Example response:
       }
     },
     {
-      "filename": "video",
-      "mtime": "2020-07-17T15:36:52.477Z",
-      "size": 0,
-      "isDirectory": true,
-      "meta": {}
-    },
-    {
       "filename": "video.mp4",
       "mtime": "2020-07-17T15:35:20.375Z",
       "contentType": "video/mp4",
@@ -215,6 +296,28 @@ Example response:
         "height": 1080,
         "duration": 33.434
       }
+    },
+    {
+      "filename": "uploaded.txt",
+      "mtime": "2020-07-18T08:55:35.325Z",
+      "contentType": "binary/octet-stream",
+      "size": 0,
+      "isDirectory": false,
+      "meta": {}
+    },
+    {
+      "filename": "coin",
+      "mtime": "2020-07-17T13:31:08.833Z",
+      "size": 0,
+      "isDirectory": true,
+      "meta": {}
+    },
+    {
+      "filename": "video",
+      "mtime": "2020-07-17T15:36:52.477Z",
+      "size": 0,
+      "isDirectory": true,
+      "meta": {}
     }
   ]
 }
