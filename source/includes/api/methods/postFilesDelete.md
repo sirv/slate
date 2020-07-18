@@ -218,12 +218,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:52:08 GMT
+< date: Sat, 18 Jul 2020 11:32:27 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 3000
-< x-ratelimit-remaining: 2996
-< x-ratelimit-reset: 1595068867
+< x-ratelimit-remaining: 2998
+< x-ratelimit-reset: 1595075495
 < x-ratelimit-type: rest:post:files:delete
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -231,5 +231,5 @@ Example response:
 < server: Sirv.API
 < strict-transport-security: max-age=31536000
 
-
+/ no response body: HTTP status 200 means SUCCESS /
 ```

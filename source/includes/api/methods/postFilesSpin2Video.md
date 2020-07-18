@@ -291,13 +291,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:52:04 GMT
+< date: Sat, 18 Jul 2020 11:32:25 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 69
 < connection: close
 < x-ratelimit-limit: 200
-< x-ratelimit-remaining: 196
-< x-ratelimit-reset: 1595068858
+< x-ratelimit-remaining: 198
+< x-ratelimit-reset: 1595075486
 < x-ratelimit-type: rest:post:files:spin2video
 < access-control-allow-origin: *
 < access-control-expose-headers: *

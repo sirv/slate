@@ -220,13 +220,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:51:51 GMT
+< date: Sat, 18 Jul 2020 11:32:15 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 4286915
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6887
-< x-ratelimit-reset: 1595068849
+< x-ratelimit-remaining: 6955
+< x-ratelimit-reset: 1595075478
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -238,42 +238,41 @@ Example response:
 
 [
   {
-    "@timestamp": "2020-07-02T03:41:03.755Z",
-    "referer": "https://sirv.com/help/articles/how-spin-files-are-created/",
-    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15",
+    "@timestamp": "2020-07-04T03:51:03.792Z",
+    "referer": "https://demo.sirv.com/cap.spin",
+    "user_agent": "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.118 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
     "user_agent_parsed": {
-      "name": "Safari",
-      "os": "Mac OS X 10.15.5",
-      "os_name": "Mac OS X",
-      "os_major": "10",
-      "os_minor": "15",
-      "device": "Mac",
-      "major": "13",
-      "minor": "1",
-      "patch": "1"
+      "name": "Googlebot",
+      "os": "Android 6.0.1",
+      "os_name": "Android",
+      "os_major": "6",
+      "os_minor": "0",
+      "device": "Spider",
+      "major": "2",
+      "minor": "1"
     },
     "referer_proto": "https",
-    "referer_host": "sirv.com",
-    "referer_uripath": "/help/articles/how-spin-files-are-created/",
+    "referer_host": "demo.sirv.com",
+    "referer_uripath": "/cap.spin",
     "event": {
-      "origin": "/spins/FishHeadSpin/Headwear/cap/cap.spin",
+      "origin": "/cap.spin",
       "type": "spin",
       "name": "viewerReady",
       "data": {
         "rows": 1,
         "columns": 24,
         "viewerSize": {
-          "width": 715,
-          "height": 524
+          "width": 412,
+          "height": 732
         }
       }
     },
     "geoip": {
-      "country_code2": "AU",
-      "country_name": "Australia",
-      "region_name": "07",
-      "timezone": "Australia/Victoria",
-      "real_region_name": "Victoria"
+      "country_code2": "US",
+      "country_name": "United States",
+      "region_name": "CA",
+      "timezone": "America/Los_Angeles",
+      "real_region_name": "California"
     }
   }
 ]

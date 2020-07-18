@@ -283,13 +283,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:51:55 GMT
+< date: Sat, 18 Jul 2020 11:32:17 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 5403
 < connection: close
 < x-ratelimit-limit: 1000
-< x-ratelimit-remaining: 996
-< x-ratelimit-reset: 1595068855
+< x-ratelimit-remaining: 998
+< x-ratelimit-reset: 1595075483
 < x-ratelimit-type: rest:post:files:search
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -312,9 +312,9 @@ Example response:
         "dirname": "/REST API Examples",
         "basename": "aurora-copy.jpg",
         "extension": ".jpg",
-        "id": "gwM5GqqTwan7d67kz8XzhzjZrMU7WzBp",
-        "ctime": "2020-07-18T09:51:26.970Z",
-        "mtime": "2020-07-18T09:51:27.006Z",
+        "id": "eVkQEHwURN7aSJPim2HLl4eOQ9imjUDJ",
+        "ctime": "2020-07-18T11:31:35.452Z",
+        "mtime": "2020-07-18T11:31:35.556Z",
         "size": 201846,
         "contentType": "image/webp",
         "meta": {
@@ -419,7 +419,7 @@ Example response:
           ],
           "approval": {
             "approved": false,
-            "datetime": "2020-07-18T09:51:26.176Z"
+            "datetime": "2020-07-18T11:31:34.843Z"
           },
           "product": {
             "id": "LLBB77",

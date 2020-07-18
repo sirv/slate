@@ -219,13 +219,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:51:50 GMT
+< date: Sat, 18 Jul 2020 11:32:14 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 470
 < connection: close
 < x-ratelimit-limit: 100
-< x-ratelimit-remaining: 96
-< x-ratelimit-reset: 1595068851
+< x-ratelimit-remaining: 98
+< x-ratelimit-reset: 1595075480
 < x-ratelimit-type: rest:get:stats:http
 < access-control-allow-origin: *
 < access-control-expose-headers: *

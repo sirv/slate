@@ -298,13 +298,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:52:04 GMT
+< date: Sat, 18 Jul 2020 11:32:25 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 8542
+< content-length: 9882
 < connection: close
 < x-ratelimit-limit: 2000
-< x-ratelimit-remaining: 1996
-< x-ratelimit-reset: 1595068863
+< x-ratelimit-remaining: 1998
+< x-ratelimit-reset: 1595075492
 < x-ratelimit-type: rest:post:files:fetch
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -411,7 +411,7 @@ Example response:
         "date": "2020-07-18T08:35:52.089Z"
       }
     ],
-    "retryAfter": "2020-07-18T10:06:04.160Z"
+    "retryAfter": "2020-07-18T12:07:32.613Z"
   }
 ]
 ```

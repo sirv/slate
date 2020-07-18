@@ -216,13 +216,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 09:51:48 GMT
+< date: Sat, 18 Jul 2020 11:32:12 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 2892
+< content-length: 2891
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6893
-< x-ratelimit-reset: 1595068849
+< x-ratelimit-remaining: 6961
+< x-ratelimit-reset: 1595075478
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -237,157 +237,157 @@ Example response:
     "count": 0,
     "limit": 7000,
     "remaining": 7000,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "s3:PUT": {
     "count": 0,
     "limit": 2000,
     "remaining": 2000,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "s3:GET": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "s3:DELETE": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "rest:global": {
-    "count": 107,
+    "count": 39,
     "limit": 7000,
-    "remaining": 6893,
-    "reset": 1595068849
+    "remaining": 6961,
+    "reset": 1595075478
   },
   "rest:post:files:search": {
-    "count": 3,
+    "count": 1,
     "limit": 1000,
-    "remaining": 997,
-    "reset": 1595068855
+    "remaining": 999,
+    "reset": 1595075483
   },
   "rest:post:files:search:scroll": {
     "count": 0,
     "limit": 2000,
     "remaining": 2000,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "rest:post:files:video2spin": {
-    "count": 3,
+    "count": 1,
     "limit": 200,
-    "remaining": 197,
-    "reset": 1595068855
+    "remaining": 199,
+    "reset": 1595075483
   },
   "rest:post:files:spin2video": {
-    "count": 3,
+    "count": 1,
     "limit": 200,
-    "remaining": 197,
-    "reset": 1595068858
+    "remaining": 199,
+    "reset": 1595075486
   },
   "rest:post:files:fetch": {
-    "count": 3,
+    "count": 1,
     "limit": 2000,
-    "remaining": 1997,
-    "reset": 1595068863
+    "remaining": 1999,
+    "reset": 1595075492
   },
   "rest:post:files:upload": {
-    "count": 9,
+    "count": 1,
     "limit": 2000,
-    "remaining": 1991,
-    "reset": 1595066135
+    "remaining": 1999,
+    "reset": 1595075494
   },
   "rest:post:files:delete": {
-    "count": 3,
+    "count": 1,
     "limit": 3000,
-    "remaining": 2997,
-    "reset": 1595068867
+    "remaining": 2999,
+    "reset": 1595075495
   },
   "rest:post:account": {
-    "count": 4,
+    "count": 2,
     "limit": 50,
-    "remaining": 46,
-    "reset": 1595068850
+    "remaining": 48,
+    "reset": 1595075478
   },
   "rest:post:account:fetching": {
     "count": 0,
     "limit": 50,
     "remaining": 50,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "rest:get:stats:http": {
-    "count": 3,
+    "count": 1,
     "limit": 100,
-    "remaining": 97,
-    "reset": 1595068851
+    "remaining": 99,
+    "reset": 1595075480
   },
   "rest:get:stats:storage": {
-    "count": 3,
+    "count": 1,
     "limit": 100,
-    "remaining": 97,
-    "reset": 1595068852
+    "remaining": 99,
+    "reset": 1595075481
   },
   "rest:post:account:new": {
     "count": 0,
     "limit": 5,
     "remaining": 5,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "rest:post:user:accounts": {
     "count": 0,
     "limit": 20,
     "remaining": 20,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "rest:get:rest:credentials": {
     "count": 0,
     "limit": 50,
     "remaining": 50,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "rest:post:video:toSpin": {
     "count": 0,
     "limit": 400,
     "remaining": 400,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "rest:post:upload:toSirv": {
     "count": 0,
     "limit": 2000,
     "remaining": 2000,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "ftp:global": {
     "count": 0,
     "limit": 10000,
     "remaining": 10000,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "ftp:STOR": {
     "count": 0,
     "limit": 2000,
     "remaining": 2000,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "ftp:RETR": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "ftp:DELE": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595069508
+    "reset": 1595075532
   },
   "fetch:file": {
     "count": 1,
     "limit": 2000,
     "remaining": 1999,
-    "reset": 1595068863
+    "reset": 1595075492
   }
 }
 ```
