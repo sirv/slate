@@ -235,16 +235,16 @@ Example response:
 
 {
   "dateActive": "2017-05-31T00:00:00.000Z",
-  "id": "MagicToolbox",
+  "id": "Business_5_v2",
   "period": "month",
-  "name": "Magic Toolbox",
-  "description": "For Magic Toolbox use only",
+  "name": "Business 5",
+  "description": "The complete set of features, with large allowances and no branding",
   "price": {
-    "month": 0,
-    "year": 0,
-    "quarter": 0
+    "month": 19,
+    "year": 209,
+    "quarter": 57
   },
-  "storage": 100000000000,
-  "burstableStorage": 500000000000
+  "storage": 1000000000,
+  "burstableStorage": 5000000000
 }
 ```
