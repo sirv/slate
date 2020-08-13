@@ -209,7 +209,7 @@ func main() {
 }
 ```
 
-Use this API method to fetch a file(s) from a URL via HTTP and save it to your Sirv account. This can be any URL, either public or private (via HTTP authentication). In the url parameter, enter the full URL of the remote file. In the filename parameter, enter the folder path and filename where it should be saved e.g. /path/to/folder/new-filename.jpg.
+Use this API method to fetch a file(s) from a URL via HTTP and save it to your Sirv account. This can be any URL, either public or private (via HTTP authentication). In the url parameter, enter the full URL of the remote file. In the filename parameter, enter the folder path and filename where it should be saved e.g. /path/to/folder/new-filename.jpg. If the folder path does not already exist in your Sirv account new folder(s) will be created.
 
 ### Query string
 
