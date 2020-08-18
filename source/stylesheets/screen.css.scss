@@ -517,7 +517,8 @@ html, body {
   &>div.highlight {
     clear:none;
   }
-
+  &>p.mt { margin-top: 1em; }
+  
   pre, blockquote {
     background-color: $code-bg;
     color: #fff;
