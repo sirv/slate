@@ -195,13 +195,13 @@ func main() {
 }
 ```
 
-Use this API method to create new empty directory.
+Use this API method to create a new empty directory.
 
 ### Query string
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
+--------- | ---- | ----------- | -------
 dirname | string |  | /REST API Examples/copies
 
 
