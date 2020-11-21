@@ -5,7 +5,7 @@ import http.client
 
 conn = http.client.HTTPSConnection("api.sirv.com")
 
-payload = "{\"filename\":\"/REST API Examples/aurora.jpg\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}"
+payload = "{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}"
 
 headers = {
     'content-type': "application/json",
@@ -25,7 +25,7 @@ curl --request POST \\
   --url https://api.sirv.com/v2/files/jwt \\
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json' \\
-  --data '{"filename":"/REST API Examples/aurora.jpg","alias":"demo-jwt","secureParams":{"w":300,"h":300},"expiresIn":300}'
+  --data '{"filename":"/REST API Examples/aurora.jpg","key":"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq","alias":"demo-jwt","secureParams":{"w":300,"h":300},"expiresIn":300}'
 ```
 
 ```javascript--node
@@ -55,12 +55,12 @@ var req = http.request(options, function (res) {
   });
 });
 
-req.write("{\"filename\":\"/REST API Examples/aurora.jpg\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}");
+req.write("{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}");
 req.end();
 ```
 
 ```javascript
-var data = "{\"filename\":\"/REST API Examples/aurora.jpg\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}";
+var data = "{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}";
 
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
@@ -82,7 +82,7 @@ xhr.send(data);
 HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/jwt")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
-  .body("{\"filename\":\"/REST API Examples/aurora.jpg\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}")
+  .body("{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}")
   .asString();
 ```
 
@@ -99,7 +99,7 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\"filename\":\"/REST API Examples/aurora.jpg\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}",
+  CURLOPT_POSTFIELDS => "{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}",
   CURLOPT_HTTPHEADER => array(
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
@@ -132,7 +132,7 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request = Net::HTTP::Post.new(url)
 request["content-type"] = 'application/json'
 request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
-request.body = "{\"filename\":\"/REST API Examples/aurora.jpg\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}"
+request.body = "{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}"
 
 response = http.request(request)
 puts response.read_body
@@ -146,7 +146,7 @@ let headers = [
   "authorization": "Bearer BEARER_TOKEN_HERE"
 ]
 
-let postData = NSData(data: "{"filename":"/REST API Examples/aurora.jpg","alias":"demo-jwt","secureParams":{"w":300,"h":300},"expiresIn":300}".data(using: String.Encoding.utf8)!)
+let postData = NSData(data: "{"filename":"/REST API Examples/aurora.jpg","key":"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq","alias":"demo-jwt","secureParams":{"w":300,"h":300},"expiresIn":300}".data(using: String.Encoding.utf8)!)
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/jwt")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
@@ -173,7 +173,7 @@ var client = new RestClient("https://api.sirv.com/v2/files/jwt");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
-request.AddParameter("application/json", "{\"filename\":\"/REST API Examples/aurora.jpg\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -181,30 +181,30 @@ IRestResponse response = client.Execute(request);
 package main
 
 import (
-	"fmt"
-	"strings"
-	"net/http"
-	"io/ioutil"
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
 )
 
 func main() {
 
-	url := "https://api.sirv.com/v2/files/jwt"
+  url := "https://api.sirv.com/v2/files/jwt"
 
-	payload := strings.NewReader("{\"filename\":\"/REST API Examples/aurora.jpg\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}")
+  payload := strings.NewReader("{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}")
 
-	req, _ := http.NewRequest("POST", url, payload)
+  req, _ := http.NewRequest("POST", url, payload)
 
-	req.Header.Add("content-type", "application/json")
-	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+  req.Header.Add("content-type", "application/json")
+  req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
 
-	res, _ := http.DefaultClient.Do(req)
+  res, _ := http.DefaultClient.Do(req)
 
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+  defer res.Body.Close()
+  body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(res)
-	fmt.Println(string(body))
+  fmt.Println(res)
+  fmt.Println(string(body))
 
 }
 ```
@@ -226,6 +226,7 @@ Example:
 ```json
 {
   "filename": "/REST API Examples/aurora.jpg",
+  "key": "cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq",
   "alias": "demo-jwt",
   "secureParams": {
     "w": 300,
@@ -234,6 +235,7 @@ Example:
   "expiresIn": 300
 }
 ```
+
 
 
 
@@ -252,6 +254,14 @@ JSON Schema:
       "type": "string",
       "pattern": "^\\/",
       "maxLength": 1024
+    },
+    "key": {
+      "description": "Specify JWT secret",
+      "examples": [
+        "cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq"
+      ],
+      "example": "cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq",
+      "type": "string"
     },
     "alias": {
       "description": "Specify account alias if your account has multiple aliases",
@@ -296,6 +306,7 @@ JSON Schema:
   "patterns": [],
   "required": [
     "filename",
+    "key",
     "expiresIn"
   ]
 }
@@ -309,13 +320,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:46:08 GMT
+< date: Sat, 21 Nov 2020 07:44:30 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 286
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6864
-< x-ratelimit-reset: 1595075478
+< x-ratelimit-remaining: 6929
+< x-ratelimit-reset: 1605948149
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -324,6 +335,6 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "url": "https://demo-jwt.sirv.com/REST API Examples/aurora.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcmdzIjp7InciOjMwMCwiaCI6MzAwfSwiaWF0IjoxNTk1MDcyNzY4LCJleHAiOjE1OTUwNzMwNjgsImF1ZCI6Ii9SRVNUIEFQSSBFeGFtcGxlcy9hdXJvcmEuanBnIn0.5RsnGBA6UySj7v7zd9R8hMKk0POKNJEi436u8yLqtqA"
+  "url": "https://demo-jwt.sirv.com/REST API Examples/aurora.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcmdzIjp7InciOjMwMCwiaCI6MzAwfSwiaWF0IjoxNjA1OTQ0NjcwLCJleHAiOjE2MDU5NDQ5NzAsImF1ZCI6Ii9SRVNUIEFQSSBFeGFtcGxlcy9hdXJvcmEuanBnIn0.c9FlTRZw_-t3WcMc0FPOhINrDZGrLKH2DuUn2H16yq4"
 }
 ```
