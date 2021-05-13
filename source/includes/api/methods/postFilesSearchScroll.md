@@ -209,7 +209,11 @@ func main() {
 }
 ```
 
-Use this API method to scroll through search results.
+Use the scroll API method after performing an API search if you need to retrieve more than 1000 results. Each call to the scroll API returns the next batch of results until there are no more results left to return.
+
+To use scrolling, the initial search request should specify the "scroll" parameter. The search context will then be kept alive for 30 seconds between each scroll call.
+
+Scrolling is not suitable for real time data - it is for fetching large amounts of data.
 
 ### Query string
 
@@ -226,6 +230,7 @@ Example:
 ```json
 {}
 ```
+
 
 
 

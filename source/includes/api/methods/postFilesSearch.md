@@ -209,7 +209,9 @@ func main() {
 }
 ```
 
-Use this API method to search for files with a certain name, location, extension, type, created/modified time or with some specific meta information.
+Use this API method to search for files based on one or more criteria: file name; folder path; file extension; content type; created/modified time; or with some specific meta information.
+
+Up to 1000 results can be returned. If you need more results, use the scroll API method.
 
 ### Query string
 
@@ -233,6 +235,7 @@ Example:
   "size": 5
 }
 ```
+
 
 
 
@@ -299,13 +302,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:45:56 GMT
+< date: Thu, 13 May 2021 08:21:31 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 5403
+< content-length: 4441
 < connection: close
 < x-ratelimit-limit: 1000
-< x-ratelimit-remaining: 996
-< x-ratelimit-reset: 1595075483
+< x-ratelimit-remaining: 999
+< x-ratelimit-reset: 1620897691
 < x-ratelimit-type: rest:post:files:search
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -328,9 +331,9 @@ Example response:
         "dirname": "/REST API Examples",
         "basename": "aurora-copy.jpg",
         "extension": ".jpg",
-        "id": "A337z9ylnhT9tyCnmzy8CGDmylK6DhOz",
-        "ctime": "2020-07-18T11:45:11.231Z",
-        "mtime": "2020-07-18T11:45:11.282Z",
+        "id": "RaxZM3sxunjRxsH7dUOU1KmBqASp3weH",
+        "ctime": "2021-05-12T09:30:08.895Z",
+        "mtime": "2021-05-12T09:30:09.806Z",
         "size": 201846,
         "contentType": "image/webp",
         "meta": {
@@ -361,7 +364,7 @@ Example response:
         "extension": ".jpg",
         "id": "tkLbo0YuHJuBIEYj40lEUYRZZ8cLBGnF",
         "ctime": "2020-07-17T13:31:39.348Z",
-        "mtime": "2020-07-17T15:47:36.701Z",
+        "mtime": "2021-05-12T09:30:05.386Z",
         "size": 201846,
         "contentType": "image/webp",
         "meta": {
@@ -381,121 +384,89 @@ Example response:
     {
       "_index": "sirvfs-v3",
       "_type": "_doc",
-      "_id": "ac9224d68ecaa7e6b2b2ddbd840190c190391db2",
+      "_id": "1945fa0032fbcc5df46e4af56ac1f75fc71ff38d",
       "_score": null,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
-        "filename": "/REST API Examples/birdbath.jpg",
-        "dirname": "/REST API Examples",
-        "basename": "birdbath.jpg",
+        "filename": "/REST API Examples/video/001.jpg",
+        "dirname": "/REST API Examples/video",
+        "basename": "001.jpg",
         "extension": ".jpg",
-        "id": "Husg8zi0IBla2fl98FjTvc16ojcKm0TR",
-        "ctime": "2020-07-17T13:31:39.348Z",
-        "mtime": "2020-07-17T13:31:39.385Z",
-        "size": 73151,
+        "id": "IfnjioVCkRxIWPXrKi6gpHEVKx0KvFm4",
+        "ctime": "2020-07-17T15:36:52.528Z",
+        "mtime": "2021-05-12T09:29:49.907Z",
+        "size": 279982,
         "contentType": "image/jpeg",
         "meta": {
-          "width": 620,
-          "height": 372,
+          "width": 1372,
+          "height": 1080,
           "format": "JPEG",
           "duration": 0
         }
       },
       "sort": [
-        "/REST API Examples/birdbath.jpg"
+        "/REST API Examples/video/001.jpg"
       ]
     },
     {
       "_index": "sirvfs-v3",
       "_type": "_doc",
-      "_id": "1b86315bcaadbc77626f40f0bf9e2ed63c370194",
+      "_id": "61ebc8bf5a8ad3c092f29846afb14e988c4bddaa",
       "_score": null,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
-        "filename": "/REST API Examples/blue-lake.jpg",
-        "dirname": "/REST API Examples",
-        "basename": "blue-lake.jpg",
+        "filename": "/REST API Examples/video/002.jpg",
+        "dirname": "/REST API Examples/video",
+        "basename": "002.jpg",
         "extension": ".jpg",
-        "id": "t8b6TbESDLYThXazo9KUCGWilVXq6fOo",
-        "ctime": "2020-07-17T13:31:39.347Z",
-        "mtime": "2020-07-17T13:31:39.450Z",
-        "size": 587065,
+        "id": "F100f2RQYtqc4lu8RE5DCKn2GvXqkuov",
+        "ctime": "2020-07-17T15:36:52.520Z",
+        "mtime": "2021-05-12T09:29:50.109Z",
+        "size": 266295,
         "contentType": "image/jpeg",
         "meta": {
-          "title": "Blue Lake",
-          "description": "Blue Lake in the Winter",
-          "tags": [
-            "blue",
-            "lake",
-            "winter",
-            "cold",
-            "water"
-          ],
-          "approval": {
-            "approved": false,
-            "datetime": "2020-07-18T11:45:10.567Z"
-          },
-          "product": {
-            "id": "LLBB77",
-            "name": "Blue Lake Card",
-            "brand": "BLUE LAKE LLC",
-            "category1": "Cards",
-            "category2": "Lakes"
-          },
-          "width": 1578,
-          "height": 1002,
+          "width": 1372,
+          "height": 1080,
           "format": "JPEG",
-          "duration": 0,
-          "EXIF": {
-            "DateTimeOriginal": "2018-01-01T13:57:00Z",
-            "CreateDate": "2018-01-01T13:57:00Z",
-            "ModifyDate": "2018-01-02T19:26:34Z",
-            "ImageDescription": "cof",
-            "Make": "HUAWEI",
-            "Model": "EVA-L09"
-          }
+          "duration": 0
         }
       },
       "sort": [
-        "/REST API Examples/blue-lake.jpg"
+        "/REST API Examples/video/002.jpg"
       ]
     },
     {
       "_index": "sirvfs-v3",
       "_type": "_doc",
-      "_id": "57c6df356e0db18178a2b188ff0c2f8c352d7efe",
+      "_id": "1f9171cb31bcc108a9df664b3ad60a495cc3c4f8",
       "_score": null,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
-        "filename": "/REST API Examples/coin/coin_01.jpg",
-        "dirname": "/REST API Examples/coin",
-        "basename": "coin_01.jpg",
+        "filename": "/REST API Examples/video/003.jpg",
+        "dirname": "/REST API Examples/video",
+        "basename": "003.jpg",
         "extension": ".jpg",
-        "id": "kkzhuxEQEVixRk6o4G1QjrQ0ih0VGVNi",
-        "ctime": "2020-07-17T13:31:08.874Z",
-        "mtime": "2020-07-17T13:31:08.893Z",
-        "size": 135255,
+        "id": "To1IfJ0lftonDG6U2cI4IVTCU2LgNI4e",
+        "ctime": "2020-07-17T15:36:52.551Z",
+        "mtime": "2021-05-12T09:29:49.510Z",
+        "size": 259954,
         "contentType": "image/jpeg",
         "meta": {
-          "width": 1056,
-          "height": 1056,
+          "width": 1372,
+          "height": 1080,
           "format": "JPEG",
-          "duration": 0,
-          "EXIF": {
-            "ModifyDate": "2018-02-03T17:12:43Z",
-            "ColorSpace": "Uncalibrated"
-          }
+          "duration": 0
         }
       },
       "sort": [
-        "/REST API Examples/coin/coin_01.jpg"
+        "/REST API Examples/video/003.jpg"
       ]
     }
   ],
-  "total": 9970,
+  "total": 256,
   "_relation": "eq"
 }
 ```

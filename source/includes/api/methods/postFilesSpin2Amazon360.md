@@ -211,6 +211,8 @@ func main() {
 
 This API method will generate a zip file containing 360 spin images that meet Amazon's requirements for width, height, format and file naming. The response will contain the zip file URL.
 
+You must know the ASIN (Amazon Standard Identification Number) to use this 360 spin zip method. The ASIN is displayed on the Amazon product page.
+
 ### Query string
 
 
@@ -275,13 +277,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Wed, 12 May 2021 09:30:56 GMT
+< date: Thu, 13 May 2021 08:21:47 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 56
 < connection: close
 < x-ratelimit-limit: 7000
 < x-ratelimit-remaining: 6961
-< x-ratelimit-reset: 1620815374
+< x-ratelimit-reset: 1620897683
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
