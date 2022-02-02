@@ -1,4 +1,4 @@
-## Export spin to Homedepot
+## Export spin to Home Depot
 
 ```python
 import http.client
@@ -288,12 +288,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Wed, 02 Feb 2022 14:30:41 GMT
+< date: Wed, 02 Feb 2022 15:17:37 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 57
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6957
+< x-ratelimit-remaining: 6913
 < x-ratelimit-reset: 1643815780
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
