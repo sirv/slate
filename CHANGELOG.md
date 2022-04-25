@@ -1,5 +1,92 @@
 # Changelog
 
+## Version 2.13.0
+
+*April 22, 2022*
+
+* __Drop support for ruby 2.5__
+* Bump rouge from 3.26.1 to 3.28.0
+* Formally support ruby 3.1
+* Bump nokogiri from 1.12.5 to 1.13.4
+* Build docker images for multiple architectures (e.g. `aarch64`)
+* Remove `VOLUME` declaration from Dockerfile (thanks @aemengo)
+
+The security vulnerabilities reported against recent versions of nokogiri should not affect slate users with a regular setup.
+
+## Version 2.12.0
+
+*November 04, 2021*
+
+* Bump nokogiri from 1.12.3 to 1.12.5
+* Bump ffi from 1.15.0 to 1.15.4
+* Bump rouge from 3.26.0 to 3.26.1
+* Bump middleman from 4.4.0 to 4.4.2
+* Remove unnecessary files from docker images
+
+## Version 2.11.0
+
+*August 12, 2021*
+
+* __[Security]__ Bump addressable transitive dependency from 2.7.0 to 2.8.0
+* Support specifying custom meta tags in YAML front-matter
+* Bump nokogiri from 1.11.3 to 1.12.3 (minimum supported version is 1.11.4)
+* Bump middleman-autoprefixer from 2.10.1 to 3.0.0
+* Bump jquery from 3.5.1 to 3.6.0
+* Bump middleman from [`d180ca3`](https://github.com/middleman/middleman/commit/d180ca337202873f2601310c74ba2b6b4cf063ec) to 4.4.0
+
+## Version 2.10.0
+
+*April 13, 2021*
+
+* Add support for Ruby 3.0 (thanks @shaun-scale)
+* Add requirement for Git on installing dependencies
+* Bump nokogiri from 1.11.2 to 1.11.3
+* Bump middleman from 4.3.11 to [`d180ca3`](https://github.com/middleman/middleman/commit/d180ca337202873f2601310c74ba2b6b4cf063ec)
+
+## Version 2.9.2
+
+*March 30, 2021*
+
+* __[Security]__ Bump kramdown from 2.3.0 to 2.3.1
+* Bump nokogiri from 1.11.1 to 1.11.2
+
+## Version 2.9.1
+
+*February 27, 2021*
+
+* Fix Slate language tabs not working if localStorage is disabled
+
+## Version 2.9.0
+
+*January 19, 2021*
+
+* __Drop support for Ruby 2.3 and 2.4__
+* __[Security]__ Bump nokogiri from 1.10.10 to 1.11.1
+* __[Security]__ Bump redcarpet from 3.5.0 to 3.5.1
+* Specify slate is not supported on Ruby 3.x
+* Bump rouge from 3.24.0 to 3.26.0
+
+## Version 2.8.0
+
+*October 27, 2020*
+
+* Remove last trailing newline when using the copy code button
+* Rework docker image and make available at slatedocs/slate
+* Improve Dockerfile layout to improve caching (thanks @micvbang)
+* Bump rouge from 3.20 to 3.24
+* Bump nokogiri from 1.10.9 to 1.10.10
+* Bump middleman from 4.3.8 to 4.3.11
+* Bump lunr.js from 2.3.8 to 2.3.9
+
+## Version 2.7.1
+
+*August 13, 2020*
+
+* __[security]__ Bumped middleman from 4.3.7 to 4.3.8
+
+_Note_: Slate uses redcarpet, not kramdown, for rendering markdown to HTML, and so was unaffected by the security vulnerability in middleman.
+If you have changed slate to use kramdown, and with GFM, you may need to install the `kramdown-parser-gfm` gem.
+
 ## Version 2.7.0
 
 *June 21, 2020*
