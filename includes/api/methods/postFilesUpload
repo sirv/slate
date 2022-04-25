@@ -1,0 +1,97 @@
+<h2 id='upload-file'>Upload file</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.sirv.com"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'/path/to/local-image.jpg'</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'authorization'</span><span class="p">:</span> <span class="s">"Bearer BEARER_TOKEN_HERE"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/v2/files/upload?filename=%2Fpath%2Fto%2Fuploaded-image.jpg"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\\</span>
+ <span class="nt">--url</span> <span class="s1">'https://api.sirv.com/v2/files/upload?filename=%2Fpath%2Fto%2Fuploaded-image.jpg'</span> <span class="se">\\</span>
+ <span class="nt">--header</span> <span class="s1">'authorization: Bearer BEARER_TOKEN_HERE'</span> <span class="se">\\</span>
+ <span class="nt">--header</span> <span class="s1">'content-type: image/jpeg'</span>  <span class="se">\\</span>
+ <span class="nt">--data</span> <span class="s2">"@/path/to/local-file.jpg"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">https</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">/path/to/local-image.jpg</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">fileData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+
+
+  <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">hostname</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api.sirv.com</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">port</span><span class="dl">"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">path</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/v2/files/upload?filename=%2Fpath%2Fto%2Fuploaded-image.jpg</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">headers</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">content-type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Bearer BEARER_TOKEN_HERE</span><span class="dl">"</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">chunks</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">chunks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">);</span>
+    <span class="p">});</span>
+
+  <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">end</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">chunks</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="nx">req</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">fileData</span><span class="p">);</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+
+<span class="p">});</span>
+</code></pre></div>
+<p>Use this API method to upload a single file to an account. It is an alternative to the S3 API file upload method (see the S3 API documentation).</p>
+<h3 id='query-string'>Query string</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filename</td>
+<td>string</td>
+<td></td>
+<td>/REST API Examples/uploaded.txt</td>
+</tr>
+</tbody></table>
+<h3 id='body-payload'>Body payload</h3>
+<p>Binary file contents.</p>
+<h3 id='response'>Response</h3>
+<p>Example response:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight plaintext"><code>&lt; HTTP/1.1 200
+&lt; date: Sat, 18 Jul 2020 11:46:06 GMT
+&lt; content-length: 0
+&lt; connection: close
+&lt; x-ratelimit-limit: 2000
+&lt; x-ratelimit-remaining: 1996
+&lt; x-ratelimit-reset: 1595075494
+&lt; x-ratelimit-type: rest:post:files:upload
+&lt; access-control-allow-origin: *
+&lt; access-control-expose-headers: *
+&lt; cache-control: no-cache
+&lt; server: Sirv.API
+&lt; strict-transport-security: max-age=31536000
+
+/ no response body: HTTP status 200 means SUCCESS /
+</code></pre></div>

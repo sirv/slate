@@ -1,0 +1,423 @@
+<h2 id='search-files'>Search files</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.sirv.com"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">query</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">extension:.jpg AND mtime:[now-30d TO now] AND -dirname:</span><span class="se">\\\\</span><span class="s">/.Trash</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">sort</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">filename.raw</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">asc</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">from</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">size</span><span class="se">\"</span><span class="s">:5}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'authorization'</span><span class="p">:</span> <span class="s">"Bearer BEARER_TOKEN_HERE"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/v2/files/search"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\\</span>
+  <span class="nt">--url</span> https://api.sirv.com/v2/files/search <span class="se">\\</span>
+  <span class="nt">--header</span> <span class="s1">'authorization: Bearer BEARER_TOKEN_HERE'</span> <span class="se">\\</span>
+  <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\\</span>
+  <span class="nt">--data</span> <span class="s1">'{"query":"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash","sort":{"filename.raw":"asc"},"from":0,"size":5}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">https</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">hostname</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api.sirv.com</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">port</span><span class="dl">"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">path</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/v2/files/search</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">headers</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">content-type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Bearer BEARER_TOKEN_HERE</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">chunks</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">chunks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">end</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">chunks</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">req</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">{</span><span class="se">\"</span><span class="s2">query</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">extension:.jpg AND mtime:[now-30d TO now] AND -dirname:</span><span class="se">\\\\</span><span class="s2">/.Trash</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">sort</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">filename.raw</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">asc</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">from</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">size</span><span class="se">\"</span><span class="s2">:5}</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">{</span><span class="se">\"</span><span class="s2">query</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">extension:.jpg AND mtime:[now-30d TO now] AND -dirname:</span><span class="se">\\\\</span><span class="s2">/.Trash</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">sort</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">filename.raw</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">asc</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">from</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">size</span><span class="se">\"</span><span class="s2">:5}</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.sirv.com/v2/files/search</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">content-type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">authorization</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Bearer BEARER_TOKEN_HERE</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">"https://api.sirv.com/v2/files/search"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"content-type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"authorization"</span><span class="o">,</span> <span class="s">"Bearer BEARER_TOKEN_HERE"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://api.sirv.com/v2/files/search"</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"{\"</span><span class="n">query</span><span class="err">\</span><span class="s2">":</span><span class="se">\"</span><span class="s2">extension:.jpg AND mtime:[now-30d TO now] AND -dirname:</span><span class="se">\\\\</span><span class="s2">/.Trash</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">sort</span><span class="se">\"</span><span class="s2">:</span><span class="si">{</span><span class="nv">\"filename.raw\":\"asc\"},\"from\":0,\"size\":5</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"authorization: Bearer BEARER_TOKEN_HERE"</span><span class="p">,</span>
+    <span class="s2">"content-type: application/json"</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="mf">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'openssl'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.sirv.com/v2/files/search"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"content-type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Bearer BEARER_TOKEN_HERE'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">query</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">extension:.jpg AND mtime:[now-30d TO now] AND -dirname:</span><span class="se">\\\\</span><span class="s2">/.Trash</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">sort</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">filename.raw</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">asc</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">from</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">size</span><span class="se">\"</span><span class="s2">:5}"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
+
+<span class="k">let</span> <span class="nv">headers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s">"content-type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+  <span class="s">"authorization"</span><span class="p">:</span> <span class="s">"Bearer BEARER_TOKEN_HERE"</span>
+<span class="p">]</span>
+
+<span class="k">let</span> <span class="nv">postData</span> <span class="o">=</span> <span class="kt">NSData</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"{"</span><span class="n">query</span><span class="s">":"</span><span class="nv">extension</span><span class="p">:</span><span class="o">.</span><span class="n">jpg</span> <span class="kt">AND</span> <span class="nv">mtime</span><span class="p">:[</span><span class="n">now</span><span class="o">-</span><span class="mi">30</span><span class="n">d</span> <span class="kt">TO</span> <span class="n">now</span><span class="p">]</span> <span class="kt">AND</span> <span class="o">-</span><span class="nv">dirname</span><span class="p">:\\</span><span class="o">/.</span><span class="kt">Trash</span><span class="s">","</span><span class="n">sort</span><span class="s">":{"</span><span class="n">filename</span><span class="o">.</span><span class="n">raw</span><span class="s">":"</span><span class="n">asc</span><span class="s">"},"</span><span class="n">from</span><span class="s">":0,"</span><span class="n">size</span><span class="s">":5}"</span><span class="o">.</span><span class="nf">data</span><span class="p">(</span><span class="nv">using</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span><span class="o">.</span><span class="n">utf8</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://api.sirv.com/v2/files/search"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
+                                        <span class="nv">cachePolicy</span><span class="p">:</span> <span class="o">.</span><span class="n">useProtocolCachePolicy</span><span class="p">,</span>
+                                    <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"POST"</span>
+<span class="n">request</span><span class="o">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>
+<span class="n">request</span><span class="o">.</span><span class="n">httpBody</span> <span class="o">=</span> <span class="n">postData</span> <span class="k">as</span> <span class="kt">Data</span>
+
+<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span>
+<span class="k">let</span> <span class="nv">dataTask</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="nf">dataTask</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">request</span> <span class="k">as</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">httpResponse</span> <span class="o">=</span> <span class="n">response</span> <span class="k">as?</span> <span class="kt">HTTPURLResponse</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="n">dataTask</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://api.sirv.com/v2/files/search"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"Bearer BEARER_TOKEN_HERE"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="s">"strings"</span>
+    <span class="s">"net/http"</span>
+    <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://api.sirv.com/v2/files/search"</span>
+
+    <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">query</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">extension:.jpg AND mtime:[now-30d TO now] AND -dirname:</span><span class="se">\\\\</span><span class="s">/.Trash</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">sort</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">filename.raw</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">asc</span><span class="se">\"</span><span class="s">},</span><span class="se">\"</span><span class="s">from</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">size</span><span class="se">\"</span><span class="s">:5}"</span><span class="p">)</span>
+
+    <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"Bearer BEARER_TOKEN_HERE"</span><span class="p">)</span>
+
+    <span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">DefaultClient</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+
+    <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+    <span class="n">body</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>Use this API method to search for files based on one or more criteria: file name; folder path; file extension; content type; created/modified time; or with some specific meta information.</p>
+
+<p>Up to 1000 results can be returned. If you need more results, use the scroll API method.</p>
+<h3 id='query-string'>Query string</h3>
+<p>None</p>
+<h3 id='body-payload'>Body payload</h3>
+<p>Example:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:</span><span class="se">\\</span><span class="s2">/.Trash"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sort"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"filename.raw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asc"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>JSON Schema:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"examples"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:</span><span class="se">\\</span><span class="s2">/.Trash"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"example"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:</span><span class="se">\\</span><span class="s2">/.Trash"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"sort"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"examples"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"filename.raw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asc"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"example"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"filename.raw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asc"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"additionalProperties"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"patterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"examples"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"example"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"maximum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"examples"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">5</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"example"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"maximum"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"scroll"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Start a scrolling search."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"additionalProperties"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"patterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<p>Example response:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight plaintext"><code>&lt; HTTP/1.1 200
+&lt; date: Thu, 13 May 2021 08:21:31 GMT
+&lt; content-type: application/json; charset=utf-8
+&lt; content-length: 4441
+&lt; connection: close
+&lt; x-ratelimit-limit: 1000
+&lt; x-ratelimit-remaining: 999
+&lt; x-ratelimit-reset: 1620897691
+&lt; x-ratelimit-type: rest:post:files:search
+&lt; access-control-allow-origin: *
+&lt; access-control-expose-headers: *
+&lt; cache-control: no-cache
+&lt; vary: accept-encoding
+&lt; server: Sirv.API
+&lt; strict-transport-security: max-age=31536000
+
+{
+  "hits": [
+    {
+      "_index": "sirvfs-v3",
+      "_type": "_doc",
+      "_id": "248e197b4546afd4da9ccdb2ee0d30cf844ecf44",
+      "_score": null,
+      "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+      "_source": {
+        "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+        "filename": "/REST API Examples/aurora-copy.jpg",
+        "dirname": "/REST API Examples",
+        "basename": "aurora-copy.jpg",
+        "extension": ".jpg",
+        "id": "RaxZM3sxunjRxsH7dUOU1KmBqASp3weH",
+        "ctime": "2021-05-12T09:30:08.895Z",
+        "mtime": "2021-05-12T09:30:09.806Z",
+        "size": 201846,
+        "contentType": "image/webp",
+        "meta": {
+          "width": 2500,
+          "height": 1667,
+          "format": "WEBP",
+          "duration": 0,
+          "EXIF": {
+            "ModifyDate": "2020-01-29T17:12:45Z"
+          }
+        }
+      },
+      "sort": [
+        "/REST API Examples/aurora-copy.jpg"
+      ]
+    },
+    {
+      "_index": "sirvfs-v3",
+      "_type": "_doc",
+      "_id": "4b57cdf35a3568220bb9ad7a6f62f0048c8b4ae1",
+      "_score": null,
+      "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+      "_source": {
+        "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+        "filename": "/REST API Examples/aurora.jpg",
+        "dirname": "/REST API Examples",
+        "basename": "aurora.jpg",
+        "extension": ".jpg",
+        "id": "tkLbo0YuHJuBIEYj40lEUYRZZ8cLBGnF",
+        "ctime": "2020-07-17T13:31:39.348Z",
+        "mtime": "2021-05-12T09:30:05.386Z",
+        "size": 201846,
+        "contentType": "image/webp",
+        "meta": {
+          "width": 2500,
+          "height": 1667,
+          "format": "WEBP",
+          "duration": 0,
+          "EXIF": {
+            "ModifyDate": "2020-01-29T17:12:45Z"
+          }
+        }
+      },
+      "sort": [
+        "/REST API Examples/aurora.jpg"
+      ]
+    },
+    {
+      "_index": "sirvfs-v3",
+      "_type": "_doc",
+      "_id": "1945fa0032fbcc5df46e4af56ac1f75fc71ff38d",
+      "_score": null,
+      "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+      "_source": {
+        "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+        "filename": "/REST API Examples/video/001.jpg",
+        "dirname": "/REST API Examples/video",
+        "basename": "001.jpg",
+        "extension": ".jpg",
+        "id": "IfnjioVCkRxIWPXrKi6gpHEVKx0KvFm4",
+        "ctime": "2020-07-17T15:36:52.528Z",
+        "mtime": "2021-05-12T09:29:49.907Z",
+        "size": 279982,
+        "contentType": "image/jpeg",
+        "meta": {
+          "width": 1372,
+          "height": 1080,
+          "format": "JPEG",
+          "duration": 0
+        }
+      },
+      "sort": [
+        "/REST API Examples/video/001.jpg"
+      ]
+    },
+    {
+      "_index": "sirvfs-v3",
+      "_type": "_doc",
+      "_id": "61ebc8bf5a8ad3c092f29846afb14e988c4bddaa",
+      "_score": null,
+      "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+      "_source": {
+        "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+        "filename": "/REST API Examples/video/002.jpg",
+        "dirname": "/REST API Examples/video",
+        "basename": "002.jpg",
+        "extension": ".jpg",
+        "id": "F100f2RQYtqc4lu8RE5DCKn2GvXqkuov",
+        "ctime": "2020-07-17T15:36:52.520Z",
+        "mtime": "2021-05-12T09:29:50.109Z",
+        "size": 266295,
+        "contentType": "image/jpeg",
+        "meta": {
+          "width": 1372,
+          "height": 1080,
+          "format": "JPEG",
+          "duration": 0
+        }
+      },
+      "sort": [
+        "/REST API Examples/video/002.jpg"
+      ]
+    },
+    {
+      "_index": "sirvfs-v3",
+      "_type": "_doc",
+      "_id": "1f9171cb31bcc108a9df664b3ad60a495cc3c4f8",
+      "_score": null,
+      "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+      "_source": {
+        "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
+        "filename": "/REST API Examples/video/003.jpg",
+        "dirname": "/REST API Examples/video",
+        "basename": "003.jpg",
+        "extension": ".jpg",
+        "id": "To1IfJ0lftonDG6U2cI4IVTCU2LgNI4e",
+        "ctime": "2020-07-17T15:36:52.551Z",
+        "mtime": "2021-05-12T09:29:49.510Z",
+        "size": 259954,
+        "contentType": "image/jpeg",
+        "meta": {
+          "width": 1372,
+          "height": 1080,
+          "format": "JPEG",
+          "duration": 0
+        }
+      },
+      "sort": [
+        "/REST API Examples/video/003.jpg"
+      ]
+    }
+  ],
+  "total": 256,
+  "_relation": "eq"
+}
+</code></pre></div>
