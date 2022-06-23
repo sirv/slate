@@ -170,40 +170,40 @@ IRestResponse response = client.Execute(request);
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
+  "fmt"
+  "net/http"
+  "io/ioutil"
 )
 
 func main() {
 
-	url := "https://api.sirv.com/v2/files/readdir?dirname=%2FREST%20API%20Examples"
+  url := "https://api.sirv.com/v2/files/readdir?dirname=%2FREST%20API%20Examples"
 
-	req, _ := http.NewRequest("GET", url, nil)
+  req, _ := http.NewRequest("GET", url, nil)
 
-	req.Header.Add("content-type", "application/json")
-	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+  req.Header.Add("content-type", "application/json")
+  req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
 
-	res, _ := http.DefaultClient.Do(req)
+  res, _ := http.DefaultClient.Do(req)
 
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+  defer res.Body.Close()
+  body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(res)
-	fmt.Println(string(body))
+  fmt.Println(res)
+  fmt.Println(string(body))
 
 }
 ```
 
-Use this API method to check all the files within a folder. It will return the filename, mimetype, content type and file size. It will also return any folders that exist.
+Use this API method to get a list of all the files/folders within a folder. It will return the filename, mimetype, content type and file size. It will also return any folders that exist. A page of up to 100 results will be returned - use the 'continuation' field to request additional pages.
 
 ### Query string
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
+--------- | ---- | ----------- | -------
 dirname | string |  | /REST API Examples
-continuation | string | Send it to get next page of results | 
+continuation | string | Send it to get next page of results |
 
 
 ### Body payload
@@ -221,13 +221,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:46:07 GMT
+< date: Thu, 23 Jun 2022 17:17:35 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 1847
+< content-length: 2250
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6868
-< x-ratelimit-reset: 1595075478
+< x-ratelimit-remaining: 6967
+< x-ratelimit-reset: 1656008218
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -240,8 +240,8 @@ Example response:
 {
   "contents": [
     {
-      "filename": "aurora.jpg",
-      "mtime": "2020-07-17T15:47:36.701Z",
+      "filename": "aurora3.jpg",
+      "mtime": "2020-11-18T19:55:13.459Z",
       "contentType": "image/webp",
       "size": 201846,
       "isDirectory": false,
@@ -252,8 +252,8 @@ Example response:
       }
     },
     {
-      "filename": "aurora-copy.jpg",
-      "mtime": "2020-07-18T11:46:07.194Z",
+      "filename": "aurora.jpg",
+      "mtime": "2022-06-23T17:17:32.585Z",
       "contentType": "image/webp",
       "size": 201846,
       "isDirectory": false,
@@ -276,18 +276,6 @@ Example response:
       }
     },
     {
-      "filename": "blue-lake.jpg",
-      "mtime": "2020-07-17T13:31:39.450Z",
-      "contentType": "image/jpeg",
-      "size": 587065,
-      "isDirectory": false,
-      "meta": {
-        "width": 1578,
-        "height": 1002,
-        "duration": 0
-      }
-    },
-    {
       "filename": "video.mp4",
       "mtime": "2020-07-17T15:35:20.375Z",
       "contentType": "video/mp4",
@@ -300,18 +288,18 @@ Example response:
       }
     },
     {
-      "filename": "uploaded.txt",
-      "mtime": "2020-07-18T08:55:35.325Z",
-      "contentType": "binary/octet-stream",
-      "size": 0,
-      "isDirectory": false,
-      "meta": {}
-    },
-    {
       "filename": "video",
       "mtime": "2020-07-17T15:36:52.477Z",
       "size": 0,
       "isDirectory": true,
+      "meta": {}
+    },
+    {
+      "filename": "uploaded.txt",
+      "mtime": "2022-06-23T17:17:34.898Z",
+      "contentType": "text/plain",
+      "size": 0,
+      "isDirectory": false,
       "meta": {}
     },
     {
@@ -320,6 +308,37 @@ Example response:
       "size": 0,
       "isDirectory": true,
       "meta": {}
+    },
+    {
+      "filename": "copies",
+      "mtime": "2020-12-09T09:40:13.049Z",
+      "size": 0,
+      "isDirectory": true,
+      "meta": {}
+    },
+    {
+      "filename": "blue-lake.jpg",
+      "mtime": "2020-07-17T13:31:39.450Z",
+      "contentType": "image/jpeg",
+      "size": 587065,
+      "isDirectory": false,
+      "meta": {
+        "width": 1578,
+        "height": 1002,
+        "duration": 0
+      }
+    },
+    {
+      "filename": "aurora-copy.jpg",
+      "mtime": "2022-06-23T17:17:35.452Z",
+      "contentType": "image/webp",
+      "size": 201846,
+      "isDirectory": false,
+      "meta": {
+        "width": 2500,
+        "height": 1667,
+        "duration": 0
+      }
     }
   ]
 }
