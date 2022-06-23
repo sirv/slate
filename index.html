@@ -5487,9 +5487,9 @@ When the token expires (see the expiresIn field, in seconds), you should request
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span></p>
 
 <p><span class="k">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;net/http&quot;</span>
-    <span class="s">&quot;io/ioutil&quot;</span>
+  <span class="s">&quot;fmt&quot;</span>
+  <span class="s">&quot;net/http&quot;</span>
+  <span class="s">&quot;io/ioutil&quot;</span>
 <span class="p">)</span></p>
 
 <p><span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span></p>
@@ -5499,19 +5499,19 @@ When the token expires (see the expiresIn field, in seconds), you should request
 <p><span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span></p>
 
 <p><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;content-type&quot;</span><span class="p">,</span> <span class="s">&quot;application/json&quot;</span><span class="p">)</span>
-    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;authorization&quot;</span><span class="p">,</span> <span class="s">&quot;Bearer BEARER_TOKEN_HERE&quot;</span><span class="p">)</span></p>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;authorization&quot;</span><span class="p">,</span> <span class="s">&quot;Bearer BEARER_TOKEN_HERE&quot;</span><span class="p">)</span></p>
 
 <p><span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">DefaultClient</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span></p>
 
 <p><span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
-    <span class="n">body</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span></p>
+  <span class="n">body</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span></p>
 
 <p><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span></p>
+  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span></p>
 
 <p><span class="p">}</span>
 </code></pre></div>
-<p>Use this API method to check all the files within a folder. It will return the filename, mimetype, content type and file size. It will also return any folders that exist.</p>
+<p>Use this API method to get a list of all the files/folders within a folder. It will return the filename, mimetype, content type and file size. It will also return any folders that exist. A page of up to 100 results will be returned - use the &#39;continuation&#39; field to request additional pages.</p>
 
 <h3 id='query-string'>Query string</h3>
 
@@ -5548,13 +5548,13 @@ When the token expires (see the expiresIn field, in seconds), you should request
 <div class="center-column"></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>&lt; HTTP/1.1 200
-&lt; date: Sat, 18 Jul 2020 11:46:07 GMT
+&lt; date: Thu, 23 Jun 2022 17:17:35 GMT
 &lt; content-type: application/json; charset=utf-8
-&lt; content-length: 1847
+&lt; content-length: 2250
 &lt; connection: close
 &lt; x-ratelimit-limit: 7000
-&lt; x-ratelimit-remaining: 6868
-&lt; x-ratelimit-reset: 1595075478
+&lt; x-ratelimit-remaining: 6967
+&lt; x-ratelimit-reset: 1656008218
 &lt; x-ratelimit-type: rest:global
 &lt; access-control-allow-origin: *
 &lt; access-control-expose-headers: *
@@ -5567,8 +5567,8 @@ When the token expires (see the expiresIn field, in seconds), you should request
 {
   "contents": [
     {
-      "filename": "aurora.jpg",
-      "mtime": "2020-07-17T15:47:36.701Z",
+      "filename": "aurora3.jpg",
+      "mtime": "2020-11-18T19:55:13.459Z",
       "contentType": "image/webp",
       "size": 201846,
       "isDirectory": false,
@@ -5579,8 +5579,8 @@ When the token expires (see the expiresIn field, in seconds), you should request
       }
     },
     {
-      "filename": "aurora-copy.jpg",
-      "mtime": "2020-07-18T11:46:07.194Z",
+      "filename": "aurora.jpg",
+      "mtime": "2022-06-23T17:17:32.585Z",
       "contentType": "image/webp",
       "size": 201846,
       "isDirectory": false,
@@ -5603,18 +5603,6 @@ When the token expires (see the expiresIn field, in seconds), you should request
       }
     },
     {
-      "filename": "blue-lake.jpg",
-      "mtime": "2020-07-17T13:31:39.450Z",
-      "contentType": "image/jpeg",
-      "size": 587065,
-      "isDirectory": false,
-      "meta": {
-        "width": 1578,
-        "height": 1002,
-        "duration": 0
-      }
-    },
-    {
       "filename": "video.mp4",
       "mtime": "2020-07-17T15:35:20.375Z",
       "contentType": "video/mp4",
@@ -5627,18 +5615,18 @@ When the token expires (see the expiresIn field, in seconds), you should request
       }
     },
     {
-      "filename": "uploaded.txt",
-      "mtime": "2020-07-18T08:55:35.325Z",
-      "contentType": "binary/octet-stream",
-      "size": 0,
-      "isDirectory": false,
-      "meta": {}
-    },
-    {
       "filename": "video",
       "mtime": "2020-07-17T15:36:52.477Z",
       "size": 0,
       "isDirectory": true,
+      "meta": {}
+    },
+    {
+      "filename": "uploaded.txt",
+      "mtime": "2022-06-23T17:17:34.898Z",
+      "contentType": "text/plain",
+      "size": 0,
+      "isDirectory": false,
       "meta": {}
     },
     {
@@ -5647,6 +5635,37 @@ When the token expires (see the expiresIn field, in seconds), you should request
       "size": 0,
       "isDirectory": true,
       "meta": {}
+    },
+    {
+      "filename": "copies",
+      "mtime": "2020-12-09T09:40:13.049Z",
+      "size": 0,
+      "isDirectory": true,
+      "meta": {}
+    },
+    {
+      "filename": "blue-lake.jpg",
+      "mtime": "2020-07-17T13:31:39.450Z",
+      "contentType": "image/jpeg",
+      "size": 587065,
+      "isDirectory": false,
+      "meta": {
+        "width": 1578,
+        "height": 1002,
+        "duration": 0
+      }
+    },
+    {
+      "filename": "aurora-copy.jpg",
+      "mtime": "2022-06-23T17:17:35.452Z",
+      "contentType": "image/webp",
+      "size": 201846,
+      "isDirectory": false,
+      "meta": {
+        "width": 2500,
+        "height": 1667,
+        "duration": 0
+      }
     }
   ]
 }
