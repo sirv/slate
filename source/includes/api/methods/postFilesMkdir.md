@@ -1,4 +1,4 @@
-## Create new empty directory
+## Create new empty folder
 
 ```python
 import http.client
@@ -195,13 +195,13 @@ func main() {
 }
 ```
 
-Use this API method to create a new empty directory.
+Use this API method to create a new empty folder.
 
 ### Query string
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | -------
+--------- | ---- | ----------- | ------- 
 dirname | string |  | /REST API Examples/copies
 
 
@@ -220,12 +220,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 06 Nov 2020 10:11:02 GMT
-< content-length: 0
+< date: Thu, 01 Dec 2022 19:12:31 GMT
+< content-type: application/json; charset=utf-8
+< content-length: 90
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6964
-< x-ratelimit-reset: 1604661030
+< x-ratelimit-remaining: 6945
+< x-ratelimit-reset: 1669925426
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -233,5 +234,8 @@ Example response:
 < server: Sirv.API
 < strict-transport-security: max-age=31536000
 
-/ no response body: HTTP status 200 means SUCCESS /
+{
+  "name": "RiakFsError",
+  "message": "Path already exists: /REST API Examples/copies"
+}
 ```

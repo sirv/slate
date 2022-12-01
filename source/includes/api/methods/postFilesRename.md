@@ -1,4 +1,4 @@
-## Rename file or directory
+## Rename file or folder
 
 ```python
 import http.client
@@ -195,7 +195,7 @@ func main() {
 }
 ```
 
-Use this API method to rename (or move) a file or directory.
+Use this API method to rename (or move) a file or folder.
 
 ### Query string
 
@@ -221,12 +221,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 06 Nov 2020 10:11:02 GMT
+< date: Thu, 01 Dec 2022 19:12:32 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6963
-< x-ratelimit-reset: 1604661030
+< x-ratelimit-remaining: 6944
+< x-ratelimit-reset: 1669925426
 < x-ratelimit-type: rest:global
 < access-control-allow-origin: *
 < access-control-expose-headers: *

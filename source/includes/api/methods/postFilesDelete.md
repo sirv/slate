@@ -1,4 +1,4 @@
-## Delete file or empty directory
+## Delete file or empty folder
 
 ```python
 import http.client
@@ -195,7 +195,7 @@ func main() {
 }
 ```
 
-Use this API method to delete a single file or an empty directory.
+Use this API method to delete a single file or an empty folder.
 
 ### Query string
 
@@ -220,12 +220,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:46:07 GMT
+< date: Thu, 01 Dec 2022 19:12:27 GMT
 < content-length: 0
 < connection: close
 < x-ratelimit-limit: 3000
-< x-ratelimit-remaining: 2996
-< x-ratelimit-reset: 1595075495
+< x-ratelimit-remaining: 2999
+< x-ratelimit-reset: 1669925546
 < x-ratelimit-type: rest:post:files:delete
 < access-control-allow-origin: *
 < access-control-expose-headers: *
