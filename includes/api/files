@@ -2243,7 +2243,7 @@
 / no response body: HTTP status 200 means SUCCESS /
 </code></pre></div>
 
-<p><h2 id='delete-file-or-empty-directory'>Delete file or empty directory</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span></p>
+<p><h2 id='delete-file-or-empty-folder'>Delete file or empty folder</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span></p>
 
 <p><span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">&quot;api.sirv.com&quot;</span><span class="p">)</span></p>
 
@@ -2409,7 +2409,7 @@
 
 <p><span class="p">}</span>
 </code></pre></div>
-<p>Use this API method to delete a single file or an empty directory.</p>
+<p>Use this API method to delete a single file or an empty folder.</p>
 <h3 id='query-string'>Query string</h3>
 <table><thead>
 <tr>
@@ -2434,12 +2434,12 @@
 <div class="center-column"></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>&lt; HTTP/1.1 200
-&lt; date: Sat, 18 Jul 2020 11:46:07 GMT
+&lt; date: Thu, 01 Dec 2022 19:12:27 GMT
 &lt; content-length: 0
 &lt; connection: close
 &lt; x-ratelimit-limit: 3000
-&lt; x-ratelimit-remaining: 2996
-&lt; x-ratelimit-reset: 1595075495
+&lt; x-ratelimit-remaining: 2999
+&lt; x-ratelimit-reset: 1669925546
 &lt; x-ratelimit-type: rest:post:files:delete
 &lt; access-control-allow-origin: *
 &lt; access-control-expose-headers: *
@@ -7161,7 +7161,7 @@
 / no response body: HTTP status 200 means SUCCESS /
 </code></pre></div>
 
-<p><h2 id='create-new-empty-directory'>Create new empty directory</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span></p>
+<p><h2 id='create-new-empty-folder'>Create new empty folder</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span></p>
 
 <p><span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">&quot;api.sirv.com&quot;</span><span class="p">)</span></p>
 
@@ -7327,7 +7327,7 @@
 
 <p><span class="p">}</span>
 </code></pre></div>
-<p>Use this API method to create a new empty directory.</p>
+<p>Use this API method to create a new empty folder.</p>
 <h3 id='query-string'>Query string</h3>
 <table><thead>
 <tr>
@@ -7352,12 +7352,13 @@
 <div class="center-column"></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>&lt; HTTP/1.1 200
-&lt; date: Fri, 06 Nov 2020 10:11:02 GMT
-&lt; content-length: 0
+&lt; date: Thu, 01 Dec 2022 19:12:31 GMT
+&lt; content-type: application/json; charset=utf-8
+&lt; content-length: 90
 &lt; connection: close
 &lt; x-ratelimit-limit: 7000
-&lt; x-ratelimit-remaining: 6964
-&lt; x-ratelimit-reset: 1604661030
+&lt; x-ratelimit-remaining: 6945
+&lt; x-ratelimit-reset: 1669925426
 &lt; x-ratelimit-type: rest:global
 &lt; access-control-allow-origin: *
 &lt; access-control-expose-headers: *
@@ -7365,10 +7366,13 @@
 &lt; server: Sirv.API
 &lt; strict-transport-security: max-age=31536000
 
-/ no response body: HTTP status 200 means SUCCESS /
+{
+  "name": "RiakFsError",
+  "message": "Path already exists: /REST API Examples/copies"
+}
 </code></pre></div>
 
-<p><h2 id='rename-file-or-directory'>Rename file or directory</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span></p>
+<p><h2 id='rename-file-or-folder'>Rename file or folder</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span></p>
 
 <p><span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">&quot;api.sirv.com&quot;</span><span class="p">)</span></p>
 
@@ -7534,7 +7538,7 @@
 
 <p><span class="p">}</span>
 </code></pre></div>
-<p>Use this API method to rename (or move) a file or directory.</p>
+<p>Use this API method to rename (or move) a file or folder.</p>
 <h3 id='query-string'>Query string</h3>
 <table><thead>
 <tr>
@@ -7565,12 +7569,12 @@
 <div class="center-column"></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>&lt; HTTP/1.1 200
-&lt; date: Fri, 06 Nov 2020 10:11:02 GMT
+&lt; date: Thu, 01 Dec 2022 19:12:32 GMT
 &lt; content-length: 0
 &lt; connection: close
 &lt; x-ratelimit-limit: 7000
-&lt; x-ratelimit-remaining: 6963
-&lt; x-ratelimit-reset: 1604661030
+&lt; x-ratelimit-remaining: 6944
+&lt; x-ratelimit-reset: 1669925426
 &lt; x-ratelimit-type: rest:global
 &lt; access-control-allow-origin: *
 &lt; access-control-expose-headers: *

@@ -1,4 +1,4 @@
-<h2 id='delete-file-or-empty-directory'>Delete file or empty directory</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+<h2 id='delete-file-or-empty-folder'>Delete file or empty folder</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.sirv.com"</span><span class="p">)</span>
 
@@ -164,7 +164,7 @@
 
 <span class="p">}</span>
 </code></pre></div>
-<p>Use this API method to delete a single file or an empty directory.</p>
+<p>Use this API method to delete a single file or an empty folder.</p>
 <h3 id='query-string'>Query string</h3>
 <table><thead>
 <tr>
@@ -188,12 +188,12 @@
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight plaintext"><code>&lt; HTTP/1.1 200
-&lt; date: Sat, 18 Jul 2020 11:46:07 GMT
+&lt; date: Thu, 01 Dec 2022 19:12:27 GMT
 &lt; content-length: 0
 &lt; connection: close
 &lt; x-ratelimit-limit: 3000
-&lt; x-ratelimit-remaining: 2996
-&lt; x-ratelimit-reset: 1595075495
+&lt; x-ratelimit-remaining: 2999
+&lt; x-ratelimit-reset: 1669925546
 &lt; x-ratelimit-type: rest:post:files:delete
 &lt; access-control-allow-origin: *
 &lt; access-control-expose-headers: *
