@@ -170,27 +170,27 @@ IRestResponse response = client.Execute(request);
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
+  "fmt"
+  "net/http"
+  "io/ioutil"
 )
 
 func main() {
 
-	url := "https://api.sirv.com/v2/files/poi"
+  url := "https://api.sirv.com/v2/files/poi"
 
-	req, _ := http.NewRequest("GET", url, nil)
+  req, _ := http.NewRequest("GET", url, nil)
 
-	req.Header.Add("content-type", "application/json")
-	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+  req.Header.Add("content-type", "application/json")
+  req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
 
-	res, _ := http.DefaultClient.Do(req)
+  res, _ := http.DefaultClient.Do(req)
 
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+  defer res.Body.Close()
+  body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(res)
-	fmt.Println(string(body))
+  fmt.Println(res)
+  fmt.Println(string(body))
 
 }
 ```
@@ -201,7 +201,7 @@ Use this API method to get coordinates of all the POI (points of interest) on th
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
+--------- | ---- | ----------- | -------
 filename | string |  | /REST API Examples/blue-lake.jpg
 
 
@@ -220,12 +220,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Wed, 21 Jun 2023 15:47:23 GMT
+< date: Wed, 21 Jun 2023 16:13:11 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 2
+< content-length: 87
 < connection: close
 < x-global-ratelimit-limit: 7000
-< x-global-ratelimit-remaining: 6889
+< x-global-ratelimit-remaining: 6845
 < x-global-ratelimit-reset: 1687364368
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -234,5 +234,12 @@ Example response:
 < server: Sirv.API
 < strict-transport-security: max-age=31536000
 
-{}
+{
+  "BlueLake": {
+    "x": 0.5,
+    "y": 0.5,
+    "width": 0.5,
+    "height": 0.5
+  }
+}
 ```
