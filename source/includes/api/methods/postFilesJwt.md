@@ -29,9 +29,9 @@ curl --request POST \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -42,15 +42,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -60,9 +60,9 @@ req.end();
 ```
 
 ```javascript
-var data = "{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}";
+const data = "{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -91,7 +91,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/jwt"
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/files/jwt",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -100,11 +100,11 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -181,35 +181,37 @@ IRestResponse response = client.Execute(request);
 package main
 
 import (
-  "fmt"
-  "strings"
-  "net/http"
-  "io/ioutil"
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
 )
 
 func main() {
 
-  url := "https://api.sirv.com/v2/files/jwt"
+	url := "https://api.sirv.com/v2/files/jwt"
 
-  payload := strings.NewReader("{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}")
+	payload := strings.NewReader("{\"filename\":\"/REST API Examples/aurora.jpg\",\"key\":\"cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq\",\"alias\":\"demo-jwt\",\"secureParams\":{\"w\":300,\"h\":300},\"expiresIn\":300}")
 
-  req, _ := http.NewRequest("POST", url, payload)
+	req, _ := http.NewRequest("POST", url, payload)
 
-  req.Header.Add("content-type", "application/json")
-  req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
 
-  res, _ := http.DefaultClient.Do(req)
+	res, _ := http.DefaultClient.Do(req)
 
-  defer res.Body.Close()
-  body, _ := ioutil.ReadAll(res.Body)
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
 
-  fmt.Println(res)
-  fmt.Println(string(body))
+	fmt.Println(res)
+	fmt.Println(string(body))
 
 }
 ```
 
-Use this API method to generate a secure file URL, protected with JWT (JSON Web Token).
+JWT protection is a powerful way to protect your files from being seen without permission. Use this API method to generate a token that can be appended to a URL or set of URLs, allowing a file to be served. Without a valid token, requests for any file within a JWT protected folder will be denied.
+Before using this method, you must enable JWT folder protection and obtain a key.
+Read the documentation to learn how to enable and use JWT protection: https://sirv.com/help/json-web-token-protected-signed-url#enable-jwt-protection
 
 ### Query string
 
@@ -247,68 +249,57 @@ JSON Schema:
   "type": "object",
   "properties": {
     "filename": {
+      "type": "string",
       "examples": [
         "/REST API Examples/aurora.jpg"
       ],
-      "example": "/REST API Examples/aurora.jpg",
-      "type": "string",
       "pattern": "^\\/",
       "maxLength": 1024
     },
     "key": {
-      "description": "Specify JWT secret",
+      "type": "string",
       "examples": [
         "cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq"
       ],
-      "example": "cIxWUYfCjRHAy1BpcoIVNI5TivXszVPq",
-      "type": "string"
+      "description": "Specify JWT secret"
     },
     "alias": {
-      "description": "Specify account alias if your account has multiple aliases",
+      "type": "string",
       "examples": [
         "demo-jwt"
       ],
-      "example": "demo-jwt",
-      "type": "string"
+      "description": "Specify account alias if your account has multiple aliases"
     },
     "insecureParams": {
       "type": "object",
       "properties": {},
-      "additionalProperties": true,
-      "patterns": []
+      "additionalProperties": false
     },
     "secureParams": {
+      "type": "object",
       "examples": [
         {
           "w": 300,
           "h": 300
         }
       ],
-      "example": {
-        "w": 300,
-        "h": 300
-      },
-      "type": "object",
       "properties": {},
-      "additionalProperties": true,
-      "patterns": []
+      "additionalProperties": false
     },
     "expiresIn": {
-      "description": "Token expiration time in seconds",
+      "type": "number",
       "examples": [
         300
       ],
-      "example": 300,
-      "type": "number"
+      "description": "Token expiration time in seconds"
     }
   },
-  "additionalProperties": false,
-  "patterns": [],
   "required": [
     "filename",
     "key",
     "expiresIn"
-  ]
+  ],
+  "additionalProperties": false
 }
 ```
 
@@ -320,14 +311,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 21 Nov 2020 07:44:30 GMT
+< date: Tue, 27 Jun 2023 10:10:19 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 286
 < connection: close
-< x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6929
-< x-ratelimit-reset: 1605948149
-< x-ratelimit-type: rest:global
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6967
+< x-global-ratelimit-reset: 1687864194
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache
@@ -335,6 +325,6 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "url": "https://demo-jwt.sirv.com/REST API Examples/aurora.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcmdzIjp7InciOjMwMCwiaCI6MzAwfSwiaWF0IjoxNjA1OTQ0NjcwLCJleHAiOjE2MDU5NDQ5NzAsImF1ZCI6Ii9SRVNUIEFQSSBFeGFtcGxlcy9hdXJvcmEuanBnIn0.c9FlTRZw_-t3WcMc0FPOhINrDZGrLKH2DuUn2H16yq4"
+  "url": "https://demo-jwt.sirv.com/REST API Examples/aurora.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcmdzIjp7InciOjMwMCwiaCI6MzAwfSwiaWF0IjoxNjg3ODYwNjE5LCJleHAiOjE2ODc4NjA5MTksImF1ZCI6Ii9SRVNUIEFQSSBFeGFtcGxlcy9hdXJvcmEuanBnIn0.-6wTZUlW-8kp43lU8_MxSuSlx8MHf8XYtS8lSXRjtU0"
 }
 ```

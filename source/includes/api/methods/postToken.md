@@ -1,4 +1,4 @@
-## Get API access token
+## Get bearer token
 
 ```python
 import http.client
@@ -29,9 +29,9 @@ curl --request POST \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -42,15 +42,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -60,9 +60,9 @@ req.end();
 ```
 
 ```javascript
-var data = "{\"clientId\":\"ZcnZNfzwRhQExoHFoGpxWJ4p2R\",\"clientSecret\":\"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==\"}";
+const data = "{\"clientId\":\"ZcnZNfzwRhQExoHFoGpxWJ4p2R\",\"clientSecret\":\"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==\"}";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -91,7 +91,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/token")
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/token",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -100,11 +100,11 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "{\"clientId\":\"ZcnZNfzwRhQExoHFoGpxWJ4p2R\",\"clientSecret\":\"TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==\"}",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -209,7 +209,8 @@ func main() {
 }
 ```
 
-Before using any API method, you must first obtain an API access token. Tokens expire after 20 minutes (1200 seconds). If your token expires, request a new one, then continue with your work.
+Every API call will be authenticated with a bearer token, so your first step is to obtain a bearer token.
+Bearer tokens expire after 20 minutes (1200 seconds). If your token expires, request a new one, then continue with your work. After each API request you submit, you'll receive a response that contains useful information, including an expiresIn field (in seconds) telling you  how long remains before your bearer token expires.
 
 ### Query string
 
@@ -241,28 +242,25 @@ JSON Schema:
   "type": "object",
   "properties": {
     "clientId": {
-      "description": "API client ID",
+      "type": "string",
       "examples": [
         "ZcnZNfzwRhQExoHFoGpxWJ4p2R"
       ],
-      "example": "ZcnZNfzwRhQExoHFoGpxWJ4p2R",
-      "type": "string"
+      "description": "API client ID"
     },
     "clientSecret": {
-      "description": "API client secret",
+      "type": "string",
       "examples": [
         "TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q=="
       ],
-      "example": "TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q==",
-      "type": "string"
+      "description": "API client secret"
     }
   },
-  "additionalProperties": false,
-  "patterns": [],
   "required": [
     "clientId",
     "clientSecret"
-  ]
+  ],
+  "additionalProperties": false
 }
 ```
 
@@ -274,7 +272,7 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Thu, 01 Dec 2022 19:11:48 GMT
+< date: Tue, 27 Jun 2023 10:09:54 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 697
 < connection: close
@@ -285,7 +283,7 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IlpjblpOZnp3UmhRRXhvSEZvR3B4V0o0cDJSIiwiY2xpZW50TmFtZSI6Ik15IHdlYnNpdGUiLCJzY29wZSI6WyJhY2NvdW50OnJlYWQiLCJhY2NvdW50OndyaXRlIiwidXNlcjpyZWFkIiwidXNlcjp3cml0ZSIsImJpbGxpbmc6cmVhZCIsImJpbGxpbmc6d3JpdGUiLCJmaWxlczpyZWFkIiwiZmlsZXM6d3JpdGUiLCJ2aWRlb3MiLCJpbWFnZXMiXSwiaWF0IjoxNjY5OTIxOTA4LCJleHAiOjE2Njk5MjMxMDgsImF1ZCI6Ijk1cnR2cGxuY3p1Y25sZ2llNm1qdXUyaWI3Z29ncXoyIn0.uY_NWGcfDg5j80MU2L2RIPQobu-9kyBzhd6eg8E367I",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IlpjblpOZnp3UmhRRXhvSEZvR3B4V0o0cDJSIiwiY2xpZW50TmFtZSI6Ik15IHdlYnNpdGUiLCJzY29wZSI6WyJhY2NvdW50OnJlYWQiLCJhY2NvdW50OndyaXRlIiwidXNlcjpyZWFkIiwidXNlcjp3cml0ZSIsImJpbGxpbmc6cmVhZCIsImJpbGxpbmc6d3JpdGUiLCJmaWxlczpyZWFkIiwiZmlsZXM6d3JpdGUiLCJ2aWRlb3MiLCJpbWFnZXMiXSwiaWF0IjoxNjg3ODYwNTk0LCJleHAiOjE2ODc4NjE3OTQsImF1ZCI6Ijk1cnR2cGxuY3p1Y25sZ2llNm1qdXUyaWI3Z29ncXoyIn0.jnFixXD4uWOXq4qiDk7yvXyNfso2fv0VUUlubbMlfD4",
   "expiresIn": 1200,
   "scope": [
     "account:read",
