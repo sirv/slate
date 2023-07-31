@@ -1,4 +1,4 @@
-## Set file meta all at once
+## Set all file meta
 
 ```python
 import http.client
@@ -209,7 +209,7 @@ func main() {
 }
 ```
 
-Use this API method to set various meta fields at once.
+Add multiple meta fields in a single request. Any of the 10 types of meta can be added or changed with this API method. If you're adding a lot of meta, this is the fastest and lowest load way to add meta data.
 
 ### Query string
 
@@ -363,12 +363,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Mon, 31 Jul 2023 10:36:06 GMT
+< date: Mon, 31 Jul 2023 12:01:23 GMT
 < content-length: 0
 < connection: close
 < x-global-ratelimit-limit: 7000
-< x-global-ratelimit-remaining: 6477
-< x-global-ratelimit-reset: 1690800935
+< x-global-ratelimit-remaining: 6956
+< x-global-ratelimit-reset: 1690807228
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache

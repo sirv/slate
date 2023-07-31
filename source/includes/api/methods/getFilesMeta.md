@@ -1,4 +1,4 @@
-## Get file meta all at once
+## Get all file meta
 
 ```python
 import http.client
@@ -195,7 +195,7 @@ func main() {
 }
 ```
 
-Use this API method to get all file meta fields at once.
+Get all the meta for a file, in a single request. Unlike the API methods for getting meta title, description, tags and product data, this API method will return all meta data, making it the fastest and easiest way to get meta via the API. (You can also get file meta simply by requesting a file URL with ?info appended - <a href="https://demo.sirv.com/example.jpg?info">example</a>)
 
 ### Query string
 
@@ -220,13 +220,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Mon, 31 Jul 2023 10:36:06 GMT
+< date: Mon, 31 Jul 2023 12:01:23 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 424
 < connection: close
 < x-global-ratelimit-limit: 7000
-< x-global-ratelimit-remaining: 6476
-< x-global-ratelimit-reset: 1690800935
+< x-global-ratelimit-remaining: 6955
+< x-global-ratelimit-reset: 1690807228
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache
@@ -252,7 +252,7 @@ Example response:
     "category2": "Lakes"
   },
   "approval": {
-    "datetime": "2023-07-31T10:36:06.241Z",
+    "datetime": "2023-07-31T12:01:23.395Z",
     "approved": false,
     "comment": "It looks too cold!"
   }
