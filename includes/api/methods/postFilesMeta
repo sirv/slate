@@ -1,4 +1,4 @@
-<h2 id='set-file-meta-all-at-once'>Set file meta all at once</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+<h2 id='set-all-file-meta'>Set all file meta</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.sirv.com"</span><span class="p">)</span>
 
@@ -178,7 +178,7 @@
 
 <span class="p">}</span>
 </code></pre></div>
-<p>Use this API method to set various meta fields at once.</p>
+<p>Add multiple meta fields in a single request. Any of the 10 types of meta can be added or changed with this API method. If you&#39;re adding a lot of meta, this is the fastest and lowest load way to add meta data.</p>
 <h3 id='query-string'>Query string</h3>
 <table><thead>
 <tr>
@@ -326,12 +326,12 @@
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight plaintext"><code>&lt; HTTP/1.1 200
-&lt; date: Mon, 31 Jul 2023 10:36:06 GMT
+&lt; date: Mon, 31 Jul 2023 12:01:23 GMT
 &lt; content-length: 0
 &lt; connection: close
 &lt; x-global-ratelimit-limit: 7000
-&lt; x-global-ratelimit-remaining: 6477
-&lt; x-global-ratelimit-reset: 1690800935
+&lt; x-global-ratelimit-remaining: 6956
+&lt; x-global-ratelimit-reset: 1690807228
 &lt; access-control-allow-origin: *
 &lt; access-control-expose-headers: *
 &lt; cache-control: no-cache

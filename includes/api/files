@@ -1066,7 +1066,7 @@
 }
 </code></pre></div>
 
-<p><h2 id='get-file-meta-all-at-once'>Get file meta all at once</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span></p>
+<p><h2 id='get-all-file-meta'>Get all file meta</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span></p>
 
 <p><span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">&quot;api.sirv.com&quot;</span><span class="p">)</span></p>
 
@@ -1232,7 +1232,7 @@
 
 <p><span class="p">}</span>
 </code></pre></div>
-<p>Use this API method to get all file meta fields at once.</p>
+<p>Get all the meta for a file, in a single request. Unlike the API methods for getting meta title, description, tags and product data, this API method will return all meta data, making it the fastest and easiest way to get meta via the API. (You can also get file meta simply by requesting a file URL with ?info appended - <a href="https://demo.sirv.com/example.jpg?info">example</a>)</p>
 <h3 id='query-string'>Query string</h3>
 <table><thead>
 <tr>
@@ -1257,13 +1257,13 @@
 <div class="center-column"></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>&lt; HTTP/1.1 200
-&lt; date: Mon, 31 Jul 2023 10:36:06 GMT
+&lt; date: Mon, 31 Jul 2023 12:01:23 GMT
 &lt; content-type: application/json; charset=utf-8
 &lt; content-length: 424
 &lt; connection: close
 &lt; x-global-ratelimit-limit: 7000
-&lt; x-global-ratelimit-remaining: 6476
-&lt; x-global-ratelimit-reset: 1690800935
+&lt; x-global-ratelimit-remaining: 6955
+&lt; x-global-ratelimit-reset: 1690807228
 &lt; access-control-allow-origin: *
 &lt; access-control-expose-headers: *
 &lt; cache-control: no-cache
@@ -1289,7 +1289,7 @@
     "category2": "Lakes"
   },
   "approval": {
-    "datetime": "2023-07-31T10:36:06.241Z",
+    "datetime": "2023-07-31T12:01:23.395Z",
     "approved": false,
     "comment": "It looks too cold!"
   }
@@ -4892,7 +4892,7 @@ Read the documentation to learn how to enable and use JWT protection: https://si
 / no response body: HTTP status 200 means SUCCESS /
 </code></pre></div>
 
-<p><h2 id='set-file-meta-all-at-once'>Set file meta all at once</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span></p>
+<p><h2 id='set-all-file-meta'>Set all file meta</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span></p>
 
 <p><span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">&quot;api.sirv.com&quot;</span><span class="p">)</span></p>
 
@@ -5072,7 +5072,7 @@ Read the documentation to learn how to enable and use JWT protection: https://si
 
 <p><span class="p">}</span>
 </code></pre></div>
-<p>Use this API method to set various meta fields at once.</p>
+<p>Add multiple meta fields in a single request. Any of the 10 types of meta can be added or changed with this API method. If you&#39;re adding a lot of meta, this is the fastest and lowest load way to add meta data.</p>
 <h3 id='query-string'>Query string</h3>
 <table><thead>
 <tr>
@@ -5224,12 +5224,12 @@ Read the documentation to learn how to enable and use JWT protection: https://si
 <div class="center-column"></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>&lt; HTTP/1.1 200
-&lt; date: Mon, 31 Jul 2023 10:36:06 GMT
+&lt; date: Mon, 31 Jul 2023 12:01:23 GMT
 &lt; content-length: 0
 &lt; connection: close
 &lt; x-global-ratelimit-limit: 7000
-&lt; x-global-ratelimit-remaining: 6477
-&lt; x-global-ratelimit-reset: 1690800935
+&lt; x-global-ratelimit-remaining: 6956
+&lt; x-global-ratelimit-reset: 1690807228
 &lt; access-control-allow-origin: *
 &lt; access-control-expose-headers: *
 &lt; cache-control: no-cache
