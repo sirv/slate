@@ -1,18 +1,16 @@
-## Scroll through search results
+## Get results of batch delete job
 
 ```python
 import http.client
 
 conn = http.client.HTTPSConnection("api.sirv.com")
 
-payload = "{}"
-
 headers = {
     'content-type': "application/json",
     'authorization': "Bearer BEARER_TOKEN_HERE"
     }
 
-conn.request("POST", "/v2/files/search/scroll", payload, headers)
+conn.request("GET", "/v2/files/batch/delete", headers=headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -21,48 +19,46 @@ print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --request POST \\
-  --url https://api.sirv.com/v2/files/search/scroll \\
+curl --request GET \\
+  --url https://api.sirv.com/v2/files/batch/delete \\
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
-  --header 'content-type: application/json' \\
-  --data '{}'
+  --header 'content-type: application/json'
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
-  "method": "POST",
+const options = {
+  "method": "GET",
   "hostname": "api.sirv.com",
   "port": null,
-  "path": "/v2/files/search/scroll",
+  "path": "/v2/files/batch/delete",
   "headers": {
     "content-type": "application/json",
     "authorization": "Bearer BEARER_TOKEN_HERE"
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
 
-req.write("{}");
 req.end();
 ```
 
 ```javascript
-var data = "{}";
+const data = null;
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -71,7 +67,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.sirv.com/v2/files/search/scroll");
+xhr.open("GET", "https://api.sirv.com/v2/files/batch/delete");
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("authorization", "Bearer BEARER_TOKEN_HERE");
 
@@ -79,10 +75,9 @@ xhr.send(data);
 ```
 
 ```java
-HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/search/scroll")
+HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/batch/delete")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
-  .body("{}")
   .asString();
 ```
 
@@ -91,20 +86,19 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/sear
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.sirv.com/v2/files/search/scroll",
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://api.sirv.com/v2/files/batch/delete",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{}",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_CUSTOMREQUEST => "GET",
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -123,16 +117,15 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://api.sirv.com/v2/files/search/scroll")
+url = URI("https://api.sirv.com/v2/files/batch/delete")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-request = Net::HTTP::Post.new(url)
+request = Net::HTTP::Get.new(url)
 request["content-type"] = 'application/json'
 request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
-request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -146,14 +139,11 @@ let headers = [
   "authorization": "Bearer BEARER_TOKEN_HERE"
 ]
 
-let postData = NSData(data: "{}".data(using: String.Encoding.utf8)!)
-
-let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/search/scroll")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/batch/delete")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
-request.httpMethod = "POST"
+request.httpMethod = "GET"
 request.allHTTPHeaderFields = headers
-request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -169,11 +159,10 @@ dataTask.resume()
 ```
 
 ```csharp
-var client = new RestClient("https://api.sirv.com/v2/files/search/scroll");
-var request = new RestRequest(Method.POST);
+var client = new RestClient("https://api.sirv.com/v2/files/batch/delete");
+var request = new RestRequest(Method.GET);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
-request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -182,18 +171,15 @@ package main
 
 import (
 	"fmt"
-	"strings"
 	"net/http"
 	"io/ioutil"
 )
 
 func main() {
 
-	url := "https://api.sirv.com/v2/files/search/scroll"
+	url := "https://api.sirv.com/v2/files/batch/delete"
 
-	payload := strings.NewReader("{}")
-
-	req, _ := http.NewRequest("POST", url, payload)
+	req, _ := http.NewRequest("GET", url, nil)
 
 	req.Header.Add("content-type", "application/json")
 	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
@@ -209,52 +195,22 @@ func main() {
 }
 ```
 
-Use the scroll API method after performing an API search if you need to retrieve more than 1000 results. You can retrieve from 100,000 to 1,000,000 results, depending on your API limits.
-
-Each call to the scroll API can return up to 100 results at a time. Subsequent requests will return the next batch of results until there are no more results left to return.
-
-To use scrolling, the initial search request should specify the "scroll" parameter. The search context will then be kept alive for 30 seconds between each scroll call.
-
-A scrolling search will cache the entire results temporarily while you retrieve them. As such, it shows a snapshot in time and may become outdated if files have been added, deleted or modified since then.
+Use this method to get results and progress of batch delete job created with POST /files/batch/delete method
 
 ### Query string
 
 
-None
+Parameter | Type | Description | Example
+--------- | ---- | ----------- | ------- 
+id | string |  | BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI
 
 
 ### Body payload
 
 
-Example:
-
-<div class="center-column"></div>
-```json
-{}
-```
 
 
-
-
-JSON Schema:
-
-<div class="center-column"></div>
-```json
-{
-  "type": "object",
-  "properties": {
-    "scrollId": {
-      "description": "Scroll ID returned from preceding /files/search or /files/search/scroll call.",
-      "type": "string"
-    }
-  },
-  "additionalProperties": false,
-  "patterns": [],
-  "required": [
-    "scrollId"
-  ]
-}
-```
+None
 
 
 ### Response
@@ -263,5 +219,20 @@ Example response:
 
 <div class="center-column"></div>
 ```
+< HTTP/1.1 200
+< date: Thu, 24 Oct 2024 06:53:45 GMT
+< content-type: application/json; charset=utf-8
+< content-length: 2
+< connection: close
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6944
+< x-global-ratelimit-reset: 1729756400
+< access-control-allow-origin: *
+< access-control-expose-headers: *
+< cache-control: no-cache
+< accept-ranges: bytes
+< server: Sirv.API
+< strict-transport-security: max-age=31536000
 
+{}
 ```

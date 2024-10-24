@@ -1,18 +1,18 @@
-## Scroll through search results
+## Delete a batch of files or directories
 
 ```python
 import http.client
 
 conn = http.client.HTTPSConnection("api.sirv.com")
 
-payload = "{}"
+payload = "{\"filenames\":[\"/REST API Examples/filename.jpg\",\"/REST API Examples/directory/\"]}"
 
 headers = {
     'content-type': "application/json",
     'authorization': "Bearer BEARER_TOKEN_HERE"
     }
 
-conn.request("POST", "/v2/files/search/scroll", payload, headers)
+conn.request("POST", "/v2/files/batch/delete", payload, headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -22,47 +22,47 @@ print(data.decode("utf-8"))
 
 ```shell
 curl --request POST \\
-  --url https://api.sirv.com/v2/files/search/scroll \\
+  --url https://api.sirv.com/v2/files/batch/delete \\
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json' \\
-  --data '{}'
+  --data '{"filenames":["/REST API Examples/filename.jpg","/REST API Examples/directory/"]}'
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
-  "path": "/v2/files/search/scroll",
+  "path": "/v2/files/batch/delete",
   "headers": {
     "content-type": "application/json",
     "authorization": "Bearer BEARER_TOKEN_HERE"
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
 
-req.write("{}");
+req.write("{\"filenames\":[\"/REST API Examples/filename.jpg\",\"/REST API Examples/directory/\"]}");
 req.end();
 ```
 
 ```javascript
-var data = "{}";
+const data = "{\"filenames\":[\"/REST API Examples/filename.jpg\",\"/REST API Examples/directory/\"]}";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -71,7 +71,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.sirv.com/v2/files/search/scroll");
+xhr.open("POST", "https://api.sirv.com/v2/files/batch/delete");
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("authorization", "Bearer BEARER_TOKEN_HERE");
 
@@ -79,10 +79,10 @@ xhr.send(data);
 ```
 
 ```java
-HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/search/scroll")
+HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/batch/delete")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
-  .body("{}")
+  .body("{\"filenames\":[\"/REST API Examples/filename.jpg\",\"/REST API Examples/directory/\"]}")
   .asString();
 ```
 
@@ -91,20 +91,20 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/sear
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.sirv.com/v2/files/search/scroll",
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://api.sirv.com/v2/files/batch/delete",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{}",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_POSTFIELDS => "{\"filenames\":[\"/REST API Examples/filename.jpg\",\"/REST API Examples/directory/\"]}",
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -123,7 +123,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://api.sirv.com/v2/files/search/scroll")
+url = URI("https://api.sirv.com/v2/files/batch/delete")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -132,7 +132,7 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request = Net::HTTP::Post.new(url)
 request["content-type"] = 'application/json'
 request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
-request.body = "{}"
+request.body = "{\"filenames\":[\"/REST API Examples/filename.jpg\",\"/REST API Examples/directory/\"]}"
 
 response = http.request(request)
 puts response.read_body
@@ -146,9 +146,9 @@ let headers = [
   "authorization": "Bearer BEARER_TOKEN_HERE"
 ]
 
-let postData = NSData(data: "{}".data(using: String.Encoding.utf8)!)
+let postData = NSData(data: "{"filenames":["/REST API Examples/filename.jpg","/REST API Examples/directory/"]}".data(using: String.Encoding.utf8)!)
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/search/scroll")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/batch/delete")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"
@@ -169,11 +169,11 @@ dataTask.resume()
 ```
 
 ```csharp
-var client = new RestClient("https://api.sirv.com/v2/files/search/scroll");
+var client = new RestClient("https://api.sirv.com/v2/files/batch/delete");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
-request.AddParameter("application/json", "{}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\"filenames\":[\"/REST API Examples/filename.jpg\",\"/REST API Examples/directory/\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -189,9 +189,9 @@ import (
 
 func main() {
 
-	url := "https://api.sirv.com/v2/files/search/scroll"
+	url := "https://api.sirv.com/v2/files/batch/delete"
 
-	payload := strings.NewReader("{}")
+	payload := strings.NewReader("{\"filenames\":[\"/REST API Examples/filename.jpg\",\"/REST API Examples/directory/\"]}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -209,13 +209,7 @@ func main() {
 }
 ```
 
-Use the scroll API method after performing an API search if you need to retrieve more than 1000 results. You can retrieve from 100,000 to 1,000,000 results, depending on your API limits.
-
-Each call to the scroll API can return up to 100 results at a time. Subsequent requests will return the next batch of results until there are no more results left to return.
-
-To use scrolling, the initial search request should specify the "scroll" parameter. The search context will then be kept alive for 30 seconds between each scroll call.
-
-A scrolling search will cache the entire results temporarily while you retrieve them. As such, it shows a snapshot in time and may become outdated if files have been added, deleted or modified since then.
+Use this method to delete the list of filenames
 
 ### Query string
 
@@ -230,7 +224,12 @@ Example:
 
 <div class="center-column"></div>
 ```json
-{}
+{
+  "filenames": [
+    "/REST API Examples/filename.jpg",
+    "/REST API Examples/directory/"
+  ]
+}
 ```
 
 
@@ -243,16 +242,27 @@ JSON Schema:
 {
   "type": "object",
   "properties": {
-    "scrollId": {
-      "description": "Scroll ID returned from preceding /files/search or /files/search/scroll call.",
-      "type": "string"
+    "filenames": {
+      "type": "array",
+      "examples": [
+        [
+          [
+            "/REST API Examples/filename.jpg",
+            "/REST API Examples/directory/"
+          ]
+        ]
+      ],
+      "maxItems": 1000,
+      "items": {
+        "type": "string",
+        "maxLength": 1024
+      }
     }
   },
-  "additionalProperties": false,
-  "patterns": [],
   "required": [
-    "scrollId"
-  ]
+    "filenames"
+  ],
+  "additionalProperties": false
 }
 ```
 
@@ -263,5 +273,25 @@ Example response:
 
 <div class="center-column"></div>
 ```
+< HTTP/1.1 200
+< date: Thu, 24 Oct 2024 06:53:45 GMT
+< content-type: application/json; charset=utf-8
+< content-length: 46
+< connection: close
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6945
+< x-global-ratelimit-reset: 1729756400
+< x-ratelimit-limit: 25
+< x-ratelimit-remaining: 24
+< x-ratelimit-reset: 1729756425
+< x-ratelimit-type: rest:post:files:batch:delete
+< access-control-allow-origin: *
+< access-control-expose-headers: *
+< cache-control: no-cache
+< server: Sirv.API
+< strict-transport-security: max-age=31536000
 
+{
+  "id": "h02KtybW8LPV4MBaNFtqVswFybm0AQAl"
+}
 ```
