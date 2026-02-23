@@ -29,9 +29,9 @@ curl --request POST \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -42,15 +42,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -60,9 +60,9 @@ req.end();
 ```
 
 ```javascript
-var data = "{\"tags\":[\"blue\",\"lake\",\"winter\",\"cold\",\"water\"]}";
+const data = "{\"tags\":[\"blue\",\"lake\",\"winter\",\"cold\",\"water\"]}";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -91,7 +91,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/meta
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/files/meta/tags?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -100,11 +100,11 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "{\"tags\":[\"blue\",\"lake\",\"winter\",\"cold\",\"water\"]}",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -215,7 +215,7 @@ Use this API method to add a meta tag to a file or folder.
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
+--------- | ---- | ----------- | -------
 filename | string |  | /REST API Examples/blue-lake.jpg
 
 
@@ -239,6 +239,7 @@ Example:
 
 
 
+
 JSON Schema:
 
 <div class="center-column"></div>
@@ -247,34 +248,29 @@ JSON Schema:
   "type": "object",
   "properties": {
     "tags": {
+      "type": "array",
       "examples": [
         [
-          "blue",
-          "lake",
-          "winter",
-          "cold",
-          "water"
+          [
+            "blue",
+            "lake",
+            "winter",
+            "cold",
+            "water"
+          ]
         ]
       ],
-      "example": [
-        "blue",
-        "lake",
-        "winter",
-        "cold",
-        "water"
-      ],
-      "type": "array",
       "maxItems": 50,
       "items": {
-        "type": "string"
+        "type": "string",
+        "maxLength": 32
       }
     }
   },
-  "additionalProperties": false,
-  "patterns": [],
   "required": [
     "tags"
-  ]
+  ],
+  "additionalProperties": false
 }
 ```
 
@@ -286,13 +282,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:46:06 GMT
+< date: Mon, 23 Feb 2026 14:07:58 GMT
 < content-length: 0
 < connection: close
-< x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6875
-< x-ratelimit-reset: 1595075478
-< x-ratelimit-type: rest:global
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6915
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache

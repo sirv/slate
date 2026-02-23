@@ -26,9 +26,9 @@ curl --request GET \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "GET",
   "hostname": "api.sirv.com",
   "port": null,
@@ -39,15 +39,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -56,9 +56,9 @@ req.end();
 ```
 
 ```javascript
-var data = null;
+const data = null;
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -86,7 +86,7 @@ HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/readd
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/files/readdir?dirname=%2FREST%20API%20Examples",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -94,11 +94,11 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "GET",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -170,27 +170,27 @@ IRestResponse response = client.Execute(request);
 package main
 
 import (
-  "fmt"
-  "net/http"
-  "io/ioutil"
+	"fmt"
+	"net/http"
+	"io/ioutil"
 )
 
 func main() {
 
-  url := "https://api.sirv.com/v2/files/readdir?dirname=%2FREST%20API%20Examples"
+	url := "https://api.sirv.com/v2/files/readdir?dirname=%2FREST%20API%20Examples"
 
-  req, _ := http.NewRequest("GET", url, nil)
+	req, _ := http.NewRequest("GET", url, nil)
 
-  req.Header.Add("content-type", "application/json")
-  req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer BEARER_TOKEN_HERE")
 
-  res, _ := http.DefaultClient.Do(req)
+	res, _ := http.DefaultClient.Do(req)
 
-  defer res.Body.Close()
-  body, _ := ioutil.ReadAll(res.Body)
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
 
-  fmt.Println(res)
-  fmt.Println(string(body))
+	fmt.Println(res)
+	fmt.Println(string(body))
 
 }
 ```
@@ -203,7 +203,7 @@ Use this API method to get a list of all the files/folders within a folder. It w
 Parameter | Type | Description | Example
 --------- | ---- | ----------- | -------
 dirname | string |  | /REST API Examples
-continuation | string | Send it to get next page of results |
+continuation | string |  |
 
 
 ### Body payload
@@ -221,14 +221,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Thu, 23 Jun 2022 17:17:35 GMT
+< date: Mon, 23 Feb 2026 14:08:04 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 2250
 < connection: close
-< x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6967
-< x-ratelimit-reset: 1656008218
-< x-ratelimit-type: rest:global
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6905
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache
@@ -240,10 +239,10 @@ Example response:
 {
   "contents": [
     {
-      "filename": "aurora3.jpg",
-      "mtime": "2020-11-18T19:55:13.459Z",
-      "contentType": "image/webp",
-      "size": 201846,
+      "filename": "aurora.jpg",
+      "mtime": "2026-02-23T10:22:34.659Z",
+      "contentType": "image/jpeg",
+      "size": 260864,
       "isDirectory": false,
       "meta": {
         "width": 2500,
@@ -252,8 +251,8 @@ Example response:
       }
     },
     {
-      "filename": "aurora.jpg",
-      "mtime": "2022-06-23T17:17:32.585Z",
+      "filename": "aurora3.jpg",
+      "mtime": "2020-11-18T19:55:13.459Z",
       "contentType": "image/webp",
       "size": 201846,
       "isDirectory": false,
@@ -272,6 +271,18 @@ Example response:
       "meta": {
         "width": 620,
         "height": 372,
+        "duration": 0
+      }
+    },
+    {
+      "filename": "aurora-copy.jpg",
+      "mtime": "2026-02-23T14:08:04.722Z",
+      "contentType": "image/jpeg",
+      "size": 260864,
+      "isDirectory": false,
+      "meta": {
+        "width": 2500,
+        "height": 1667,
         "duration": 0
       }
     },
@@ -296,22 +307,22 @@ Example response:
     },
     {
       "filename": "uploaded.txt",
-      "mtime": "2022-06-23T17:17:34.898Z",
+      "mtime": "2026-02-23T14:08:03.554Z",
       "contentType": "text/plain",
       "size": 0,
       "isDirectory": false,
       "meta": {}
     },
     {
-      "filename": "coin",
-      "mtime": "2020-07-17T13:31:08.833Z",
+      "filename": "copies",
+      "mtime": "2020-12-09T09:40:13.049Z",
       "size": 0,
       "isDirectory": true,
       "meta": {}
     },
     {
-      "filename": "copies",
-      "mtime": "2020-12-09T09:40:13.049Z",
+      "filename": "coin",
+      "mtime": "2020-07-17T13:31:08.833Z",
       "size": 0,
       "isDirectory": true,
       "meta": {}
@@ -325,18 +336,6 @@ Example response:
       "meta": {
         "width": 1578,
         "height": 1002,
-        "duration": 0
-      }
-    },
-    {
-      "filename": "aurora-copy.jpg",
-      "mtime": "2022-06-23T17:17:35.452Z",
-      "contentType": "image/webp",
-      "size": 201846,
-      "isDirectory": false,
-      "meta": {
-        "width": 2500,
-        "height": 1667,
         "duration": 0
       }
     }

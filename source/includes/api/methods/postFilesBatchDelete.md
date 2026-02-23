@@ -274,16 +274,16 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Thu, 24 Oct 2024 06:53:45 GMT
+< date: Mon, 23 Feb 2026 14:09:12 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 46
 < connection: close
 < x-global-ratelimit-limit: 7000
-< x-global-ratelimit-remaining: 6945
-< x-global-ratelimit-reset: 1729756400
+< x-global-ratelimit-remaining: 6887
+< x-global-ratelimit-reset: 1771858410
 < x-ratelimit-limit: 25
-< x-ratelimit-remaining: 24
-< x-ratelimit-reset: 1729756425
+< x-ratelimit-remaining: 23
+< x-ratelimit-reset: 1771858518
 < x-ratelimit-type: rest:post:files:batch:delete
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -292,6 +292,6 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "id": "h02KtybW8LPV4MBaNFtqVswFybm0AQAl"
+  "id": "YE49COidrrMuVspJg41HAsaVA0ecmQKs"
 }
 ```

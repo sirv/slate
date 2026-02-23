@@ -254,6 +254,12 @@ JSON Schema:
         "TM3d0CfXxusKMpH3x7kHJYD40qJIR3omTIGXP6wPPkXpIUKLEz/dOJ9v6LbXra3y67XsaGK7iQPmnAuD+fzj+Q=="
       ],
       "description": "API client secret"
+    },
+    "expiresIn": {
+      "type": "number",
+      "description": "Expiration TTL for token in seconds",
+      "minimum": 5,
+      "maximum": 604800
     }
   },
   "required": [
@@ -272,7 +278,7 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Tue, 27 Jun 2023 10:09:54 GMT
+< date: Mon, 23 Feb 2026 14:07:28 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 697
 < connection: close
@@ -283,7 +289,7 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IlpjblpOZnp3UmhRRXhvSEZvR3B4V0o0cDJSIiwiY2xpZW50TmFtZSI6Ik15IHdlYnNpdGUiLCJzY29wZSI6WyJhY2NvdW50OnJlYWQiLCJhY2NvdW50OndyaXRlIiwidXNlcjpyZWFkIiwidXNlcjp3cml0ZSIsImJpbGxpbmc6cmVhZCIsImJpbGxpbmc6d3JpdGUiLCJmaWxlczpyZWFkIiwiZmlsZXM6d3JpdGUiLCJ2aWRlb3MiLCJpbWFnZXMiXSwiaWF0IjoxNjg3ODYwNTk0LCJleHAiOjE2ODc4NjE3OTQsImF1ZCI6Ijk1cnR2cGxuY3p1Y25sZ2llNm1qdXUyaWI3Z29ncXoyIn0.jnFixXD4uWOXq4qiDk7yvXyNfso2fv0VUUlubbMlfD4",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IlpjblpOZnp3UmhRRXhvSEZvR3B4V0o0cDJSIiwiY2xpZW50TmFtZSI6Ik15IHdlYnNpdGUiLCJzY29wZSI6WyJhY2NvdW50OnJlYWQiLCJhY2NvdW50OndyaXRlIiwidXNlcjpyZWFkIiwidXNlcjp3cml0ZSIsImJpbGxpbmc6cmVhZCIsImJpbGxpbmc6d3JpdGUiLCJmaWxlczpyZWFkIiwiZmlsZXM6d3JpdGUiLCJ2aWRlb3MiLCJpbWFnZXMiXSwiaWF0IjoxNzcxODU1NjQ4LCJleHAiOjE3NzE4NTY4NDgsImF1ZCI6Ijk1cnR2cGxuY3p1Y25sZ2llNm1qdXUyaWI3Z29ncXoyIn0.A8rxpx1RgQzYHCocxzq7WGjzYrV2z4I0WrpBCNwfyJ0",
   "expiresIn": 1200,
   "scope": [
     "account:read",

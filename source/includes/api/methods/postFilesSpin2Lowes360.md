@@ -29,9 +29,9 @@ curl --request POST \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -42,15 +42,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -60,9 +60,9 @@ req.end();
 ```
 
 ```javascript
-var data = "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"barcode\":\"1234567890\"}";
+const data = "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"barcode\":\"1234567890\"}";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -91,7 +91,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/spin
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/files/spin2lowes360",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -100,11 +100,11 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"barcode\":\"1234567890\"}",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -243,29 +243,26 @@ JSON Schema:
   "type": "object",
   "properties": {
     "filename": {
+      "type": "string",
       "examples": [
         "/REST API Examples/coin/coin.spin"
       ],
-      "example": "/REST API Examples/coin/coin.spin",
-      "type": "string",
       "pattern": "^\\/",
       "maxLength": 1024
     },
     "barcode": {
-      "description": "Lowe's barcode",
+      "type": "string",
       "examples": [
         "1234567890"
       ],
-      "example": "1234567890",
-      "type": "string"
+      "description": "Lowe's barcode"
     }
   },
-  "additionalProperties": false,
-  "patterns": [],
   "required": [
     "filename",
     "barcode"
-  ]
+  ],
+  "additionalProperties": false
 }
 ```
 
@@ -277,14 +274,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Wed, 02 Feb 2022 14:30:44 GMT
+< date: Mon, 23 Feb 2026 14:09:08 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 58
 < connection: close
-< x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6956
-< x-ratelimit-reset: 1643815780
-< x-ratelimit-type: rest:global
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6895
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache

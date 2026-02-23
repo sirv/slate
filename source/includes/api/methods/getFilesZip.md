@@ -10,7 +10,7 @@ headers = {
     'authorization': "Bearer BEARER_TOKEN_HERE"
     }
 
-conn.request("GET", "/v2/files/zip", headers=headers)
+conn.request("GET", "/v2/files/zip?id=BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI", headers=headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -20,7 +20,7 @@ print(data.decode("utf-8"))
 
 ```shell
 curl --request GET \\
-  --url https://api.sirv.com/v2/files/zip \\
+  --url 'https://api.sirv.com/v2/files/zip?id=BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI' \\
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json'
 ```
@@ -32,7 +32,7 @@ const options = {
   "method": "GET",
   "hostname": "api.sirv.com",
   "port": null,
-  "path": "/v2/files/zip",
+  "path": "/v2/files/zip?id=BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI",
   "headers": {
     "content-type": "application/json",
     "authorization": "Bearer BEARER_TOKEN_HERE"
@@ -67,7 +67,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("GET", "https://api.sirv.com/v2/files/zip");
+xhr.open("GET", "https://api.sirv.com/v2/files/zip?id=BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI");
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("authorization", "Bearer BEARER_TOKEN_HERE");
 
@@ -75,7 +75,7 @@ xhr.send(data);
 ```
 
 ```java
-HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/zip")
+HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/zip?id=BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
   .asString();
@@ -87,7 +87,7 @@ HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/zip")
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "https://api.sirv.com/v2/files/zip",
+  CURLOPT_URL => "https://api.sirv.com/v2/files/zip?id=BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -117,7 +117,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://api.sirv.com/v2/files/zip")
+url = URI("https://api.sirv.com/v2/files/zip?id=BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -139,7 +139,7 @@ let headers = [
   "authorization": "Bearer BEARER_TOKEN_HERE"
 ]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/zip")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/zip?id=BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
@@ -159,7 +159,7 @@ dataTask.resume()
 ```
 
 ```csharp
-var client = new RestClient("https://api.sirv.com/v2/files/zip");
+var client = new RestClient("https://api.sirv.com/v2/files/zip?id=BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI");
 var request = new RestRequest(Method.GET);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
@@ -177,7 +177,7 @@ import (
 
 func main() {
 
-	url := "https://api.sirv.com/v2/files/zip"
+	url := "https://api.sirv.com/v2/files/zip?id=BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -201,7 +201,7 @@ Use this method to get results and progress of ZIP job created with POST /files/
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
+--------- | ---- | ----------- | -------
 id | string |  | BLDgbVfrCYcLOceNSEf2ymIwLGQDXSCI
 
 
@@ -220,13 +220,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Mon, 05 Feb 2024 13:30:28 GMT
+< date: Mon, 23 Feb 2026 14:09:08 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 191
+< content-length: 2
 < connection: close
 < x-global-ratelimit-limit: 7000
-< x-global-ratelimit-remaining: 6681
-< x-global-ratelimit-reset: 1707142905
+< x-global-ratelimit-remaining: 6892
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache

@@ -10,7 +10,7 @@ headers = {
     'authorization': "Bearer BEARER_TOKEN_HERE"
     }
 
-conn.request("GET", "/v2/files/meta", headers=headers)
+conn.request("GET", "/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg", headers=headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -20,7 +20,7 @@ print(data.decode("utf-8"))
 
 ```shell
 curl --request GET \\
-  --url https://api.sirv.com/v2/files/meta \\
+  --url 'https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg' \\
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json'
 ```
@@ -32,7 +32,7 @@ const options = {
   "method": "GET",
   "hostname": "api.sirv.com",
   "port": null,
-  "path": "/v2/files/meta",
+  "path": "/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg",
   "headers": {
     "content-type": "application/json",
     "authorization": "Bearer BEARER_TOKEN_HERE"
@@ -67,7 +67,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("GET", "https://api.sirv.com/v2/files/meta");
+xhr.open("GET", "https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg");
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("authorization", "Bearer BEARER_TOKEN_HERE");
 
@@ -75,7 +75,7 @@ xhr.send(data);
 ```
 
 ```java
-HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/meta")
+HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
   .asString();
@@ -87,7 +87,7 @@ HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/meta"
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "https://api.sirv.com/v2/files/meta",
+  CURLOPT_URL => "https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -117,7 +117,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://api.sirv.com/v2/files/meta")
+url = URI("https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -139,7 +139,7 @@ let headers = [
   "authorization": "Bearer BEARER_TOKEN_HERE"
 ]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/meta")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
@@ -159,7 +159,7 @@ dataTask.resume()
 ```
 
 ```csharp
-var client = new RestClient("https://api.sirv.com/v2/files/meta");
+var client = new RestClient("https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg");
 var request = new RestRequest(Method.GET);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
@@ -177,7 +177,7 @@ import (
 
 func main() {
 
-	url := "https://api.sirv.com/v2/files/meta"
+	url := "https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -201,7 +201,7 @@ Get all the meta for a file, in a single request. Unlike the API methods for get
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
+--------- | ---- | ----------- | -------
 filename | string |  | /REST API Examples/blue-lake.jpg
 
 
@@ -220,13 +220,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Mon, 31 Jul 2023 12:01:23 GMT
+< date: Mon, 23 Feb 2026 14:08:03 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 424
 < connection: close
 < x-global-ratelimit-limit: 7000
-< x-global-ratelimit-remaining: 6955
-< x-global-ratelimit-reset: 1690807228
+< x-global-ratelimit-remaining: 6910
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache
@@ -252,7 +252,7 @@ Example response:
     "category2": "Lakes"
   },
   "approval": {
-    "datetime": "2023-07-31T12:01:23.395Z",
+    "datetime": "2026-02-23T14:08:00.165Z",
     "approved": false,
     "comment": "It looks too cold!"
   }

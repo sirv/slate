@@ -26,9 +26,9 @@ curl --request GET \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "GET",
   "hostname": "api.sirv.com",
   "port": null,
@@ -39,15 +39,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -56,9 +56,9 @@ req.end();
 ```
 
 ```javascript
-var data = null;
+const data = null;
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -86,7 +86,7 @@ HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/account/lim
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/account/limits",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -94,11 +94,11 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "GET",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -218,14 +218,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:45:50 GMT
+< date: Mon, 23 Feb 2026 14:07:32 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 2892
+< content-length: 3593
 < connection: close
-< x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6893
-< x-ratelimit-reset: 1595075478
-< x-ratelimit-type: rest:global
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6936
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache
@@ -239,121 +238,121 @@ Example response:
     "count": 0,
     "limit": 7000,
     "remaining": 7000,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "s3:PUT": {
     "count": 0,
     "limit": 2000,
     "remaining": 2000,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "s3:GET": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "s3:DELETE": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "rest:global": {
-    "count": 107,
+    "count": 64,
     "limit": 7000,
-    "remaining": 6893,
-    "reset": 1595075478
+    "remaining": 6936,
+    "reset": 1771858410
   },
   "rest:post:files:search": {
-    "count": 3,
+    "count": 1,
     "limit": 1000,
-    "remaining": 997,
-    "reset": 1595075483
+    "remaining": 999,
+    "reset": 1771858422
   },
   "rest:post:files:search:scroll": {
     "count": 0,
     "limit": 2000,
     "remaining": 2000,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "rest:post:files:video2spin": {
-    "count": 3,
+    "count": 1,
     "limit": 200,
-    "remaining": 197,
-    "reset": 1595075483
+    "remaining": 199,
+    "reset": 1771858423
   },
   "rest:post:files:spin2video": {
-    "count": 3,
+    "count": 1,
     "limit": 200,
-    "remaining": 197,
-    "reset": 1595075486
-  },
-  "rest:post:files:fetch": {
-    "count": 3,
-    "limit": 2000,
-    "remaining": 1997,
-    "reset": 1595075492
+    "remaining": 199,
+    "reset": 1771858426
   },
   "rest:post:files:upload": {
-    "count": 3,
+    "count": 0,
     "limit": 2000,
-    "remaining": 1997,
-    "reset": 1595075494
+    "remaining": 2000,
+    "reset": 1771859252
   },
   "rest:post:files:delete": {
-    "count": 3,
+    "count": 1,
     "limit": 3000,
-    "remaining": 2997,
-    "reset": 1595075495
+    "remaining": 2999,
+    "reset": 1771858504
+  },
+  "rest:post:files:batch:delete": {
+    "count": 1,
+    "limit": 25,
+    "remaining": 24,
+    "reset": 1771858518
   },
   "rest:post:account": {
-    "count": 4,
+    "count": 2,
     "limit": 50,
-    "remaining": 46,
-    "reset": 1595075478
+    "remaining": 48,
+    "reset": 1771858410
   },
   "rest:post:account:fetching": {
     "count": 0,
     "limit": 50,
     "remaining": 50,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "rest:get:stats:http": {
-    "count": 3,
+    "count": 1,
     "limit": 100,
-    "remaining": 97,
-    "reset": 1595075480
+    "remaining": 99,
+    "reset": 1771858419
   },
   "rest:get:stats:storage": {
-    "count": 3,
+    "count": 1,
     "limit": 100,
-    "remaining": 97,
-    "reset": 1595075481
+    "remaining": 99,
+    "reset": 1771858420
   },
   "rest:post:account:new": {
     "count": 0,
     "limit": 5,
     "remaining": 5,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "rest:post:user:accounts": {
     "count": 0,
     "limit": 20,
     "remaining": 20,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "rest:get:rest:credentials": {
     "count": 0,
     "limit": 50,
     "remaining": 50,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "rest:post:video:toSpin": {
     "count": 0,
     "limit": 400,
     "remaining": 400,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "rest:post:upload:toSirv": {
     "count": 0,
@@ -365,31 +364,49 @@ Example response:
     "count": 0,
     "limit": 10000,
     "remaining": 10000,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "ftp:STOR": {
     "count": 0,
     "limit": 2000,
     "remaining": 2000,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "ftp:RETR": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "ftp:DELE": {
     "count": 0,
     "limit": 3000,
     "remaining": 3000,
-    "reset": 1595076350
+    "reset": 1771859252
   },
   "fetch:file": {
-    "count": 1,
-    "limit": 2000,
-    "remaining": 1999,
-    "reset": 1595075492
+    "count": 2,
+    "limit": 1000,
+    "remaining": 998,
+    "reset": 1771858429
+  },
+  "fetch:largefile": {
+    "count": 0,
+    "limit": 10,
+    "remaining": 10,
+    "reset": 1771859252
+  },
+  "fetch:largetimeout": {
+    "count": 0,
+    "limit": 10,
+    "remaining": 10,
+    "reset": 1771859252
+  },
+  "zips2:create": {
+    "count": 276737,
+    "limit": 536870912000,
+    "remaining": 536870635263,
+    "reset": 1771858513
   }
 }
 ```

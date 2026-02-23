@@ -12,7 +12,7 @@ headers = {
     'authorization': "Bearer BEARER_TOKEN_HERE"
     }
 
-conn.request("DELETE", "/v2/files/poi", payload, headers)
+conn.request("DELETE", "/v2/files/poi?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg", payload, headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -22,7 +22,7 @@ print(data.decode("utf-8"))
 
 ```shell
 curl --request DELETE \\
-  --url https://api.sirv.com/v2/files/poi \\
+  --url 'https://api.sirv.com/v2/files/poi?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg' \\
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json' \\
   --data '{"name":"BlueLake"}'
@@ -35,7 +35,7 @@ const options = {
   "method": "DELETE",
   "hostname": "api.sirv.com",
   "port": null,
-  "path": "/v2/files/poi",
+  "path": "/v2/files/poi?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg",
   "headers": {
     "content-type": "application/json",
     "authorization": "Bearer BEARER_TOKEN_HERE"
@@ -71,7 +71,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("DELETE", "https://api.sirv.com/v2/files/poi");
+xhr.open("DELETE", "https://api.sirv.com/v2/files/poi?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg");
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("authorization", "Bearer BEARER_TOKEN_HERE");
 
@@ -79,7 +79,7 @@ xhr.send(data);
 ```
 
 ```java
-HttpResponse<String> response = Unirest.delete("https://api.sirv.com/v2/files/poi")
+HttpResponse<String> response = Unirest.delete("https://api.sirv.com/v2/files/poi?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
   .body("{\"name\":\"BlueLake\"}")
@@ -92,7 +92,7 @@ HttpResponse<String> response = Unirest.delete("https://api.sirv.com/v2/files/po
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "https://api.sirv.com/v2/files/poi",
+  CURLOPT_URL => "https://api.sirv.com/v2/files/poi?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -123,7 +123,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://api.sirv.com/v2/files/poi")
+url = URI("https://api.sirv.com/v2/files/poi?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -148,7 +148,7 @@ let headers = [
 
 let postData = NSData(data: "{"name":"BlueLake"}".data(using: String.Encoding.utf8)!)
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/poi")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/poi?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "DELETE"
@@ -169,7 +169,7 @@ dataTask.resume()
 ```
 
 ```csharp
-var client = new RestClient("https://api.sirv.com/v2/files/poi");
+var client = new RestClient("https://api.sirv.com/v2/files/poi?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
@@ -189,7 +189,7 @@ import (
 
 func main() {
 
-	url := "https://api.sirv.com/v2/files/poi"
+	url := "https://api.sirv.com/v2/files/poi?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg"
 
 	payload := strings.NewReader("{\"name\":\"BlueLake\"}")
 
@@ -215,7 +215,7 @@ Use this API method to delete POI (point of interest) on the image.
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
+--------- | ---- | ----------- | -------
 filename | string |  | /REST API Examples/blue-lake.jpg
 
 
@@ -262,12 +262,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Wed, 21 Jun 2023 15:47:23 GMT
+< date: Mon, 23 Feb 2026 13:55:18 GMT
 < content-length: 0
 < connection: close
 < x-global-ratelimit-limit: 7000
-< x-global-ratelimit-remaining: 6887
-< x-global-ratelimit-reset: 1687364368
+< x-global-ratelimit-remaining: 6949
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache

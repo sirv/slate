@@ -311,13 +311,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Tue, 27 Jun 2023 10:10:19 GMT
+< date: Mon, 23 Feb 2026 14:08:05 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 286
 < connection: close
 < x-global-ratelimit-limit: 7000
-< x-global-ratelimit-remaining: 6967
-< x-global-ratelimit-reset: 1687864194
+< x-global-ratelimit-remaining: 6901
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache
@@ -325,6 +325,6 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "url": "https://demo-jwt.sirv.com/REST API Examples/aurora.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcmdzIjp7InciOjMwMCwiaCI6MzAwfSwiaWF0IjoxNjg3ODYwNjE5LCJleHAiOjE2ODc4NjA5MTksImF1ZCI6Ii9SRVNUIEFQSSBFeGFtcGxlcy9hdXJvcmEuanBnIn0.-6wTZUlW-8kp43lU8_MxSuSlx8MHf8XYtS8lSXRjtU0"
+  "url": "https://demo-jwt.sirv.com/REST API Examples/aurora.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcmdzIjp7InciOjMwMCwiaCI6MzAwfSwiaWF0IjoxNzcxODU1Njg1LCJleHAiOjE3NzE4NTU5ODUsImF1ZCI6Ii9SRVNUIEFQSSBFeGFtcGxlcy9hdXJvcmEuanBnIn0.9KvaToLxdobTONZ5JnCeZKuf1z1XynBC2yYnEk8k0i4"
 }
 ```

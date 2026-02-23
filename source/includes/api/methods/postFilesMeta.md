@@ -12,7 +12,7 @@ headers = {
     'authorization': "Bearer BEARER_TOKEN_HERE"
     }
 
-conn.request("POST", "/v2/files/meta", payload, headers)
+conn.request("POST", "/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg", payload, headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -22,7 +22,7 @@ print(data.decode("utf-8"))
 
 ```shell
 curl --request POST \\
-  --url https://api.sirv.com/v2/files/meta \\
+  --url 'https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg' \\
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json' \\
   --data '{"tags":["lake","water"],"title":"Blue Lake","description":"Blue Lake in the Winter","product":{"id":"LLBB77","name":"Blue Lake Card","brand":"BLUE LAKE LLC","category1":"Cards","category2":"Lakes"},"approval":{"approved":false,"comment":"It looks too cold!"}}'
@@ -35,7 +35,7 @@ const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
-  "path": "/v2/files/meta",
+  "path": "/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg",
   "headers": {
     "content-type": "application/json",
     "authorization": "Bearer BEARER_TOKEN_HERE"
@@ -71,7 +71,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.sirv.com/v2/files/meta");
+xhr.open("POST", "https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg");
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("authorization", "Bearer BEARER_TOKEN_HERE");
 
@@ -79,7 +79,7 @@ xhr.send(data);
 ```
 
 ```java
-HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/meta")
+HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
   .body("{\"tags\":[\"lake\",\"water\"],\"title\":\"Blue Lake\",\"description\":\"Blue Lake in the Winter\",\"product\":{\"id\":\"LLBB77\",\"name\":\"Blue Lake Card\",\"brand\":\"BLUE LAKE LLC\",\"category1\":\"Cards\",\"category2\":\"Lakes\"},\"approval\":{\"approved\":false,\"comment\":\"It looks too cold!\"}}")
@@ -92,7 +92,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/meta
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "https://api.sirv.com/v2/files/meta",
+  CURLOPT_URL => "https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -123,7 +123,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://api.sirv.com/v2/files/meta")
+url = URI("https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -148,7 +148,7 @@ let headers = [
 
 let postData = NSData(data: "{"tags":["lake","water"],"title":"Blue Lake","description":"Blue Lake in the Winter","product":{"id":"LLBB77","name":"Blue Lake Card","brand":"BLUE LAKE LLC","category1":"Cards","category2":"Lakes"},"approval":{"approved":false,"comment":"It looks too cold!"}}".data(using: String.Encoding.utf8)!)
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/meta")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"
@@ -169,7 +169,7 @@ dataTask.resume()
 ```
 
 ```csharp
-var client = new RestClient("https://api.sirv.com/v2/files/meta");
+var client = new RestClient("https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
@@ -189,7 +189,7 @@ import (
 
 func main() {
 
-	url := "https://api.sirv.com/v2/files/meta"
+	url := "https://api.sirv.com/v2/files/meta?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg"
 
 	payload := strings.NewReader("{\"tags\":[\"lake\",\"water\"],\"title\":\"Blue Lake\",\"description\":\"Blue Lake in the Winter\",\"product\":{\"id\":\"LLBB77\",\"name\":\"Blue Lake Card\",\"brand\":\"BLUE LAKE LLC\",\"category1\":\"Cards\",\"category2\":\"Lakes\"},\"approval\":{\"approved\":false,\"comment\":\"It looks too cold!\"}}")
 
@@ -215,7 +215,7 @@ Add multiple meta fields in a single request. Any of the 10 types of meta can be
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
+--------- | ---- | ----------- | -------
 filename | string |  | /REST API Examples/blue-lake.jpg
 
 
@@ -363,12 +363,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Mon, 31 Jul 2023 12:01:23 GMT
+< date: Mon, 23 Feb 2026 14:08:00 GMT
 < content-length: 0
 < connection: close
 < x-global-ratelimit-limit: 7000
-< x-global-ratelimit-remaining: 6956
-< x-global-ratelimit-reset: 1690807228
+< x-global-ratelimit-remaining: 6911
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache

@@ -29,9 +29,9 @@ curl --request POST \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -42,15 +42,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -60,9 +60,9 @@ req.end();
 ```
 
 ```javascript
-var data = "[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"},{\"url\":\"https://demo.sirv.com/missing.jpg\",\"filename\":\"/REST API Examples/missing.jpg\"}]";
+const data = "[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"},{\"url\":\"https://demo.sirv.com/missing.jpg\",\"filename\":\"/REST API Examples/missing.jpg\"}]";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -91,7 +91,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/fetc
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/files/fetch",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -100,11 +100,11 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "[{\"url\":\"https://demo.sirv.com/aurora.jpg\",\"filename\":\"/REST API Examples/aurora.jpg\"},{\"url\":\"https://demo.sirv.com/missing.jpg\",\"filename\":\"/REST API Examples/missing.jpg\"}]",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -238,34 +238,27 @@ Example:
 
 
 
+
 JSON Schema:
 
 <div class="center-column"></div>
 ```json
 {
+  "type": "array",
   "examples": [
     [
-      {
-        "url": "https://demo.sirv.com/aurora.jpg",
-        "filename": "/REST API Examples/aurora.jpg"
-      },
-      {
-        "url": "https://demo.sirv.com/missing.jpg",
-        "filename": "/REST API Examples/missing.jpg"
-      }
+      [
+        {
+          "url": "https://demo.sirv.com/aurora.jpg",
+          "filename": "/REST API Examples/aurora.jpg"
+        },
+        {
+          "url": "https://demo.sirv.com/missing.jpg",
+          "filename": "/REST API Examples/missing.jpg"
+        }
+      ]
     ]
   ],
-  "example": [
-    {
-      "url": "https://demo.sirv.com/aurora.jpg",
-      "filename": "/REST API Examples/aurora.jpg"
-    },
-    {
-      "url": "https://demo.sirv.com/missing.jpg",
-      "filename": "/REST API Examples/missing.jpg"
-    }
-  ],
-  "type": "array",
   "maxItems": 20,
   "items": {
     "type": "object",
@@ -291,19 +284,17 @@ JSON Schema:
             "maxLength": 256
           }
         },
-        "additionalProperties": false,
-        "patterns": []
+        "additionalProperties": false
       },
       "wait": {
         "type": "boolean"
       }
     },
-    "additionalProperties": false,
-    "patterns": [],
     "required": [
       "url",
       "filename"
-    ]
+    ],
+    "additionalProperties": false
   }
 }
 ```
@@ -318,12 +309,11 @@ Example response:
 < HTTP/1.1 200
 < date: Sat, 18 Jul 2020 11:46:04 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 9882
+< content-length: 7459
 < connection: close
-< x-ratelimit-limit: 2000
-< x-ratelimit-remaining: 1996
-< x-ratelimit-reset: 1595075492
-< x-ratelimit-type: rest:post:files:fetch
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6923
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache

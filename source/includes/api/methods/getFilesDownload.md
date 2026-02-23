@@ -26,9 +26,9 @@ curl --request GET \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "GET",
   "hostname": "api.sirv.com",
   "port": null,
@@ -39,15 +39,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -56,9 +56,9 @@ req.end();
 ```
 
 ```javascript
-var data = null;
+const data = null;
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -86,7 +86,7 @@ HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/files/downl
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/files/download?filename=%2FREST%20API%20Examples%2Fuploaded.txt",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -94,11 +94,11 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "GET",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -201,7 +201,7 @@ Use this API method to download a single file from an account.
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
+--------- | ---- | ----------- | -------
 filename | string |  | /REST API Examples/uploaded.txt
 
 
@@ -220,15 +220,16 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Mon, 09 Aug 2021 13:31:31 GMT
+< date: Mon, 23 Feb 2026 14:08:03 GMT
 < content-type: text/plain; charset=utf-8
 < content-length: 0
 < connection: close
-< last-modified: Mon, 09 Aug 2021 13:31:31 GMT
+< last-modified: Mon, 23 Feb 2026 14:08:03 GMT
 < cache-control: max-age=86400
-< etag: "61112e33-0"
+< etag: "699c5f43-0"
 < server: Sirv.API
-< expires: Tue, 10 Aug 2021 13:31:31 GMT
+< expires: Tue, 24 Feb 2026 14:08:03 GMT
+< accept-ranges: bytes
 < strict-transport-security: max-age=31536000
 < accept-ranges: bytes
 

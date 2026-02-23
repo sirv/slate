@@ -282,13 +282,13 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Mon, 05 Feb 2024 13:30:28 GMT
+< date: Mon, 23 Feb 2026 14:09:08 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 46
 < connection: close
 < x-global-ratelimit-limit: 7000
-< x-global-ratelimit-remaining: 6682
-< x-global-ratelimit-reset: 1707142905
+< x-global-ratelimit-remaining: 6893
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache
@@ -296,6 +296,6 @@ Example response:
 < strict-transport-security: max-age=31536000
 
 {
-  "id": "emrXdtsZrBjPYlDawmhRDqWCXKSeqGUG"
+  "id": "SicD2eqm87EKGpPCAM4sCu28xGeSaNnB"
 }
 ```

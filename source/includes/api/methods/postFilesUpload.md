@@ -26,9 +26,9 @@ curl --request POST \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -39,15 +39,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -56,9 +56,9 @@ req.end();
 ```
 
 ```javascript
-var data = null;
+const data = null;
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -86,7 +86,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/uplo
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/files/upload?filename=%2FREST%20API%20Examples%2Fuploaded.txt",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -94,11 +94,11 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -201,7 +201,7 @@ Use this API method to upload a file. If the folder path does not already exist,
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
+--------- | ---- | ----------- | -------
 filename | string |  | /REST API Examples/uploaded.txt
 
 
@@ -220,12 +220,15 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Fri, 03 Jun 2022 15:21:07 GMT
+< date: Mon, 23 Feb 2026 14:08:03 GMT
 < content-length: 0
 < connection: close
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6909
+< x-global-ratelimit-reset: 1771858410
 < x-ratelimit-limit: 2000
 < x-ratelimit-remaining: 1999
-< x-ratelimit-reset: 1654273267
+< x-ratelimit-reset: 1771859283
 < x-ratelimit-type: rest:post:files:upload
 < access-control-allow-origin: *
 < access-control-expose-headers: *

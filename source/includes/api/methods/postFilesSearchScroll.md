@@ -29,9 +29,9 @@ curl --request POST \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -42,15 +42,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -60,9 +60,9 @@ req.end();
 ```
 
 ```javascript
-var data = "{}";
+const data = "{}";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -91,7 +91,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/sear
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/files/search/scroll",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -100,11 +100,11 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "{}",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -209,13 +209,13 @@ func main() {
 }
 ```
 
-Use the scroll API method after performing an API search if you need to retrieve more than 1000 results. You can retrieve from 100,000 to 1,000,000 results, depending on your API limits.
+Use the scroll API method after performing an API search if you need to retrieve more than 1000 results.
 
-Each call to the scroll API can return up to 100 results at a time. Subsequent requests will return the next batch of results until there are no more results left to return.
+Each call to the scroll API returns the next batch of search results until there are no more results left to return.
 
 To use scrolling, the initial search request should specify the "scroll" parameter. The search context will then be kept alive for 30 seconds between each scroll call.
 
-A scrolling search will cache the entire results temporarily while you retrieve them. As such, it shows a snapshot in time and may become outdated if files have been added, deleted or modified since then.
+A scrolling search will cache the entire results temporarily while you retrieve them. As such, it shows a snapshot in time and may become outdated if files have been added, deleted or modified since then. <a href="https://sirv.com/help/articles/search-files-with-the-api/#scroll-through-more-than-1000-results">Learn more</a>
 
 ### Query string
 
@@ -244,15 +244,14 @@ JSON Schema:
   "type": "object",
   "properties": {
     "scrollId": {
-      "description": "Scroll ID returned from preceding /files/search or /files/search/scroll call.",
-      "type": "string"
+      "type": "string",
+      "description": "Scroll ID returned from preceding /files/search or /files/search/scroll call."
     }
   },
-  "additionalProperties": false,
-  "patterns": [],
   "required": [
     "scrollId"
-  ]
+  ],
+  "additionalProperties": false
 }
 ```
 

@@ -5,7 +5,7 @@ import http.client
 
 conn = http.client.HTTPSConnection("api.sirv.com")
 
-payload = "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3}}"
+payload = "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3,\"speed\":3600}}"
 
 headers = {
     'content-type': "application/json",
@@ -25,13 +25,13 @@ curl --request POST \\
   --url https://api.sirv.com/v2/files/spin2video \\
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json' \\
-  --data '{"filename":"/REST API Examples/coin/coin.spin","options":{"width":1920,"height":1080,"loops":3}}'
+  --data '{"filename":"/REST API Examples/coin/coin.spin","options":{"width":1920,"height":1080,"loops":3,"speed":3600}}'
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -42,27 +42,27 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
 
-req.write("{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3}}");
+req.write("{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3,\"speed\":3600}}");
 req.end();
 ```
 
 ```javascript
-var data = "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3}}";
+const data = "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3,\"speed\":3600}}";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -82,7 +82,7 @@ xhr.send(data);
 HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/spin2video")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
-  .body("{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3}}")
+  .body("{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3,\"speed\":3600}}")
   .asString();
 ```
 
@@ -91,7 +91,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/spin
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/files/spin2video",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -99,12 +99,12 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3}}",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_POSTFIELDS => "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3,\"speed\":3600}}",
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -132,7 +132,7 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request = Net::HTTP::Post.new(url)
 request["content-type"] = 'application/json'
 request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
-request.body = "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3}}"
+request.body = "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3,\"speed\":3600}}"
 
 response = http.request(request)
 puts response.read_body
@@ -146,7 +146,7 @@ let headers = [
   "authorization": "Bearer BEARER_TOKEN_HERE"
 ]
 
-let postData = NSData(data: "{"filename":"/REST API Examples/coin/coin.spin","options":{"width":1920,"height":1080,"loops":3}}".data(using: String.Encoding.utf8)!)
+let postData = NSData(data: "{"filename":"/REST API Examples/coin/coin.spin","options":{"width":1920,"height":1080,"loops":3,"speed":3600}}".data(using: String.Encoding.utf8)!)
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/spin2video")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
@@ -173,7 +173,7 @@ var client = new RestClient("https://api.sirv.com/v2/files/spin2video");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
-request.AddParameter("application/json", "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3}}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3,\"speed\":3600}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -191,7 +191,7 @@ func main() {
 
 	url := "https://api.sirv.com/v2/files/spin2video"
 
-	payload := strings.NewReader("{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3}}")
+	payload := strings.NewReader("{\"filename\":\"/REST API Examples/coin/coin.spin\",\"options\":{\"width\":1920,\"height\":1080,\"loops\":3,\"speed\":3600}}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -229,10 +229,12 @@ Example:
   "options": {
     "width": 1920,
     "height": 1080,
-    "loops": 3
+    "loops": 3,
+    "speed": 3600
   }
 }
 ```
+
 
 
 
@@ -244,11 +246,10 @@ JSON Schema:
   "type": "object",
   "properties": {
     "filename": {
+      "type": "string",
       "examples": [
         "/REST API Examples/coin/coin.spin"
       ],
-      "example": "/REST API Examples/coin/coin.spin",
-      "type": "string",
       "pattern": "^\\/",
       "maxLength": 1024
     },
@@ -256,46 +257,49 @@ JSON Schema:
       "type": "object",
       "properties": {
         "width": {
+          "type": "number",
           "examples": [
             1920
           ],
-          "example": 1920,
-          "type": "number",
           "maximum": 1920
         },
         "height": {
+          "type": "number",
           "examples": [
             1080
           ],
-          "example": 1080,
-          "type": "number",
           "maximum": 1080
         },
         "loops": {
+          "type": "number",
           "examples": [
             3
           ],
-          "example": 3,
-          "type": "number",
           "maximum": 20
         },
+        "speed": {
+          "type": "number",
+          "examples": [
+            3600
+          ],
+          "minimum": 1,
+          "maximum": 60000
+        },
         "row": {
+          "type": "string",
           "enum": [
             "single",
             "all"
-          ],
-          "type": "string"
+          ]
         }
       },
-      "additionalProperties": false,
-      "patterns": []
+      "additionalProperties": false
     }
   },
-  "additionalProperties": false,
-  "patterns": [],
   "required": [
     "filename"
-  ]
+  ],
+  "additionalProperties": false
 }
 ```
 
@@ -307,13 +311,16 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:46:04 GMT
+< date: Mon, 23 Feb 2026 14:07:52 GMT
 < content-type: application/json; charset=utf-8
 < content-length: 69
 < connection: close
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6924
+< x-global-ratelimit-reset: 1771858410
 < x-ratelimit-limit: 200
-< x-ratelimit-remaining: 196
-< x-ratelimit-reset: 1595075486
+< x-ratelimit-remaining: 198
+< x-ratelimit-reset: 1771858426
 < x-ratelimit-type: rest:post:files:spin2video
 < access-control-allow-origin: *
 < access-control-expose-headers: *

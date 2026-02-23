@@ -5,7 +5,7 @@ import http.client
 
 conn = http.client.HTTPSConnection("api.sirv.com")
 
-payload = "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}"
+payload = "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}"
 
 headers = {
     'content-type': "application/json",
@@ -25,13 +25,13 @@ curl --request POST \\
   --url https://api.sirv.com/v2/files/search \\
   --header 'authorization: Bearer BEARER_TOKEN_HERE' \\
   --header 'content-type: application/json' \\
-  --data '{"query":"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash","sort":{"filename.raw":"asc"},"from":0,"size":5}'
+  --data '{"query":"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash","from":0,"size":5}'
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -42,27 +42,27 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
 
-req.write("{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}");
+req.write("{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}");
 req.end();
 ```
 
 ```javascript
-var data = "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}";
+const data = "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -82,7 +82,7 @@ xhr.send(data);
 HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/search")
   .header("content-type", "application/json")
   .header("authorization", "Bearer BEARER_TOKEN_HERE")
-  .body("{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}")
+  .body("{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}")
   .asString();
 ```
 
@@ -91,7 +91,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/sear
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/files/search",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -99,12 +99,12 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_POSTFIELDS => "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}",
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -132,7 +132,7 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request = Net::HTTP::Post.new(url)
 request["content-type"] = 'application/json'
 request["authorization"] = 'Bearer BEARER_TOKEN_HERE'
-request.body = "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}"
+request.body = "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}"
 
 response = http.request(request)
 puts response.read_body
@@ -146,7 +146,7 @@ let headers = [
   "authorization": "Bearer BEARER_TOKEN_HERE"
 ]
 
-let postData = NSData(data: "{"query":"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\/.Trash","sort":{"filename.raw":"asc"},"from":0,"size":5}".data(using: String.Encoding.utf8)!)
+let postData = NSData(data: "{"query":"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\/.Trash","from":0,"size":5}".data(using: String.Encoding.utf8)!)
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.sirv.com/v2/files/search")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
@@ -173,7 +173,7 @@ var client = new RestClient("https://api.sirv.com/v2/files/search");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer BEARER_TOKEN_HERE");
-request.AddParameter("application/json", "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -191,7 +191,7 @@ func main() {
 
 	url := "https://api.sirv.com/v2/files/search"
 
-	payload := strings.NewReader("{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"sort\":{\"filename.raw\":\"asc\"},\"from\":0,\"size\":5}")
+	payload := strings.NewReader("{\"query\":\"extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\\\/.Trash\",\"from\":0,\"size\":5}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -228,9 +228,6 @@ Example:
 ```json
 {
   "query": "extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\/.Trash",
-  "sort": {
-    "filename.raw": "asc"
-  },
   "from": 0,
   "size": 5
 }
@@ -247,50 +244,50 @@ JSON Schema:
   "type": "object",
   "properties": {
     "query": {
+      "type": "string",
       "examples": [
         "extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\/.Trash"
       ],
-      "example": "extension:.jpg AND mtime:[now-30d TO now] AND -dirname:\\/.Trash",
-      "type": "string",
       "maxLength": 1024
     },
     "sort": {
-      "examples": [
+      "oneOf": [
         {
-          "filename.raw": "asc"
+          "type": "object",
+          "examples": [
+            {
+              "filename.raw": "asc"
+            }
+          ],
+          "properties": {},
+          "additionalProperties": false
+        },
+        {
+          "type": "array",
+          "items": {}
         }
-      ],
-      "example": {
-        "filename.raw": "asc"
-      },
-      "type": "object",
-      "properties": {},
-      "additionalProperties": true,
-      "patterns": []
+      ]
     },
     "from": {
+      "type": "number",
       "examples": [
         0
       ],
-      "example": 0,
-      "type": "number",
       "maximum": 1000
     },
     "size": {
+      "type": "number",
       "examples": [
         5
       ],
-      "example": 5,
-      "type": "number",
       "maximum": 100
     },
     "scroll": {
-      "description": "Start a scrolling search.",
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Start a scrolling search."
     }
   },
-  "additionalProperties": false,
-  "patterns": []
+  "additionalProperties": false
 }
 ```
 
@@ -302,13 +299,16 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Thu, 13 May 2021 08:21:31 GMT
+< date: Mon, 23 Feb 2026 14:07:47 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 4441
+< content-length: 7705
 < connection: close
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6926
+< x-global-ratelimit-reset: 1771858410
 < x-ratelimit-limit: 1000
-< x-ratelimit-remaining: 999
-< x-ratelimit-reset: 1620897691
+< x-ratelimit-remaining: 998
+< x-ratelimit-reset: 1771858422
 < x-ratelimit-type: rest:post:files:search
 < access-control-allow-origin: *
 < access-control-expose-headers: *
@@ -320,10 +320,10 @@ Example response:
 {
   "hits": [
     {
-      "_index": "sirvfs-v3",
+      "_index": "sirvfs-v4",
       "_type": "_doc",
       "_id": "248e197b4546afd4da9ccdb2ee0d30cf844ecf44",
-      "_score": null,
+      "_score": 1.3096726,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -331,30 +331,35 @@ Example response:
         "dirname": "/REST API Examples",
         "basename": "aurora-copy.jpg",
         "extension": ".jpg",
-        "id": "RaxZM3sxunjRxsH7dUOU1KmBqASp3weH",
-        "ctime": "2021-05-12T09:30:08.895Z",
-        "mtime": "2021-05-12T09:30:09.806Z",
-        "size": 201846,
-        "contentType": "image/webp",
+        "id": "boW27K3kkyWK5LbGvxeOb0Sx3IOO0JoU",
+        "ctime": "2026-02-23T13:55:04.615Z",
+        "mtime": "2026-02-23T13:55:04.653Z",
+        "size": 260864,
+        "contentType": "image/jpeg",
         "meta": {
           "width": 2500,
           "height": 1667,
-          "format": "WEBP",
+          "format": "JPEG",
           "duration": 0,
           "EXIF": {
             "ModifyDate": "2020-01-29T17:12:45Z"
+          },
+          "ICC_Profile": {
+            "ProfileDescription": "GIMP built-in sRGB"
           }
         }
       },
       "sort": [
-        "/REST API Examples/aurora-copy.jpg"
+        1.3096726,
+        "/REST API Examples/aurora-copy.jpg",
+        ".jpg"
       ]
     },
     {
-      "_index": "sirvfs-v3",
+      "_index": "sirvfs-v4",
       "_type": "_doc",
       "_id": "4b57cdf35a3568220bb9ad7a6f62f0048c8b4ae1",
-      "_score": null,
+      "_score": 1.3096726,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -364,28 +369,34 @@ Example response:
         "extension": ".jpg",
         "id": "tkLbo0YuHJuBIEYj40lEUYRZZ8cLBGnF",
         "ctime": "2020-07-17T13:31:39.348Z",
-        "mtime": "2021-05-12T09:30:05.386Z",
-        "size": 201846,
-        "contentType": "image/webp",
+        "mtime": "2026-02-23T10:22:34.659Z",
+        "atime": "2026-02-12T07:43:18.986Z",
+        "size": 260864,
+        "contentType": "image/jpeg",
         "meta": {
           "width": 2500,
           "height": 1667,
-          "format": "WEBP",
+          "format": "JPEG",
           "duration": 0,
           "EXIF": {
             "ModifyDate": "2020-01-29T17:12:45Z"
+          },
+          "ICC_Profile": {
+            "ProfileDescription": "GIMP built-in sRGB"
           }
         }
       },
       "sort": [
-        "/REST API Examples/aurora.jpg"
+        1.3096726,
+        "/REST API Examples/aurora.jpg",
+        ".jpg"
       ]
     },
     {
-      "_index": "sirvfs-v3",
+      "_index": "sirvfs-v4",
       "_type": "_doc",
       "_id": "1945fa0032fbcc5df46e4af56ac1f75fc71ff38d",
-      "_score": null,
+      "_score": 1.3096726,
       "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
       "_source": {
         "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
@@ -395,8 +406,9 @@ Example response:
         "extension": ".jpg",
         "id": "IfnjioVCkRxIWPXrKi6gpHEVKx0KvFm4",
         "ctime": "2020-07-17T15:36:52.528Z",
-        "mtime": "2021-05-12T09:29:49.907Z",
-        "size": 279982,
+        "mtime": "2026-02-23T13:53:45.111Z",
+        "atime": "2025-07-11T12:09:49.940Z",
+        "size": 264184,
         "contentType": "image/jpeg",
         "meta": {
           "width": 1372,
@@ -406,67 +418,13 @@ Example response:
         }
       },
       "sort": [
-        "/REST API Examples/video/001.jpg"
-      ]
-    },
-    {
-      "_index": "sirvfs-v3",
-      "_type": "_doc",
-      "_id": "61ebc8bf5a8ad3c092f29846afb14e988c4bddaa",
-      "_score": null,
-      "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
-      "_source": {
-        "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
-        "filename": "/REST API Examples/video/002.jpg",
-        "dirname": "/REST API Examples/video",
-        "basename": "002.jpg",
-        "extension": ".jpg",
-        "id": "F100f2RQYtqc4lu8RE5DCKn2GvXqkuov",
-        "ctime": "2020-07-17T15:36:52.520Z",
-        "mtime": "2021-05-12T09:29:50.109Z",
-        "size": 266295,
-        "contentType": "image/jpeg",
-        "meta": {
-          "width": 1372,
-          "height": 1080,
-          "format": "JPEG",
-          "duration": 0
-        }
-      },
-      "sort": [
-        "/REST API Examples/video/002.jpg"
-      ]
-    },
-    {
-      "_index": "sirvfs-v3",
-      "_type": "_doc",
-      "_id": "1f9171cb31bcc108a9df664b3ad60a495cc3c4f8",
-      "_score": null,
-      "_routing": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
-      "_source": {
-        "accountId": "sdulth0oi0t9zxpxqtxwkwvgipjgv6ud",
-        "filename": "/REST API Examples/video/003.jpg",
-        "dirname": "/REST API Examples/video",
-        "basename": "003.jpg",
-        "extension": ".jpg",
-        "id": "To1IfJ0lftonDG6U2cI4IVTCU2LgNI4e",
-        "ctime": "2020-07-17T15:36:52.551Z",
-        "mtime": "2021-05-12T09:29:49.510Z",
-        "size": 259954,
-        "contentType": "image/jpeg",
-        "meta": {
-          "width": 1372,
-          "height": 1080,
-          "format": "JPEG",
-          "duration": 0
-        }
-      },
-      "sort": [
-        "/REST API Examples/video/003.jpg"
+        1.3096726,
+        "/REST API Examples/video/001.jpg",
+        ".jpg"
       ]
     }
   ],
-  "total": 256,
+  "total": 455,
   "_relation": "eq"
 }
 ```

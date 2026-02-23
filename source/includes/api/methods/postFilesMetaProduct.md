@@ -29,9 +29,9 @@ curl --request POST \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -42,15 +42,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -60,9 +60,9 @@ req.end();
 ```
 
 ```javascript
-var data = "{\"id\":\"LLBB77\",\"name\":\"Blue Lake Card\",\"brand\":\"BLUE LAKE LLC\",\"category1\":\"Cards\",\"category2\":\"Lakes\"}";
+const data = "{\"id\":\"LLBB77\",\"name\":\"Blue Lake Card\",\"brand\":\"BLUE LAKE LLC\",\"category1\":\"Cards\",\"category2\":\"Lakes\"}";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -91,7 +91,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/files/meta
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/files/meta/product?filename=%2FREST%20API%20Examples%2Fblue-lake.jpg",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -100,11 +100,11 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "{\"id\":\"LLBB77\",\"name\":\"Blue Lake Card\",\"brand\":\"BLUE LAKE LLC\",\"category1\":\"Cards\",\"category2\":\"Lakes\"}",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -215,7 +215,7 @@ Use this API method to set product meta fields for an image. This can be used by
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
+--------- | ---- | ----------- | -------
 filename | string |  | /REST API Examples/blue-lake.jpg
 
 
@@ -237,6 +237,7 @@ Example:
 
 
 
+
 JSON Schema:
 
 <div class="center-column"></div>
@@ -245,48 +246,42 @@ JSON Schema:
   "type": "object",
   "properties": {
     "id": {
+      "type": "string",
       "examples": [
         "LLBB77"
       ],
-      "example": "LLBB77",
-      "type": "string",
       "maxLength": 256
     },
     "name": {
+      "type": "string",
       "examples": [
         "Blue Lake Card"
       ],
-      "example": "Blue Lake Card",
-      "type": "string",
       "maxLength": 256
     },
     "brand": {
+      "type": "string",
       "examples": [
         "BLUE LAKE LLC"
       ],
-      "example": "BLUE LAKE LLC",
-      "type": "string",
       "maxLength": 256
     },
     "category1": {
+      "type": "string",
       "examples": [
         "Cards"
       ],
-      "example": "Cards",
-      "type": "string",
       "maxLength": 256
     },
     "category2": {
+      "type": "string",
       "examples": [
         "Lakes"
       ],
-      "example": "Lakes",
-      "type": "string",
       "maxLength": 256
     }
   },
-  "additionalProperties": false,
-  "patterns": []
+  "additionalProperties": false
 }
 ```
 
@@ -298,13 +293,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:46:08 GMT
+< date: Mon, 23 Feb 2026 14:08:05 GMT
 < content-length: 0
 < connection: close
-< x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6866
-< x-ratelimit-reset: 1595075478
-< x-ratelimit-type: rest:global
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6903
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache

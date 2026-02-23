@@ -29,9 +29,9 @@ curl --request POST \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -42,15 +42,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -60,9 +60,9 @@ req.end();
 ```
 
 ```javascript
-var data = "{}";
+const data = "{}";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -91,7 +91,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/video/toSp
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/video/toSpin",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -100,11 +100,11 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "{}",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -229,6 +229,7 @@ Example:
 
 
 
+
 JSON Schema:
 
 <div class="center-column"></div>
@@ -237,37 +238,38 @@ JSON Schema:
   "type": "object",
   "properties": {
     "uploadId": {
-      "description": "ID of the file that was uploaded via resumable /v2/upload endpoint",
       "type": "string",
+      "description": "ID of the file that was uploaded via resumable /v2/upload endpoint",
       "maxLength": 256
     },
     "spinDirname": {
-      "description": "Target dirname for the spin files",
       "type": "string",
+      "description": "Target dirname for the spin files",
       "maxLength": 1024
     },
     "frames": {
-      "description": "Number of frames in the spin",
       "type": "number",
+      "description": "Number of frames in the spin",
       "maximum": 512
     },
     "stabilisation": {
-      "description": "Enable video stabilisation",
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Enable video stabilisation"
     },
     "stabilisationVariant": {
+      "type": "number",
       "description": "Select stabilisation algorithm v1 or v2",
       "default": 1,
-      "type": "number",
       "minimum": 1,
       "maximum": 2
     },
     "wait": {
+      "type": "boolean",
       "description": "Wait for final phase to complete",
-      "default": true,
-      "type": "boolean"
+      "default": true
     },
     "v1fill": {
+      "type": "string",
       "description": "Canvas fill method for stabilisation v1",
       "enum": [
         "crop",
@@ -275,40 +277,38 @@ JSON Schema:
         "crystall",
         "ribs",
         "mix"
-      ],
-      "type": "string"
+      ]
     },
     "v1smoothscale": {
+      "type": "boolean",
       "description": "Smoothing of scale for stabilisation v1",
-      "default": true,
-      "type": "boolean"
+      "default": true
     },
     "v1smoothangle": {
+      "type": "boolean",
       "description": "Smoothing of angle for stabilisation v1",
-      "default": true,
-      "type": "boolean"
+      "default": true
     },
     "v2accuracy": {
+      "type": "number",
       "description": "Accuracy of shakiness detection for stabilisation v2",
       "default": 15,
-      "type": "number",
       "minimum": 1,
       "maximum": 15
     },
     "v2smoothing": {
+      "type": "number",
       "description": "Smoothing of camera movements for stabilisation v2",
       "default": 30,
-      "type": "number",
       "minimum": 1,
       "maximum": 50
     }
   },
-  "additionalProperties": false,
-  "patterns": [],
   "required": [
     "uploadId",
     "spinDirname"
-  ]
+  ],
+  "additionalProperties": false
 }
 ```
 

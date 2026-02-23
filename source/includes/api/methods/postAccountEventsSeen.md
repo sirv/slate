@@ -29,9 +29,9 @@ curl --request POST \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "POST",
   "hostname": "api.sirv.com",
   "port": null,
@@ -42,15 +42,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -60,9 +60,9 @@ req.end();
 ```
 
 ```javascript
-var data = "[\"f1f5d68ef232e5d27d10f28bcef836efbb7cdeba\",\"199cf48046964f8567fe49e22107c4c5d27271e7\"]";
+const data = "[\"f1f5d68ef232e5d27d10f28bcef836efbb7cdeba\",\"199cf48046964f8567fe49e22107c4c5d27271e7\"]";
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -91,7 +91,7 @@ HttpResponse<String> response = Unirest.post("https://api.sirv.com/v2/account/ev
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/account/events/seen",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -100,11 +100,11 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "[\"f1f5d68ef232e5d27d10f28bcef836efbb7cdeba\",\"199cf48046964f8567fe49e22107c4c5d27271e7\"]",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -238,17 +238,15 @@ JSON Schema:
 <div class="center-column"></div>
 ```json
 {
+  "type": "array",
   "examples": [
     [
-      "f1f5d68ef232e5d27d10f28bcef836efbb7cdeba",
-      "199cf48046964f8567fe49e22107c4c5d27271e7"
+      [
+        "f1f5d68ef232e5d27d10f28bcef836efbb7cdeba",
+        "199cf48046964f8567fe49e22107c4c5d27271e7"
+      ]
     ]
   ],
-  "example": [
-    "f1f5d68ef232e5d27d10f28bcef836efbb7cdeba",
-    "199cf48046964f8567fe49e22107c4c5d27271e7"
-  ],
-  "type": "array",
   "maxItems": 100,
   "items": {
     "type": "string"
@@ -264,13 +262,12 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Tue, 21 Jul 2020 09:17:41 GMT
+< date: Mon, 23 Feb 2026 14:07:34 GMT
 < content-length: 0
 < connection: close
-< x-ratelimit-limit: 7000
-< x-ratelimit-remaining: 6982
-< x-ratelimit-reset: 1595326565
-< x-ratelimit-type: rest:global
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6934
+< x-global-ratelimit-reset: 1771858410
 < access-control-allow-origin: *
 < access-control-expose-headers: *
 < cache-control: no-cache

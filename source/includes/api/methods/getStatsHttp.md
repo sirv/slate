@@ -26,9 +26,9 @@ curl --request GET \\
 ```
 
 ```javascript--node
-var http = require("https");
+const http = require("https");
 
-var options = {
+const options = {
   "method": "GET",
   "hostname": "api.sirv.com",
   "port": null,
@@ -39,15 +39,15 @@ var options = {
   }
 };
 
-var req = http.request(options, function (res) {
-  var chunks = [];
+const req = http.request(options, function (res) {
+  const chunks = [];
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
   });
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 });
@@ -56,9 +56,9 @@ req.end();
 ```
 
 ```javascript
-var data = null;
+const data = null;
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
@@ -86,7 +86,7 @@ HttpResponse<String> response = Unirest.get("https://api.sirv.com/v2/stats/http?
 
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array($curl, [
   CURLOPT_URL => "https://api.sirv.com/v2/stats/http?from=2020-07-01T00%3A00%3A00.000&to=2020-07-05T00%3A00%3A00.000",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
@@ -94,11 +94,11 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "GET",
-  CURLOPT_HTTPHEADER => array(
+  CURLOPT_HTTPHEADER => [
     "authorization: Bearer BEARER_TOKEN_HERE",
     "content-type: application/json"
-  ),
-));
+  ],
+]);
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
@@ -201,9 +201,9 @@ Use this API method to check how much data was transferred per day during a cert
 
 
 Parameter | Type | Description | Example
---------- | ---- | ----------- | ------- 
-from | date | Default: 1 month ago, rounded to start of day | 2020-07-01T00:00:00.000
-to | date | Default: now, rounded to end of day | 2020-07-05T00:00:00.000
+--------- | ---- | ----------- | -------
+from | date |  | 2020-07-01T00:00:00.000
+to | date |  | 2020-07-05T00:00:00.000
 
 
 ### Body payload
@@ -221,13 +221,16 @@ Example response:
 <div class="center-column"></div>
 ```
 < HTTP/1.1 200
-< date: Sat, 18 Jul 2020 11:45:52 GMT
+< date: Mon, 23 Feb 2026 14:07:44 GMT
 < content-type: application/json; charset=utf-8
-< content-length: 470
+< content-length: 2
 < connection: close
+< x-global-ratelimit-limit: 7000
+< x-global-ratelimit-remaining: 6931
+< x-global-ratelimit-reset: 1771858410
 < x-ratelimit-limit: 100
-< x-ratelimit-remaining: 96
-< x-ratelimit-reset: 1595075480
+< x-ratelimit-remaining: 98
+< x-ratelimit-reset: 1771858419
 < x-ratelimit-type: rest:get:stats:http
 < access-control-allow-origin: *
 < access-control-expose-headers: *
